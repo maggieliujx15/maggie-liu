@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168203025-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-168203025-1');
+  </script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Maggie Liu - About</title>
+  <link rel="icon" href="img/about/link_icon_white.png" type="image" sizes="16x16">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/flexbox.css">
+  <link rel="stylesheet" href="css/media.css">
+
+</head>
+
+<body>
+
+  <div class="nav">
+    <div class="nav-container">
+      <a href="index.html" class="logo">Maggie Liu</a>
+      <div class="nav-right">
+        <a href="index.html#workContainer">Work</a>
+          <a href="about.html">About</a>
+          <a href="funs.html">Funs</a>
+          <a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-wrap">
+    <h4 class="hero-text">Hey, I'm <!-- <span> -->Maggie Liu<!-- </span> -->! <!-- <img src="img/about/me_1.jpg"> --> <br>A user experience & visual designer from Vancouver, BC.</h4>
+  </div>
+
+  <div class="info-wrap project-info-wrap">
+    <div class="project-detail-header">
+      <div id="mydiv">
+        <img src="img/about/me_1.jpg" loading="lazy">
+      </div>
+
+      <p style="font-family: proza; margin: auto">You found the bts &#128539;</p>
+      <img src="img/about/me_4.jpg" loading="lazy" style="width: 78%">   
+
+      <!-- <div class="project-detail-content contact">
+        <p><b>Reach me at:</b></p>
+        <p><a href="docs/Maggie Liu Resume.pdf">Resume</a></p>
+        <p><a href="https://www.linkedin.com/in/maggieliujx/">LinkedIn</a></p>
+        <p><a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a></p>
+      </div> -->
+
+    </div>
+
+    <div class="project-detail-content about">
+      <p>I recently graduated from Simon Fraser University. In 2018, I had the opportunity to intern at <a href="https://www.mediamonks.com/">MediaMonks</a>, Netherlands for 8 months as a UX designer.
+
+      <br><br>
+
+      I have learned the best results come from those who are passionate about the work they do. I love understanding people and brainstorming solutions to their complex problems.
+
+      <br><br>
+
+      I love working with my hands to translate concepts into tangible forms, whether they are physical or digital.
+
+      <br><br>
+
+      Travelling is a source of inspiration for me, so if there’s an opportunity to relocate, I’ll be very interested!
+
+      <p style="font-size: 1.2rem">I am currently open to freelance or full-time positions, so let’s <a href="mailto:maggieliujx@gmail.com">chat</a>!</p>
+
+    </div>
+  </div>
+
+  <div class="info-wrap project-info-wrap">
+    <div class="project-detail-header">
+    </div>
+    <div class="project-detail-content contact">
+      <!-- <div class="contact"> -->
+        <p><b>Reach me at:</b></p>
+        <p><a href="docs/Maggie Liu Resume.pdf">Resume</a></p>
+        <p><a href="https://www.linkedin.com/in/maggieliujx/">LinkedIn</a></p>
+        <p><a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a></p>
+      <!-- </div> -->
+    </div>
+  </div>
+
+  <div class="info-wrap project-info-wrap">
+    <div class="brand-title">
+      Cool brands I got to work with:
+    </div>
+  </div>
+
+  <div class="project-info">
+    <div class="info-wrap project-info-wrap">
+      <img src="img/about/brands.png" class="dividerImg">
+    </div>
+  </div>
+
+  <div class="info-wrap project-info-wrap">
+    <div class="wide-comment" style="background-color: #F9F9F9; font-size: 1rem">
+      Coded with &#9749; and &#10084;
+    </div>
+  </div>
+
+  <br> <br> <br>
+
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/maggieliujx/">
+      <img src="img/linkedin-icon.png">
+    </a>
+  </div>
+
+
+<script>
+  dragElement(document.getElementById("mydiv"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id)) {
+    // if present, the header is where you move the DIV from:
+    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
+  } else {
+    // otherwise, move the DIV from anywhere inside the DIV:
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+
+</body>
+
+</html>

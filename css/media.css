@@ -1,0 +1,86 @@
+@media (min-width: 1024px) {
+
+  .client-info {
+    padding: 100px 0;
+  }
+
+  .project-info-intro {
+    width: 60%;
+    padding-right: 50px;
+  }
+
+  .project-info-list {
+    padding: 0 0 0 40px;
+    width: 50%;
+  }
+
+  .project-detail-header {
+    width: 100%;
+  }
+
+/*  .carousel-cell { width: 25%; }*/
+
+}
+
+@media (min-width: 768px) {
+
+  .main-content {
+    width: 50%;
+  }
+
+  .meContainer {
+    width: 60%;
+  }
+
+  .businessQuote {
+    width: 50%;
+  }
+
+  .project-info-wrap {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .project-info-list {
+    padding-left: 10%;
+  }
+
+  .info-wrap {
+    padding: 50px 25px 30px 25px;
+    width: 80%;
+  }
+
+  .hero-text {
+    font-size: 5rem;
+    line-height: 5.4rem;
+  }
+
+  .about p {
+    /*padding-bottom: 1.8rem;*/
+    padding-top: 0;
+    padding-bottom: 2rem;
+  }
+
+  #mydiv {
+    width: 35%;
+  }
+
+}
+
+@media (min-width: 480px) {
+
+  .main-content {
+    width: 80%;
+    align-content: center;
+  }
+
+}
+
+@media (min-width: 320px) {
+
+    
+  
+
+}
+
+
