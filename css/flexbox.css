@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexcontainer{
+  flex-direction: row;
+  min-height: 100%;
+  align-items: stretch;
+}
+
+.flexitem {
+  flex: 1 1 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.flexProject {
+  flex-direction: column;
+  align-content: center;
+}
+
+#menu {
+  order: -1;
+  flex: 0 0 15rem;
+}
+
+#content {
+  order: 1;
+  flex: 1 1 auto;
+}
