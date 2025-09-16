@@ -1,3 +1,7 @@
+body {
+  font-family: 'Space Mono', monospace;
+}
+
 .d-landing {
   background-color: #fffdf4;
   display: grid;
@@ -17,7 +21,7 @@
   position: absolute;
   top: 864px;
   left: 16px;
-  font-family: "Space Mono-Regular", Helvetica;
+  font-family: "Space Mono", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -30,7 +34,7 @@
   position: absolute;
   top: 810px;
   left: 16px;
-  font-family: "Space Mono-Regular", Helvetica;
+  font-family: "Space Mono", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -43,7 +47,7 @@
   position: absolute;
   top: 837px;
   left: 16px;
-  font-family: "Space Mono-Regular", Helvetica;
+  font-family: "Space Mono", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -86,7 +90,7 @@
   position: relative;
   width: fit-content;
   margin-top: -1.00px;
-  font-family: "Space Mono-Regular", Helvetica;
+  font-family: "Space Mono", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -99,7 +103,7 @@
   position: relative;
   width: fit-content;
   margin-top: -1.00px;
-  font-family: "Space Mono-Regular", Helvetica;
+  font-family: "Space Mono", Helvetica;
   font-weight: 400;
   color: var(--tokens-dark-green);
   font-size: 8px;
@@ -353,7 +357,6 @@
   left: 0;
   z-index: 1000;
   padding: 16px;
-  
 }
 
 .contact-nav a {
