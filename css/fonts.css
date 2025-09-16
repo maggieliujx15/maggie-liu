@@ -1,97 +1,23 @@
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 300;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Light.otf);
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 300;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-LightItalic.otf);
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
 }
 
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 400;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Regular.otf);
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
 }
 
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 400;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-RegularItalic.otf);
-}
-
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 500;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Book.otf);
-}
-
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 500;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-BookItalic.otf);
-}
-
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 600;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-SemiBold.otf);
-}
-
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 600;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-SemiBoldItalic.otf);
-}
-
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 700;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Bold.otf);
-}
-
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 700;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-BoldItalic.otf);
-}
-
-@font-face {
-	font-family: proza;
-	font-weight: 400;
-	font-style: normal;
-	src: url(fonts/ProzaLibre-Regular.ttf);
-}
-
-@font-face {
-	font-family: proza;
-	font-weight: 500;
-	font-style: normal;
-	src: url(fonts/ProzaLibre-Medium.ttf);
-}
-
-@font-face {
-	font-family: ZCOOL;
-	font-weight: 400;
-	font-style: normal;
-	src: url(fonts/ZCOOLXiaoWei-Regular.ttf);
-}
-
-@font-face {
-	font-family: noto;
-	font-weight: 300;
-	font-style: normal;
-	src: url(fonts/NotoSerifSC-Light.otf);
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
 }

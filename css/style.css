@@ -1,0 +1,424 @@
+.d-landing {
+  background-color: #fffdf4;
+  display: grid;
+  justify-items: center;
+  align-items: start;
+  width: 100vw;
+}
+
+.d-landing .div {
+  background-color: #fffdf4;
+  width: 1440px;
+  height: 900px;
+  position: relative;
+}
+
+.d-landing .text-wrapper {
+  position: absolute;
+  top: 864px;
+  left: 16px;
+  font-family: "Space Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.d-landing .text-wrapper-2 {
+  position: absolute;
+  top: 810px;
+  left: 16px;
+  font-family: "Space Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.d-landing .text-wrapper-3 {
+  position: absolute;
+  top: 837px;
+  left: 16px;
+  font-family: "Space Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.d-landing .frame {
+  display: flex;
+  flex-direction: column;
+  width: 445px;
+  align-items: flex-start;
+  gap: 40px;
+  position: absolute;
+  top: 24px;
+  left: 16px;
+}
+
+.d-landing .frame-2 {
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.d-landing .frame-3 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.d-landing .text-wrapper-4 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Space Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+}
+
+.d-landing .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "Space Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--tokens-dark-green);
+  font-size: 8px;
+  letter-spacing: 0;
+  line-height: 12px;
+  white-space: nowrap;
+}
+
+.d-landing .frame-4 {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.d-landing .frame-5 {
+  width: 406px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.d-landing .m-logo {
+  position: absolute;
+  width: 65px;
+  height: 52px;
+  top: 24px;
+  left: 1359px;
+  background-image: url(./img/vector-36.svg);
+  background-size: 100% 100%;
+}
+
+.d-landing .component {
+  position: absolute;
+  width: 96px;
+  height: 112px;
+  top: 470px;
+  left: 135px;
+  background-image: url(./img/group-29616135.png);
+  background-size: 100% 100%;
+}
+
+.d-landing .pen-new-clean-file {
+  position: absolute;
+  width: 5px;
+  height: 76px;
+  top: 22px;
+  left: 3px;
+}
+
+.d-landing .component-2 {
+  position: absolute;
+  width: 215px;
+  height: 121px;
+  top: 465px;
+  left: 493px;
+  aspect-ratio: 1.78;
+  background-image: url(./img/screenshot-2025-08-29-at-12-32-02.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.d-landing .image-t-wrapper {
+  display: flex;
+  width: 95px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: absolute;
+  top: 437px;
+  left: 971px;
+}
+
+.d-landing .image-t {
+  position: relative;
+  width: 77px;
+  height: 177px;
+}
+
+.d-landing .component-3 {
+  position: absolute;
+  width: 95px;
+  height: 118px;
+  top: 467px;
+  left: 1090px;
+  aspect-ratio: 0.8;
+  background-image: url(./img/screenshot-2025-08-29-at-12-09-38-2.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.d-landing .component-4 {
+  position: absolute;
+  width: 215px;
+  height: 160px;
+  top: 446px;
+  left: 1209px;
+  aspect-ratio: 1.34;
+  background-image: url(./img/image-47830.png);
+  background-size: 100% 100%;
+}
+
+.d-landing .overlap-group-wrapper {
+  position: absolute;
+  width: 95px;
+  height: 135px;
+  top: 458px;
+  left: 16px;
+}
+
+.d-landing .overlap-group {
+  position: relative;
+  height: 135px;
+}
+
+.d-landing .mask-group {
+  position: absolute;
+  width: 48px;
+  height: 135px;
+  top: 0;
+  left: 0;
+}
+
+.d-landing .img {
+  position: absolute;
+  width: 48px;
+  height: 135px;
+  top: 0;
+  left: 48px;
+}
+
+.d-landing .aspect-ratio {
+  display: flex;
+  flex-direction: column;
+  width: 95px;
+  height: 71px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4.04px 0px 0px 0px;
+  overflow: hidden;
+  aspect-ratio: 1.33;
+}
+
+.d-landing .image {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  aspect-ratio: 0.6;
+  object-fit: cover;
+}
+
+.d-landing .element {
+  position: absolute;
+  width: 32px;
+  height: 8px;
+  top: 63px;
+  left: 0;
+  aspect-ratio: 3.72;
+}
+
+.d-landing .new-cars-all-cars-wrapper {
+  position: absolute;
+  width: 214px;
+  height: 121px;
+  top: 465px;
+  left: 255px;
+  border-radius: 2px;
+  overflow: hidden;
+  background-image: url(./img/lexus-electrified-sport-concept-at-goodwood-gallery-09-1920x1080-1.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.d-landing .new-cars-all-cars {
+  position: absolute;
+  width: 198px;
+  height: 10px;
+  top: 5px;
+  left: 8px;
+  aspect-ratio: 19.8;
+}
+
+.d-landing .overlap-wrapper {
+  position: absolute;
+  width: 215px;
+  height: 87px;
+  top: 482px;
+  left: 732px;
+  background-color: #d9d9d9;
+  border-radius: 8px;
+  overflow: hidden;
+  background-image: url(./img/screenshot-2025-09-03-at-14-51-36-1.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.d-landing .overlap {
+  position: relative;
+  height: 24px;
+  background-color: #05164d;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.d-landing .image-2 {
+  position: absolute;
+  width: 72px;
+  height: 19px;
+  top: 2px;
+  left: 72px;
+  aspect-ratio: 3.77;
+  object-fit: cover;
+}
+/* Original CSS code should be injected here */
+
+/* Additional semantic and accessibility improvements */
+.header {
+  position: absolute;
+  top: 24px;
+  right: 16px;
+  z-index: 10;
+}
+
+.portfolio-section {
+  position: relative;
+}
+
+.gallery-section {
+  position: relative;
+}
+
+.footer {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+
+.contact-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contact-nav a {
+  font-family: "Space Mono-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-nav a:hover,
+.contact-nav a:focus {
+  color: var(--tokens-dark-green);
+  outline: none;
+}
+
+.contact-nav a:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Ensure all interactive elements have proper focus states */
+.frame-3:focus-within,
+.frame-4:focus-within {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Improve semantic structure positioning */
+.d-landing .text-wrapper {
+  position: static;
+}
+
+.d-landing .text-wrapper-2 {
+  position: static;
+}
+
+.d-landing .text-wrapper-3 {
+  position: static;
+}
+
+/* Ensure proper heading hierarchy */
+.text-wrapper-4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Improve accessibility for background images */
+[role="img"] {
+  background-repeat: no-repeat;
+}
+
+/* Enhanced responsive considerations */
+@media (max-width: 768px) {
+  .d-landing .div {
+    width: 100%;
+    min-width: 320px;
+  }
+
+  .frame {
+    width: calc(100% - 32px);
+  }
+
+  .contact-nav {
+    font-size: 14px;
+  }
+}
