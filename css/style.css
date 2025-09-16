@@ -346,13 +346,18 @@
 }
 
 .contact-nav {
+  position: fixed;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 16px;
+  
 }
 
 .contact-nav a {
-  font-family: "Space Mono-Regular", Helvetica;
+  font-family: "Space Mono", Helvetica;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
