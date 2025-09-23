@@ -1,3 +1,43 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Space Mono', monospace;
+  background-color: #fffdf4;
+  scroll-behavior: smooth;
+}
+
+.d-landing {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  min-height: 100vh;
+  margin: 16px;
+}
+
+.d-landing .div {
+  width: 100%;
+  position: relative;
+}
+
+.d-landing .m-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 32px;
+  z-index: 2000;
+  background-image: url(./img/vector-36.svg);
+  background-size: 100% 100%;
+}
+
 .gallery-image-hover {
   position: relative;
   display: inline-block;
@@ -21,24 +61,8 @@
 .gallery-image-hover:hover .gif-img {
   display: block;
 }
-body {
-  font-family: 'Space Mono', monospace;
-}
 
-.d-landing {
-  background-color: #fffdf4;
-  display: grid;
-  justify-items: center;
-  align-items: start;
-  width: 100vw;
-}
 
-.d-landing .div {
-  background-color: #fffdf4;
-  width: 1440px;
-  height: 900px;
-  position: relative;
-}
 
 .d-landing .text-wrapper {
   position: absolute;
@@ -82,7 +106,7 @@ body {
 .d-landing .frame {
   display: flex;
   flex-direction: column;
-  width: 445px;
+  width: 100%;
   align-items: flex-start;
   gap: 32px;
   position: relative;
@@ -154,15 +178,7 @@ body {
   flex: 0 0 auto;
 }
 
-.d-landing .m-logo {
-  position: absolute;
-  width: 65px;
-  height: 52px;
-  top: 24px;
-  left: 1359px;
-  background-image: url(./img/vector-36.svg);
-  background-size: 100% 100%;
-}
+
 
 .d-landing .component {
   position: absolute;
