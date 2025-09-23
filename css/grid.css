@@ -1,17 +1,20 @@
 
 *, *::after, *::before {
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
+/*
 .grid-row {
 	display: flex;
 	flex-wrap: wrap;
 	margin-left: 16px;
 	margin-right: 16px;
 }
+*/
 
-
-
+/*
 .grid-col-1of12 { flex: 0 0 calc((100% - 11 * 24px - 2 * 16px) / 12); max-width: calc((100% - 11 * 24px - 2 * 16px) / 12); }
 .grid-col-2of12 { flex: 0 0 calc(2 * ((100% - 11 * 24px - 2 * 16px) / 12) + 24px); max-width: calc(2 * ((100% - 11 * 24px - 2 * 16px) / 12) + 24px); }
 .grid-col-3of12 { flex: 0 0 calc(3 * ((100% - 11 * 24px - 2 * 16px) / 12) + 2 * 24px); max-width: calc(3 * ((100% - 11 * 24px - 2 * 16px) / 12) + 2 * 24px); }
@@ -24,10 +27,12 @@
 .grid-col-10of12 { flex: 0 0 calc(10 * ((100% - 11 * 24px - 2 * 16px) / 12) + 9 * 24px); max-width: calc(10 * ((100% - 11 * 24px - 2 * 16px) / 12) + 9 * 24px); }
 .grid-col-11of12 { flex: 0 0 calc(11 * ((100% - 11 * 24px - 2 * 16px) / 12) + 10 * 24px); max-width: calc(11 * ((100% - 11 * 24px - 2 * 16px) / 12) + 10 * 24px); }
 .grid-col-12of12 { flex: 0 0 calc(12 * ((100% - 11 * 24px - 2 * 16px) / 12) + 11 * 24px); max-width: calc(12 * ((100% - 11 * 24px - 2 * 16px) / 12) + 11 * 24px); }
+*/
+
 
 [class^='grid-col-'] {
 	float: left;
-	padding: 24px;
+	
 	/*align-content: center;
 */}
 
