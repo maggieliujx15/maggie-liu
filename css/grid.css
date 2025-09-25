@@ -1,4 +1,3 @@
-
 *, *::after, *::before {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -33,8 +32,14 @@
 [class^='grid-col-'] {
 	float: left;
 	
-	/*align-content: center;
-*/}
+}
+
+/* Vertically center items in gallery section grid row */
+.gallery-section .grid-row {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
 
 .grid-col-1of12 {
 	width: 8.33%;

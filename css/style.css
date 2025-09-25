@@ -1,3 +1,55 @@
+@media (min-width: 376px) and (max-width: 768px) {
+  .d-landing {
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+    margin: 0;
+    padding: 0 8px;
+  }
+  .d-landing .div {
+    width: 100%;
+    min-width: 376px;
+    max-width: 768px;
+    height: 100vh;
+    max-height: 100vh;
+    padding-bottom: 56px;
+  }
+  .frame {
+    width: 100%;
+    gap: 16px;
+  }
+  .frame-2 {
+    gap: 8px;
+  }
+  .gallery-section {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0 8px;
+  }
+  .gallery-section .grid-row {
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .grid-col-1of12, .grid-col-2of12 {
+    min-width: 120px;
+    max-width: 180px;
+    width: 22vw;
+  }
+  .contact-nav {
+    font-size: 13px;
+    left: 8px;
+    bottom: 8px;
+    gap: 4px;
+  }
+  .text-wrapper-4 {
+    font-size: 14px;
+  }
+  .text-wrapper-5 {
+    font-size: 7px;
+  }
+}
 .hover-swap {
   position: relative;
   display: inline-block;
@@ -35,21 +87,21 @@ html, body {
 }
 
 .d-landing {
-  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: left;
-  min-height: 100vh;
-  margin: 16px;
+  height: 100vh;
+  max-height: 100vh;
+  
 }
 
 .d-landing .div {
-  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  width: 100%;
   position: relative;
-  padding-bottom: 68px; /* Adjust to match contact nav height */
 }
 
 .d-landing .m-logo img {
@@ -182,8 +234,8 @@ html, body {
   margin-top: -1.00px;
   font-family: "Space Mono", Helvetica;
   font-weight: 400;
-  color: var(--tokens-dark-green);
-  font-size: 8px;
+  color: #0C4C1F;
+  font-size: 12px;
   letter-spacing: 0;
   line-height: 1;
   white-space: nowrap;
@@ -410,8 +462,9 @@ html, body {
 
 .gallery-section {
   position: relative;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto;
+  align-items: center;
+  
 }
 
 
