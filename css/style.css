@@ -1,3 +1,12 @@
+/* Align subtitle to start after year in portfolio items */
+.frame-3 .text-wrapper-5 {
+  margin-left: 0;
+  text-indent: 48px;
+}
+/* Add gap between portfolio item title and subtitle */
+.frame-3 > div {
+  gap: 8px;
+}
 @media (min-width: 376px) and (max-width: 768px) {
   .d-landing {
     flex-direction: column;
@@ -19,19 +28,16 @@
     gap: 16px;
   }
   .frame-2 {
-    gap: 8px;
+    gap: 24px;
   }
   .gallery-section {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0 8px;
+    
   }
   .gallery-section .grid-row {
-    flex-wrap: wrap;
-    gap: 8px;
+    
     justify-content: center;
   }
+  
   .grid-col-1of12, .grid-col-2of12 {
     min-width: 120px;
     max-width: 180px;
@@ -92,7 +98,7 @@ html, body {
   justify-content: left;
   height: 100vh;
   max-height: 100vh;
-  
+  width: 100%;
 }
 
 .d-landing .div {
@@ -102,6 +108,7 @@ html, body {
   display: flex;
   flex-direction: column;
   position: relative;
+  width: 100%;
 }
 
 .d-landing .m-logo img {
@@ -202,7 +209,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 24px;
   position: relative;
   flex: 0 0 auto;
 }
@@ -462,7 +469,6 @@ html, body {
 
 .gallery-section {
   position: relative;
-  margin: auto;
   align-items: center;
   
 }

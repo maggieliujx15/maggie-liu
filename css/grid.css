@@ -1,3 +1,17 @@
+/* Utility class for vertical stacking in grid-row */
+.grid-row--column {
+	display: flex;
+	flex-direction: column;
+}
+/* 8-column grid for portfolio layout */
+.grid-col-1of8 {
+	width: 12.5%;
+	float: left;
+}
+.grid-col-2of8 {
+	width: 25%;
+	float: left;
+}
 *, *::after, *::before {
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -89,8 +103,11 @@
 	width: 100%;
 }
 
+/*
 .grid-row::after {
 	content: "";
-	display: table; /*block*/
+	display: table; block
 	clear: both;
 }
+	*/
+
