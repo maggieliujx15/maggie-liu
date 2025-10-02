@@ -589,3 +589,11 @@ html, body {
   }
 }
   */
+
+/* Transition effects for text and gallery items */
+.text-wrapper-4,
+.text-wrapper-5,
+.gallery-section [data-index],
+.hover-img {
+  transition: opacity 0.5s;
+}
