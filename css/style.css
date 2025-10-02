@@ -246,12 +246,12 @@ html, body {
   height: 100%;
 }
 
-.gallery-section .grid-col-1of12,
-.gallery-section .grid-col-2of12,
-.gallery-section .grid-col-3of12 {
-  flex: 1 1 0;
-  min-width: 0;
-}
+.gallery-section .grid-col-1of12 { flex: 1; }
+.gallery-section .grid-col-2of12 { flex: 2; }
+.gallery-section .grid-col-3of12 { flex: 3; }
+
+
+
 
 .d-landing .component {
   position: absolute;
@@ -542,19 +542,11 @@ html, body {
 }
 
 
-@media (min-width: 376px) and (max-width: 820px) {
-  .gallery-section .grid-col-1of12,
-  .gallery-section .grid-col-2of12,
-  .gallery-section .grid-col-3of12 {
-    flex: unset;
-    min-width: unset;
-  }
-
+@media (min-width: 376px) and (max-width: 768px) {
   .grid-row {
-    width: 100vw;
-    box-sizing: border-box;
     gap: 16px;
-  
+    margin-left: 16px;
+    margin-right: 16px;
   }
 
   .portfolio-section {
@@ -564,24 +556,36 @@ html, body {
   }
 
   .gallery-section {
-    display: flex;
-    gap: 16px;
-    width: 100%;
-    flex-wrap: nowrap;
+    width: 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
-  .gallery-section .grid-col-1of12 {
-    width: 75%;      /* 2 of 8 columns */
-    flex: 0 0 75%;
-    max-width: 75%;
-  }
-  .gallery-section .grid-col-2of12 {
-    width: 100%;    /* 3 of 8 columns */
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
+
+  /* Adjust child columns if needed */
+  .gallery-section .grid-col-1of12,
+  .gallery-section .grid-col-2of12,
   .gallery-section .grid-col-3of12 {
-    width: 100%;      /* 4 of 8 columns */
-    flex: 0 0 100%;
-    max-width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
   }
 }
+
+
+
+
+/* Enhanced responsive considerations 
+@media (max-width: 768px) {
+  .d-landing .div {
+    width: 100%;
+    min-width: 320px;
+  }
+
+  .frame {
+    width: calc(100% - 32px);
+  }
+
+  .contact-nav {
+    font-size: 14px;
+  }
+}
+  */
