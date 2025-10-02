@@ -545,8 +545,7 @@ html, body {
 @media (min-width: 376px) and (max-width: 768px) {
   .grid-row {
     gap: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
+    width: 100%;
   }
 
   .portfolio-section {
@@ -561,12 +560,45 @@ html, body {
     max-width: 50%;
   }
 
-  /* Adjust child columns if needed */
-  .gallery-section .grid-col-1of12,
+  .gallery-section .grid-col-1of12 {
+    flex: 0 0 37.5%; /* 3 of 8 columns */
+    max-width: 37.5%;
+  }
   .gallery-section .grid-col-2of12,
   .gallery-section .grid-col-3of12 {
-    flex: 1 1 0;
-    min-width: 0;
+    flex: 0 0 50%;   /* 4 of 8 columns */
+    max-width: 50%;
+  }
+
+  .gallery-section .grid-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: hidden;
+  }
+
+  /* Only show the active gallery item */
+  .gallery-section .hover-swap {
+    display: none;
+  }
+
+  .gallery-section .hover-swap.active {
+    display: block;
+    width: 100%;
+  }
+
+   .hover-swap {
+    position: relative;
+    display: block;
+  }
+  .hover-swap .default-img,
+  .hover-swap .hover-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.5s;
   }
 }
 

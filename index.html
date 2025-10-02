@@ -224,41 +224,79 @@ function resetHighlight() {
   allGalleryItems.forEach(item => { item.style.opacity = '1'; });
 }
 
+let gallerySwapInterval = null;
+let currentActiveIndex = null;
+
+function setActiveGalleryItem(index) {
+  document.querySelectorAll('.gallery-section .hover-swap')
+    .forEach(item => item.classList.remove('active'));
+  const activeSwap = document.querySelector(`.gallery-section .hover-swap[data-index="${index}"]`);
+  if (activeSwap) activeSwap.classList.add('active');
+}
+
+function startGallerySwap(index) {
+  stopGallerySwap();
+  currentActiveIndex = index;
+  const activeSwap = document.querySelector(`.gallery-section .hover-swap[data-index="${index}"]`);
+  if (!activeSwap) return;
+  const defaultImg = activeSwap.querySelector('.default-img');
+  const hoverImg = activeSwap.querySelector('.hover-img');
+  let showHover = false;
+
+  // Always show default-img
+  if (defaultImg) defaultImg.style.display = 'block';
+  if (hoverImg) hoverImg.style.display = 'none';
+
+  gallerySwapInterval = setInterval(() => {
+    showHover = !showHover;
+    if (showHover) {
+      if (hoverImg) hoverImg.style.display = 'block';
+    } else {
+      if (hoverImg) hoverImg.style.display = 'none';
+    }
+    // Always keep default-img visible
+    if (defaultImg) defaultImg.style.display = 'block';
+  }, 500);
+}
+
+function stopGallerySwap() {
+  clearInterval(gallerySwapInterval);
+  gallerySwapInterval = null;
+  if (currentActiveIndex !== null) {
+    const activeSwap = document.querySelector(`.gallery-section .hover-swap[data-index="${currentActiveIndex}"]`);
+    if (activeSwap) {
+      const defaultImg = activeSwap.querySelector('.default-img');
+      const hoverImg = activeSwap.querySelector('.hover-img');
+      if (defaultImg) defaultImg.style.display = 'block';
+      if (hoverImg) hoverImg.style.display = 'none';
+    }
+  }
+  currentActiveIndex = null;
+}
+
 function tabletHighlightLogic() {
   if (window.innerWidth > 375 && window.innerWidth <= 768) {
-    // Remove hover listeners
-    allPortfolioItems.forEach(item => {
-      item.onmouseenter = null;
-      item.onmouseleave = null;
-    });
-    allGalleryItems.forEach(item => {
-      item.onmouseenter = null;
-      item.onmouseleave = null;
-    });
-    setGalleryHoverImages(false);
-
-    // Highlight first item by default
+    setActiveGalleryItem('0');
     setHighlight('0');
+    startGallerySwap('0');
 
-    // Listen for scroll to highlight next item
     window.addEventListener('scroll', () => {
       let activeIndex = '0';
-      allPortfolioItems.forEach((item, idx) => {
+      document.querySelectorAll('.frame-3[data-index]').forEach(item => {
         const rect = item.getBoundingClientRect();
         if (rect.top < window.innerHeight / 2) {
           activeIndex = item.getAttribute('data-index');
         }
       });
       setHighlight(activeIndex);
+      setActiveGalleryItem(activeIndex);
+      startGallerySwap(activeIndex);
     });
   } else {
-    // Desktop: restore hover logic for highlight and gallery images
-    allPortfolioItems.forEach(item => {
-      item.onmouseenter = () => setHighlight(item.getAttribute('data-index'));
-      item.onmouseleave = resetHighlight;
-    });
-    setGalleryHoverImages(true); // <-- handles gallery hover highlight
+    document.querySelectorAll('.gallery-section .hover-swap')
+      .forEach(item => item.classList.add('active'));
     resetHighlight();
+    stopGallerySwap();
   }
 }
 
