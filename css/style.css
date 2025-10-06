@@ -234,6 +234,7 @@ html, body {
   justify-content: center;
   gap: 24px;
   width: 100%;
+  
 }
 
 /* Gallery section uses flex and fills its grid-col-8of12 container */
@@ -352,81 +353,6 @@ html, body {
   left: 48px;
 }
 
-.d-landing .aspect-ratio {
-  display: flex;
-  flex-direction: column;
-  width: 95px;
-  height: 71px;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 4.04px 0px 0px 0px;
-  overflow: hidden;
-  aspect-ratio: 1.33;
-}
-
-.d-landing .image {
-  position: relative;
-  align-self: stretch;
-  width: 100%;
-  aspect-ratio: 0.6;
-  object-fit: cover;
-}
-
-.d-landing .element {
-  position: absolute;
-  width: 32px;
-  height: 8px;
-  top: 63px;
-  left: 0;
-  aspect-ratio: 3.72;
-}
-
-.d-landing .new-cars-all-cars-wrapper {
-  position: absolute;
-  width: 214px;
-  height: 121px;
-  top: 465px;
-  left: 255px;
-  border-radius: 2px;
-  overflow: hidden;
-  background-image: url(./img/lexus-electrified-sport-concept-at-goodwood-gallery-09-1920x1080-1.png);
-  background-size: cover;
-  background-position: 50% 50%;
-}
-
-.d-landing .new-cars-all-cars {
-  position: absolute;
-  width: 198px;
-  height: 10px;
-  top: 5px;
-  left: 8px;
-  aspect-ratio: 19.8;
-}
-
-.d-landing .overlap-wrapper {
-  position: absolute;
-  width: 215px;
-  height: 87px;
-  top: 482px;
-  left: 732px;
-  background-color: #d9d9d9;
-  border-radius: 8px;
-  overflow: hidden;
-  background-image: url(./img/screenshot-2025-09-03-at-14-51-36-1.png);
-  background-size: cover;
-  background-position: 50% 50%;
-}
-
-.d-landing .overlap {
-  position: relative;
-  height: 24px;
-  background-color: #05164d;
-  border-radius: 8px 8px 0px 0px;
-}
-
 .d-landing .image-2 {
   position: absolute;
   width: 72px;
@@ -459,8 +385,6 @@ html, body {
   gap: 24px;
   width: 100%;
 }
-
-
 
 .footer {
   position: absolute;
@@ -543,51 +467,59 @@ html, body {
 
 
 @media (min-width: 376px) and (max-width: 768px) {
-  .grid-row {
-    gap: 16px;
-    width: 100%;
-  }
-
-  .portfolio-section {
-    width: 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
+  .d-landing .div {
+    display: flex;
+    flex-direction: row;
+    
+    width: 100vw;
+    
   }
 
   .gallery-section {
-    width: 50%;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-
-  .gallery-section .grid-col-1of12 {
-    flex: 0 0 37.5%; /* 3 of 8 columns */
-    max-width: 37.5%;
-  }
-  .gallery-section .grid-col-2of12,
-  .gallery-section .grid-col-3of12 {
-    flex: 0 0 50%;   /* 4 of 8 columns */
-    max-width: 50%;
-  }
-
-  .gallery-section .grid-row {
+    width: 50vw;
+    max-width: 50vw;
     display: flex;
-    flex-direction: row;
-    gap: 16px;
-    overflow-x: hidden;
+    align-items: flex-start;
   }
-
+  .gallery-section .grid-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+  }
+  /* JDE, Montblanc, Dolomiti, Marina use 3/8 columns */
+  .gallery-section .grid-col-jde.active,
+  .gallery-section .grid-col-montblanc.active,
+  .gallery-section .grid-col-dolomiti.active,
+  .gallery-section .grid-col-marina.active {
+    width: 37.5vw;
+    max-width: 37.5vw;
+    flex: 0 0 37.5vw;
+  }
+  /* All other gallery items use 4/8 columns */
+  .gallery-section .grid-col-2of12.active,
+  .gallery-section .grid-col-3of12.active,
+  .gallery-section .grid-col-4of12.active,
+  .gallery-section .grid-col-5of12.active,
+  .gallery-section .grid-col-6of12.active,
+  .gallery-section .grid-col-7of12.active,
+  .gallery-section .grid-col-8of12.active {
+    width: 50;
+    max-width: 50vw;
+    flex: 0 0 50vw;
+  }
   /* Only show the active gallery item */
   .gallery-section .hover-swap {
+    width: 100%;
+    margin-left: 0;
     display: none;
   }
-
   .gallery-section .hover-swap.active {
     display: block;
-    width: 100%;
   }
-
-   .hover-swap {
+  .hover-swap {
     position: relative;
     display: block;
   }

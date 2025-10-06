@@ -165,51 +165,17 @@ const allPortfolioItems = document.querySelectorAll('.frame-3[data-index]');
 const allGalleryItems = document.querySelectorAll('.gallery-section [data-index]');
 const allHoverSwap = document.querySelectorAll('.hover-swap');
 
-// Highlight only the portfolio title and gallery item
 function setHighlight(activeIndex) {
   allPortfolioItems.forEach(item => {
     const title = item.querySelector('.text-wrapper-4');
     const subtitle = item.querySelector('.text-wrapper-5');
-    if (title) {
-      // Dim all titles except the active one
-      title.style.opacity = item.getAttribute('data-index') === activeIndex ? '1' : '0.25';
-    }
-    if (subtitle) {
-      subtitle.style.opacity = item.getAttribute('data-index') === activeIndex ? '1' : '0.25';
-    }
-    item.style.opacity = '1'; // Keep the rest of the portfolio item fully opaque
+    const isActive = item.getAttribute('data-index') === activeIndex;
+    if (title) title.style.opacity = isActive ? '1' : '0.5';
+    if (subtitle) subtitle.style.opacity = isActive ? '1' : '0.5';
+    item.style.opacity = '1';
   });
   allGalleryItems.forEach(item => {
-    item.style.opacity = item.getAttribute('data-index') === activeIndex ? '1' : '0.25';
-  });
-}
-
-// Show hover image on desktop
-function setGalleryHoverImages(enable) {
-  allHoverSwap.forEach(item => {
-    const defaultImg = item.querySelector('.default-img');
-    const hoverImg = item.querySelector('.hover-img');
-    if (enable) {
-      item.onmouseenter = () => {
-        setHighlight(item.getAttribute('data-index')); // <-- highlight on gallery hover
-        if (defaultImg) defaultImg.style.display = 'none';
-        if (hoverImg) hoverImg.style.display = 'block';
-      };
-      item.onmouseleave = () => {
-        resetHighlight();
-        if (defaultImg) defaultImg.style.display = 'block';
-        if (hoverImg) hoverImg.style.display = 'none';
-      };
-      // Ensure default state
-      if (defaultImg) defaultImg.style.display = 'block';
-      if (hoverImg) hoverImg.style.display = 'none';
-    } else {
-      // Remove hover events and always show default image
-      item.onmouseenter = null;
-      item.onmouseleave = null;
-      if (defaultImg) defaultImg.style.display = 'block';
-      if (hoverImg) hoverImg.style.display = 'none';
-    }
+    item.style.opacity = item.getAttribute('data-index') === activeIndex ? '1' : '0.5';
   });
 }
 
@@ -224,6 +190,7 @@ function resetHighlight() {
   allGalleryItems.forEach(item => { item.style.opacity = '1'; });
 }
 
+// Gallery image swap for tablet
 let gallerySwapInterval = null;
 let currentActiveIndex = null;
 
@@ -243,7 +210,6 @@ function startGallerySwap(index) {
   const hoverImg = activeSwap.querySelector('.hover-img');
   let showHover = false;
 
-  // Always show default-img
   if (defaultImg) defaultImg.style.display = 'block';
   if (hoverImg) hoverImg.style.display = 'none';
 
@@ -254,7 +220,6 @@ function startGallerySwap(index) {
     } else {
       if (hoverImg) hoverImg.style.display = 'none';
     }
-    // Always keep default-img visible
     if (defaultImg) defaultImg.style.display = 'block';
   }, 500);
 }
@@ -280,6 +245,7 @@ function tabletHighlightLogic() {
     setHighlight('0');
     startGallerySwap('0');
 
+    // Scroll highlight
     window.addEventListener('scroll', () => {
       let activeIndex = '0';
       document.querySelectorAll('.frame-3[data-index]').forEach(item => {
@@ -292,66 +258,63 @@ function tabletHighlightLogic() {
       setActiveGalleryItem(activeIndex);
       startGallerySwap(activeIndex);
     });
+
+    // Tap/click highlight
+    document.querySelectorAll('.frame-3[data-index]').forEach(item => {
+      item.onclick = () => {
+        const index = item.getAttribute('data-index');
+        setHighlight(index);
+        setActiveGalleryItem(index);
+        startGallerySwap(index);
+      };
+    });
   } else {
     document.querySelectorAll('.gallery-section .hover-swap')
       .forEach(item => item.classList.add('active'));
     resetHighlight();
     stopGallerySwap();
+
+    // Desktop hover logic
+    allPortfolioItems.forEach(item => {
+      item.onmouseenter = () => {
+        const index = item.getAttribute('data-index');
+        setHighlight(index);
+        allPortfolioItems.forEach(other => {
+          other.style.opacity = other === item ? '1' : '0.5';
+        });
+        allGalleryItems.forEach(other => {
+          other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
+        });
+      };
+      item.onmouseleave = () => {
+        resetHighlight();
+        allPortfolioItems.forEach(other => { other.style.opacity = '1'; });
+        allGalleryItems.forEach(other => { other.style.opacity = '1'; });
+      };
+    });
+
+    allGalleryItems.forEach(item => {
+      item.onmouseenter = () => {
+        const index = item.getAttribute('data-index');
+        setHighlight(index);
+        allGalleryItems.forEach(other => {
+          other.style.opacity = other === item ? '1' : '0.5';
+        });
+        allPortfolioItems.forEach(other => {
+          other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
+        });
+      };
+      item.onmouseleave = () => {
+        resetHighlight();
+        allGalleryItems.forEach(other => { other.style.opacity = '1'; });
+        allPortfolioItems.forEach(other => { other.style.opacity = '1'; });
+      };
+    });
   }
 }
 
-// Run on load and resize
 window.addEventListener('DOMContentLoaded', tabletHighlightLogic);
 window.addEventListener('resize', tabletHighlightLogic);
-
-// Desktop: restore hover logic for highlight and gallery images
-allPortfolioItems.forEach(item => {
-  item.onmouseenter = () => {
-    const index = item.getAttribute('data-index');
-    setHighlight(index);
-    // Fade all other portfolio and gallery items
-    allPortfolioItems.forEach(other => {
-      other.style.opacity = other === item ? '1' : '0.5';
-    });
-    allGalleryItems.forEach(other => {
-      other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
-    });
-  };
-  item.onmouseleave = () => {
-    resetHighlight();
-    // Restore all portfolio and gallery items to full opacity
-    allPortfolioItems.forEach(other => {
-      other.style.opacity = '1';
-    });
-    allGalleryItems.forEach(other => {
-      other.style.opacity = '1';
-    });
-  };
-});
-
-allGalleryItems.forEach(item => {
-  item.onmouseenter = () => {
-    const index = item.getAttribute('data-index');
-    setHighlight(index);
-    // Fade all other gallery and portfolio items
-    allGalleryItems.forEach(other => {
-      other.style.opacity = other === item ? '1' : '0.5';
-    });
-    allPortfolioItems.forEach(other => {
-      other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
-    });
-  };
-  item.onmouseleave = () => {
-    resetHighlight();
-    // Restore all gallery and portfolio items to full opacity
-    allGalleryItems.forEach(other => {
-      other.style.opacity = '1';
-    });
-    allPortfolioItems.forEach(other => {
-      other.style.opacity = '1';
-    });
-  };
-});
 </script>
 
 
