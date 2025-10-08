@@ -43,7 +43,7 @@ body {
           <img src="/img/about/m_logo_green.svg" alt="Site Logo">
         </a>
        
-        <div class="grid-row" style="display: flex; flex-direction: row; align-items: flex-start; gap: 24px;">
+        <div class="grid-row">
           
           <section class="portfolio-section grid-col-4of12">
             <div class="frame-2">
@@ -53,37 +53,37 @@ body {
                   <span class="text-wrapper-5">[whitelabel design system]</span>
                 </div>
               </a>
-              <a href="#Marina" class="frame-3" data-index="6">
+              <a href="#Marina" class="frame-3" data-index="1">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                   <h2  class="text-wrapper-4">2024 MARINA ABRAMOVIĆ</h2>
                   <span class="text-wrapper-5">[microsite]</span>
                 </div>
               </a>
-              <a href="#Dolomiti" class="frame-3" data-index="5">
+              <a href="#Dolomiti" class="frame-3" data-index="2">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                   <h2  class="text-wrapper-4">2024 DOLOMITI</h2>
                   <span class="text-wrapper-5">[visual experiments]</span>
                 </div>
               </a>
-              <a href="#Montblanc" class="frame-3" data-index="1">
+              <a href="#Montblanc" class="frame-3" data-index="3">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                   <h2 class="text-wrapper-4">2023 MONTBLANC</h2>
                   <span class="text-wrapper-5">[digital paper]</span>
                 </div>
               </a>
-              <a href="#Toyota" class="frame-3" data-index="2">
+              <a href="#Toyota" class="frame-3" data-index="4">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                   <h2 class="text-wrapper-4">2022 TOYOTA</h2>
                   <span class="text-wrapper-5">[global navigation]</span>
                 </div>
               </a>
-              <a href="#Puma" class="frame-3" data-index="3">
+              <a href="#Puma" class="frame-3" data-index="5">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                   <h2 class="text-wrapper-4">2019 PUMA: RUN MY WAY</h2>
                   <span class="text-wrapper-5">[interactive installation]</span>
                 </div>
               </a>
-              <a href="#Lufthansa" class="frame-3" data-index="4">
+              <a href="#Lufthansa" class="frame-3" data-index="6">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
                   <h2 class="text-wrapper-4">2019 LUFTHANSA: #LIFECHANGINGPLACES</h2>
                   <span class="text-wrapper-5">[image recognition]</span>
@@ -105,38 +105,38 @@ body {
                   <img src="img/index/jde_after.gif" class="hover-img" alt="Alternate image">
                 </a>  
 
-                <a href="#Marina" class="hover-swap" data-index="6">
+                <a href="#Marina" class="hover-swap" data-index="1">
                   <img src="img/index/ma_before.png" class="default-img" alt="Marina Abramović">
                   <img src="img/index/ma_after.png" class="hover-img" alt="Alternate image">
                 </a> 
               </div>
 
               <div class="grid-row--column grid-col-2of12">
-                <a href="#Dolomiti" class="hover-swap" data-index="5">
+                <a href="#Dolomiti" class="hover-swap" data-index="2">
                   <img src="img/index/dolomiti_before.png" class="default-img" alt="Dolomiti">
                   <img src="img/index/dolomiti_after.png" class="hover-img" alt="Alternate image">
                 </a>  
 
-                <a href="#Montblanc" class="hover-swap" data-index="1">
+                <a href="#Montblanc" class="hover-swap" data-index="3">
                   <img src="img/index/mb_before.png" class="default-img" alt="Montblanc">
                   <img src="img/index/mb_after.png" class="hover-img" alt="Alternate image">
                 </a> 
               </div>
 
               <div class="grid-row--column grid-col-3of12">
-                <a href="#Toyota" class="hover-swap" data-index="2">
+                <a href="#Toyota" class="hover-swap" data-index="4">
                   <img src="img/index/toyota_before.png" class="default-img" alt="Toyota">
                   <img src="img/index/toyota_after.png" class="hover-img" alt="Alternate image">
                 </a>  
 
-                <a href="#Puma" class="hover-swap" data-index="3">
+                <a href="#Puma" class="hover-swap" data-index="5">
                   <img src="img/index/puma_before.png" class="default-img" alt="Puma">
                   <img src="img/index/puma_after.png" class="hover-img" alt="Alternate image">
                 </a> 
               </div>
 
               <div class="grid-row--column grid-col-2of12">
-                <a href="#Lufthansa" class="hover-swap" data-index="4">
+                <a href="#Lufthansa" class="hover-swap" data-index="6">
                   <img src="img/index/lufthansa_before.png" class="default-img" alt="Lufthansa">
                   <img src="img/index/lufthansa_after.png" class="hover-img" alt="Alternate image">
                 </a>  
@@ -210,17 +210,19 @@ function startGallerySwap(index) {
   const hoverImg = activeSwap.querySelector('.hover-img');
   let showHover = false;
 
-  if (defaultImg) defaultImg.style.display = 'block';
-  if (hoverImg) hoverImg.style.display = 'none';
+  // start with default visible, hover hidden
+  if (defaultImg) { defaultImg.style.display = 'block'; defaultImg.style.opacity = '1'; }
+  if (hoverImg)  { hoverImg.style.display = 'none'; hoverImg.style.opacity = '0'; }
 
   gallerySwapInterval = setInterval(() => {
     showHover = !showHover;
     if (showHover) {
-      if (hoverImg) hoverImg.style.display = 'block';
+      if (hoverImg)  { hoverImg.style.display = 'block'; hoverImg.style.opacity = '1'; }
+      if (defaultImg){ defaultImg.style.display = 'none'; defaultImg.style.opacity = '0'; }
     } else {
-      if (hoverImg) hoverImg.style.display = 'none';
+      if (hoverImg)  { hoverImg.style.display = 'none'; hoverImg.style.opacity = '0'; }
+      if (defaultImg){ defaultImg.style.display = 'block'; defaultImg.style.opacity = '1'; }
     }
-    if (defaultImg) defaultImg.style.display = 'block';
   }, 500);
 }
 
@@ -232,8 +234,8 @@ function stopGallerySwap() {
     if (activeSwap) {
       const defaultImg = activeSwap.querySelector('.default-img');
       const hoverImg = activeSwap.querySelector('.hover-img');
-      if (defaultImg) defaultImg.style.display = 'block';
-      if (hoverImg) hoverImg.style.display = 'none';
+      if (defaultImg) { defaultImg.style.display = 'block'; defaultImg.style.opacity = '1'; }
+      if (hoverImg)  { hoverImg.style.display = 'none'; hoverImg.style.opacity = '0'; }
     }
   }
   currentActiveIndex = null;
@@ -315,6 +317,17 @@ function tabletHighlightLogic() {
 
 window.addEventListener('DOMContentLoaded', tabletHighlightLogic);
 window.addEventListener('resize', tabletHighlightLogic);
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  if (window.innerWidth >= 376 && window.innerWidth <= 768) {
+    const any = document.querySelector('.gallery-section .hover-swap.active');
+    if (!any) {
+      const first = document.querySelector('.gallery-section .hover-swap[data-index]');
+      if (first) first.classList.add('active');
+    }
+  }
+});
 </script>
 
 

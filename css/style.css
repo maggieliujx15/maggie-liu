@@ -227,6 +227,13 @@ html, body {
   flex: 0 0 auto;
 }
 
+.grid-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+}
+
 .gallery-section .grid-row {
   display: flex;
   flex-direction: row;
@@ -466,26 +473,52 @@ html, body {
 
 
 @media (min-width: 376px) and (max-width: 768px) {
+ /* simplify box model for predictable math */
+  *, *::before, *::after { box-sizing: border-box; }
+
+  /* ensure parent lays out the two sections side-by-side */
   .d-landing .div {
     display: flex;
     flex-direction: row;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
     width: 100vw;
-  }
-  
-  .gallery-section .grid-row {
-   width: 100%;
-   display: flex;
-   flex-direction: row;      /* <-- row, not column */
-   align-items: flex-start;
-   justify-content: flex-start;
-   gap: 16px;                /* or your preferred gutter */
-   margin: 0;
+    overflow: hidden;
   }
 
+  .grid-row {
+  gap: 16px;
+  }
+
+  /* gallery: positioning context, no extra padding */
+  .gallery-section {
+    position: relative;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+  }
+
+   /* make each section exactly half of viewport minus half the gutter so combined = 100vw */
+  .portfolio-section.grid-col-4of12,
+  .gallery-section.grid-col-8of12 {
+    position: relative;
+    width: calc((100vw - 16px) / 2);
+    max-width: calc((100vw - 16px) / 2);
+    flex: 0 0 calc((100vw - 16px) / 2);
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* ensure portfolio and gallery each take half the viewport on tablet */
   .portfolio-section.grid-col-4of12 {
-  width: 50vw;
-  max-width: 50vw;
-  flex: 0 0 50vw;
+    position: relative;
+    width: 50vw;
+    max-width: 50vw;
+    flex: 0 0 50vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   .gallery-section.grid-col-8of12 {
@@ -493,67 +526,33 @@ html, body {
     width: 50vw;
     max-width: 50vw;
     flex: 0 0 50vw;
-    display: flex;
-    align-items: flex-start;
-  }
-  
-  /* JDE, Montblanc, Dolomiti, Marina use 3/8 columns (37.5% of gallery-section) */
-  .gallery-section .grid-col-1of12.active[data-index="0"], /* JDE */
-  .gallery-section .grid-col-1of12.active[data-index="1"], /* Montblanc */
-  .gallery-section .grid-col-1of12.active[data-index="2"], /* Dolomiti */
-  .gallery-section .grid-col-1of12.active[data-index="3"]  /* Marina */
-  {
-    width: 37.5%;
-    max-width: 37.5%;
-    flex: 0 0 37.5%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  /* All other gallery items use 4/8 columns (50% of gallery-section) */
-  .gallery-section .grid-col-2of12.active,
-  .gallery-section .grid-col-3of12.active,
-  .gallery-section .grid-col-4of12.active,
-  .gallery-section .grid-col-5of12.active,
-  .gallery-section .grid-col-6of12.active,
-  .gallery-section .grid-col-7of12.active,
-  .gallery-section .grid-col-8of12.active,
-  .gallery-section .grid-col-1of12.active:not([data-index="0"]):not([data-index="1"]):not([data-index="2"]):not([data-index="3"])
-  {
-    width: 50%;
-    max-width: 50%;
-    flex: 0 0 50%;
-  }
-
-  /* Only show the active gallery item */
-  .gallery-section .hover-swap {
-    width: 100%;
-    margin-left: 0;
-    display: none;
-  }
-  
-  .gallery-section .hover-swap.active {
-    display: block;
-  }
-
-  .hover-swap {
+  /* ensure gallery section is exactly half viewport */
+  .gallery-section.grid-col-8of12 {
     position: relative;
-    display: block;
+    width: 50vw;
+    max-width: 50vw;
+    flex: 0 0 50vw;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
-  .hover-swap .default-img,
-  .hover-swap .hover-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    transition: opacity 0.5s;
-  }
-
-  /* Remove all grid column spacing and force all columns to overlap at the start */
+  /* positioning context */
   .gallery-section .grid-row {
     position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 0;            /* remove extra padding that caused overflow */
+    display: block;
+    box-sizing: border-box;
   }
 
+  /* keep columns stacked at top-left, visible but inert — inner .hover-swap controls visibility */
   .gallery-section .grid-col-1of12,
   .gallery-section .grid-col-2of12,
   .gallery-section .grid-col-3of12,
@@ -565,23 +564,58 @@ html, body {
     position: absolute;
     left: 0;
     top: 0;
-    width: 50%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    flex: 0 0 auto;
+    box-sizing: border-box;
+    display: block;       /* keep column present so absolute children size correctly */
     z-index: 1;
-    /* Only the active one will be visible */
   }
 
-  .gallery-section .grid-col-1of12.active,
-  .gallery-section .grid-col-2of12.active,
-  .gallery-section .grid-col-3of12.active,
-  .gallery-section .grid-col-4of12.active,
-  .gallery-section .grid-col-5of12.active,
-  .gallery-section .grid-col-6of12.active,
-  .gallery-section .grid-col-7of12.active,
-  .gallery-section .grid-col-8of12.active {
-    z-index: 2;
+  /* hide hover-swap items by default, show only .hover-swap.active */
+  .gallery-section .hover-swap {
+    display: none;
+    width: 100%;
+    margin-left: 0;
+    position: relative;
+  }
+  .gallery-section .hover-swap.active {
+    display: block;
+  }
+
+  /* size the visible .hover-swap (exact relative to viewport) */
+  /* special items (3/8 of viewport) */
+  .gallery-section .hover-swap[data-index="0"].active,
+  .gallery-section .hover-swap[data-index="1"].active,
+  .gallery-section .hover-swap[data-index="2"].active,
+  .gallery-section .hover-swap[data-index="3"].active {
+    width: calc(37.5vw - 8px); /* adjust gutter subtraction as desired */
+    max-width: calc(37.5vw - 8px);
+  }
+
+  /* other items (4/8 of viewport) */
+  .gallery-section .hover-swap[data-index="4"].active,
+  .gallery-section .hover-swap[data-index="5"].active,
+  .gallery-section .hover-swap[data-index="6"].active,
+  .gallery-section .hover-swap[data-index="7"].active {
+    width: calc(50vw - 16px);
+    max-width: calc(50vw - 16px);
+  }
+
+  /* ensure images inside scale to the hover-swap width */
+  .gallery-section .hover-swap.active .default-img,
+  .gallery-section .hover-swap.active .hover-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ensure images inside scale to the hover-swap width */
+  .gallery-section .hover-swap.active .default-img,
+  .gallery-section .hover-swap.active .hover-img {
+    width: 100%;
+    height: auto;
+    display: block;
   }
 }
 
