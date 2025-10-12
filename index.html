@@ -49,49 +49,73 @@ body {
             <div class="frame-2">
               <a href="#JDE" class="frame-3" data-index="0">
                 <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px;">
-                  <h2 class="text-wrapper-4">2024 JACOBS DOUWE EGBERTS</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2024</h2>
+                    <h2 class="text-wrapper-4">JACOBS DOUWE EGBERTS</h2>
+                  </div>
                   <span class="text-wrapper-5">[whitelabel design system]</span>
                 </div>
               </a>
               <a href="#Marina" class="frame-3" data-index="1">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                  <h2  class="text-wrapper-4">2024 MARINA ABRAMOVIĆ</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2024</h2>
+                    <h2 class="text-wrapper-4">MARINA ABRAMOVIĆ</h2>
+                  </div>
                   <span class="text-wrapper-5">[microsite]</span>
                 </div>
               </a>
               <a href="#Dolomiti" class="frame-3" data-index="2">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                  <h2  class="text-wrapper-4">2024 DOLOMITI</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2024</h2>
+                    <h2 class="text-wrapper-4">DOLOMITI</h2>
+                  </div>
                   <span class="text-wrapper-5">[visual experiments]</span>
                 </div>
               </a>
               <a href="#Montblanc" class="frame-3" data-index="3">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                  <h2 class="text-wrapper-4">2023 MONTBLANC</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2023</h2>
+                    <h2 class="text-wrapper-4">MONTBLANC</h2>
+                  </div>
                   <span class="text-wrapper-5">[digital paper]</span>
                 </div>
               </a>
               <a href="#Toyota" class="frame-3" data-index="4">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                  <h2 class="text-wrapper-4">2022 TOYOTA</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2022</h2>
+                    <h2 class="text-wrapper-4">TOYOTA</h2>
+                  </div>
                   <span class="text-wrapper-5">[global navigation]</span>
                 </div>
               </a>
               <a href="#Puma" class="frame-3" data-index="5">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                  <h2 class="text-wrapper-4">2019 PUMA: RUN MY WAY</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2019</h2>
+                    <h2 class="text-wrapper-4">PUMA: RUN MY WAY</h2>
+                  </div>
                   <span class="text-wrapper-5">[interactive installation]</span>
                 </div>
               </a>
               <a href="#Lufthansa" class="frame-3" data-index="6">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                  <h2 class="text-wrapper-4">2019 LUFTHANSA: #LIFECHANGINGPLACES</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2019</h2>
+                    <h2 class="text-wrapper-4">LUFTHANSA: #LIFECHANGINGPLACES</h2>
+                  </div>
                   <span class="text-wrapper-5">[image recognition]</span>
                 </div>
               </a>
               <a href="#Alice" class="frame-3" data-index="7">
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                  <h2  class="text-wrapper-4">2019 ALICE'S ADVENTURES IN WONDERLAND</h2>
+                  <div class="gallery-caption">
+                    <h2 class="text-wrapper-4">2019</h2>
+                    <h2 class="text-wrapper-4">ALICE'S ADVENTURES IN WONDERLAND</h2>
+                  </div>
                   <span class="text-wrapper-5">[print]</span>
                 </div>
               </a>
@@ -167,7 +191,7 @@ const allHoverSwap = document.querySelectorAll('.hover-swap');
 
 function setHighlight(activeIndex) {
   allPortfolioItems.forEach(item => {
-    const title = item.querySelector('.text-wrapper-4');
+    const title = item.querySelector('.gallery-caption');
     const subtitle = item.querySelector('.text-wrapper-5');
     const isActive = item.getAttribute('data-index') === activeIndex;
     if (title) title.style.opacity = isActive ? '1' : '0.5';
