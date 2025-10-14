@@ -304,7 +304,7 @@ function tabletHighlightLogic() {
     resetHighlight();
     stopGallerySwap();
 
-    // Desktop hover logic
+    // Desktop hover logic: also swap images to hover-img while hovering
     allPortfolioItems.forEach(item => {
       item.onmouseenter = () => {
         const index = item.getAttribute('data-index');
@@ -315,11 +315,31 @@ function tabletHighlightLogic() {
         allGalleryItems.forEach(other => {
           other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
         });
+
+        // show hover image for the matching gallery item immediately
+        stopGallerySwap();
+        const gallerySwap = document.querySelector(`.gallery-section .hover-swap[data-index="${index}"]`);
+        if (gallerySwap) {
+          const defaultImg = gallerySwap.querySelector('.default-img');
+          const hoverImg = gallerySwap.querySelector('.hover-img');
+          if (defaultImg) { defaultImg.style.display = 'none'; defaultImg.style.opacity = '0'; }
+          if (hoverImg)  { hoverImg.style.display = 'block'; hoverImg.style.opacity = '1'; }
+        }
       };
       item.onmouseleave = () => {
         resetHighlight();
         allPortfolioItems.forEach(other => { other.style.opacity = '1'; });
         allGalleryItems.forEach(other => { other.style.opacity = '1'; });
+
+        // revert images for the matching gallery item
+        const index = item.getAttribute('data-index');
+        const gallerySwap = document.querySelector(`.gallery-section .hover-swap[data-index="${index}"]`);
+        if (gallerySwap) {
+          const defaultImg = gallerySwap.querySelector('.default-img');
+          const hoverImg = gallerySwap.querySelector('.hover-img');
+          if (defaultImg) { defaultImg.style.display = 'block'; defaultImg.style.opacity = '1'; }
+          if (hoverImg)  { hoverImg.style.display = 'none'; hoverImg.style.opacity = '0'; }
+        }
       };
     });
 
@@ -333,11 +353,31 @@ function tabletHighlightLogic() {
         allPortfolioItems.forEach(other => {
           other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
         });
+
+        // show hover image for this gallery item
+        stopGallerySwap();
+        const gallerySwap = document.querySelector(`.gallery-section .hover-swap[data-index="${index}"]`);
+        if (gallerySwap) {
+          const defaultImg = gallerySwap.querySelector('.default-img');
+          const hoverImg = gallerySwap.querySelector('.hover-img');
+          if (defaultImg) { defaultImg.style.display = 'none'; defaultImg.style.opacity = '0'; }
+          if (hoverImg)  { hoverImg.style.display = 'block'; hoverImg.style.opacity = '1'; }
+        }
       };
       item.onmouseleave = () => {
         resetHighlight();
         allGalleryItems.forEach(other => { other.style.opacity = '1'; });
         allPortfolioItems.forEach(other => { other.style.opacity = '1'; });
+
+        // revert images for this gallery item
+        const index = item.getAttribute('data-index');
+        const gallerySwap = document.querySelector(`.gallery-section .hover-swap[data-index="${index}"]`);
+        if (gallerySwap) {
+          const defaultImg = gallerySwap.querySelector('.default-img');
+          const hoverImg = gallerySwap.querySelector('.hover-img');
+          if (defaultImg) { defaultImg.style.display = 'block'; defaultImg.style.opacity = '1'; }
+          if (hoverImg)  { hoverImg.style.display = 'none'; hoverImg.style.opacity = '0'; }
+        }
       };
     });
   }
@@ -353,28 +393,31 @@ window.addEventListener('resize', tabletHighlightLogic);
    and ensure only one preview is visible. */
 (function () {
   const MOBILE_MAX = 375;
-
   function isMobile() { return window.innerWidth <= MOBILE_MAX; }
 
+  function clearActiveStates() {
+    document.querySelectorAll('.gallery-section .grid-row--column').forEach(c => c.classList.remove('active-col'));
+    document.querySelectorAll('.gallery-section .hover-swap').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.frame-3[data-index]').forEach(p => p.classList.remove('active','dimmed'));
+  }
+
   function showColumnForIndex(idx) {
+    if (!isMobile()) return;
+    const targetIndex = String(idx);
     const swaps = Array.from(document.querySelectorAll('.gallery-section .hover-swap[data-index]'));
     const cols = Array.from(document.querySelectorAll('.gallery-section .grid-row--column'));
     if (!swaps.length || !cols.length) return;
 
-    const target = swaps.find(s => s.getAttribute('data-index') === String(idx)) || swaps[0];
-    if (!target) return;
-    const targetIndex = target.getAttribute('data-index');
+    // activate only the exact hover-swap
+    swaps.forEach(s => s.classList.toggle('active', s.getAttribute('data-index') === targetIndex));
 
-    // mark only the target swap active
-    swaps.forEach(s => s.classList.toggle('active', s === target));
-
-    // mark only the column that contains the target swap
+    // activate only the column that contains that swap
     cols.forEach(col => {
       const contains = !!col.querySelector(`.hover-swap[data-index="${targetIndex}"]`);
       col.classList.toggle('active-col', contains);
     });
 
-    // highlight corresponding portfolio item
+    // highlight the matching portfolio item (dim others)
     document.querySelectorAll('.frame-3[data-index]').forEach(p => {
       const is = p.getAttribute('data-index') === targetIndex;
       p.classList.toggle('active', is);
@@ -382,24 +425,20 @@ window.addEventListener('resize', tabletHighlightLogic);
     });
   }
 
-  function initMobileState() {
+  function initMobileHandlers() {
     if (!isMobile()) {
-      // cleanup mobile-only state when leaving mobile
-      document.querySelectorAll('.gallery-section .grid-row--column').forEach(c => c.classList.remove('active-col'));
-      document.querySelectorAll('.gallery-section .hover-swap').forEach(s => s.classList.remove('active'));
-      document.querySelectorAll('.frame-3[data-index]').forEach(p => p.classList.remove('active','dimmed'));
+      clearActiveStates();
       return;
     }
-    // pick existing active swap or fallback to first
-    const existing = document.querySelector('.gallery-section .hover-swap.active[data-index]') ||
-                     document.querySelector('.gallery-section .hover-swap[data-index]');
+    // if an item is already active keep it; otherwise show nothing until user selects
+    const existing = document.querySelector('.gallery-section .hover-swap.active[data-index]');
     if (existing) showColumnForIndex(existing.getAttribute('data-index'));
+    else clearActiveStates();
   }
 
-  document.addEventListener('DOMContentLoaded', initMobileState);
-  window.addEventListener('resize', initMobileState);
+  document.addEventListener('DOMContentLoaded', initMobileHandlers);
+  window.addEventListener('resize', initMobileHandlers);
 
-  // taps on portfolio items or gallery previews activate that single column/preview
   document.addEventListener('click', (e) => {
     if (!isMobile()) return;
     const el = e.target.closest('.frame-3[data-index], .gallery-section .hover-swap[data-index]');
@@ -413,6 +452,218 @@ window.addEventListener('resize', tabletHighlightLogic);
 </script>
 
 
-</body>
+<div id="page-info" aria-hidden="true">
+  <span id="ip-city" class="label">—</span>
+  <span id="clock" class="clock">--:--:--</span>
+</div>
 
-</html>
+<script>
+/* robust city + clock (tries ipapi.co then ipwho.is). */
+(async function () {
+  const ipCityEl = document.getElementById('ip-city');
+  const clockEl = document.getElementById('clock');
+
+  function updateClock() {
+    const d = new Date();
+    clockEl.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  async function fetchJsonWithTimeout(url, timeout = 5000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(id);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } catch (err) {
+      clearTimeout(id);
+      throw err;
+    }
+  }
+
+  async function getCity() {
+    // try primary
+    try {
+      const data = await fetchJsonWithTimeout('https://ipapi.co/json/', 5000);
+      return data && (data.city || data.region) || null;
+    } catch (e) {
+      console.warn('ipapi.co failed:', e);
+    }
+    // fallback
+    try {
+      const data = await fetchJsonWithTimeout('https://ipwho.is/', 5000);
+      return data && (data.city || data.region) || null;
+    } catch (e) {
+      console.warn('ipwho.is failed:', e);
+    }
+    return null;
+  }
+
+  try {
+    const city = await getCity();
+    ipCityEl.textContent = city || '—';
+  } catch (err) {
+    console.error('City lookup error:', err);
+    ipCityEl.textContent = '—';
+  }
+})();
+</script>
+
+<script>
+(function () {
+  // attach once
+  if (window._desktopResetAttached) return;
+  window._desktopResetAttached = true;
+
+  function isDesktop() { return window.innerWidth > 768; }
+
+  function restoreAll() {
+    // revert visual dimming/state
+    resetHighlight();
+    stopGallerySwap();
+    document.querySelectorAll('.frame-3[data-index]').forEach(i => i.style.opacity = '1');
+    document.querySelectorAll('.gallery-section [data-index]').forEach(i => i.style.opacity = '1');
+    // ensure gallery images show default image
+    document.querySelectorAll('.gallery-section .hover-swap').forEach(s => {
+      const def = s.querySelector('.default-img');
+      const hov = s.querySelector('.hover-img');
+      if (def) { def.style.display = 'block'; def.style.opacity = '1'; }
+      if (hov) { hov.style.display = 'none'; hov.style.opacity = '0'; }
+    });
+  }
+
+  function pointerHandler(e) {
+    if (!isDesktop()) return;
+    const el = document.elementFromPoint(e.clientX, e.clientY);
+    if (!el) { restoreAll(); return; }
+    if (el.closest('.frame-3') || el.closest('.gallery-section .hover-swap')) {
+      // hovering over an interactive element — do nothing (existing hover handlers run)
+      return;
+    }
+    // not over any interactive element: restore
+    restoreAll();
+  }
+
+  // prefer container mouseleave (fast) and also global mousemove as fallback
+  const container = document.querySelector('.d-landing .div') || document.body;
+  container.addEventListener('mouseleave', () => { if (isDesktop()) restoreAll(); });
+  document.addEventListener('mousemove', pointerHandler);
+
+  // ensure listeners adapt on resize
+  window.addEventListener('resize', () => { if (!isDesktop()) restoreAll(); });
+})();
+</script>
+
+
+<!-- Replace the broken trailing script block with this initializer (put just before </body>) -->
+<script>
+/* Ensure first gallery preview (data-index="0") is visible on load and sync portfolio highlight.
+   Also start tablet swap if on tablet. This is defensive (won't throw if helper functions absent). */
+document.addEventListener('DOMContentLoaded', function () {
+  try {
+    // clean up any malformed leftover markup/scripts at file end before running
+    // (If you kept broken characters after </script> - remove them in the file.)
+
+    // ensure one active hover-swap (prefer existing, else first)
+    const swaps = Array.from(document.querySelectorAll('.gallery-section .hover-swap[data-index]'));
+    if (swaps.length === 0) return;
+
+    // find an existing active, otherwise pick index 0 (JDE)
+    let active = swaps.find(s => s.classList.contains('active')) || swaps.find(s => s.getAttribute('data-index') === '0') || swaps[0];
+
+    swaps.forEach(s => s.classList.toggle('active', s === active));
+
+    // ensure only the column containing the active swap is visible on mobile (if your mobile CSS uses .active-col)
+    const cols = Array.from(document.querySelectorAll('.gallery-section .grid-row--column'));
+    cols.forEach(col => {
+      const contains = !!col.querySelector('.hover-swap.active');
+      col.classList.toggle('active-col', contains);
+    });
+
+    // sync portfolio highlight: mark corresponding .frame-3 active and dim others
+    const activeIndex = active.getAttribute('data-index');
+    const ports = Array.from(document.querySelectorAll('.frame-3[data-index]'));
+    ports.forEach(p => {
+      const is = p.getAttribute('data-index') === activeIndex;
+      p.classList.toggle('active', is);
+      p.classList.toggle('dimmed', !is);
+      // ensure title/subtitle opacity matches (keeps consistency if JS elsewhere uses inline styles)
+      const title = p.querySelector('.gallery-caption');
+      const subtitle = p.querySelector('.text-wrapper-5');
+      if (title) title.style.opacity = is ? '1' : '0.5';
+      if (subtitle) subtitle.style.opacity = is ? '1' : '0.5';
+      p.style.opacity = '1';
+    });
+
+    // ensure gallery images inside the active swap show default image initially
+    try {
+      const def = active.querySelector('.default-img');
+      const hov = active.querySelector('.hover-img');
+      if (def) { def.style.display = 'block'; def.style.opacity = '1'; }
+      if (hov) { hov.style.display = 'none'; hov.style.opacity = '0'; }
+    } catch (e) { /* ignore */ }
+
+    // If tablet functions exist, start tablet behavior for index 0 when on tablet
+    if (typeof setActiveGalleryItem === 'function') {
+      setActiveGalleryItem(activeIndex);
+    }
+    if (typeof setHighlight === 'function') {
+      setHighlight(activeIndex);
+    }
+    if (typeof startGallerySwap === 'function' && window.innerWidth > 375 && window.innerWidth <= 768) {
+      startGallerySwap(activeIndex);
+    }
+  } catch (err) {
+    // log for debugging (remove in production)
+    console.error('init gallery failed:', err);
+  }
+});
+</script>
+
+
+<!-- ensure JDE (data-index="0") is the visible/active item on initial load for mobile + tablet -->
+<script>
+window.addEventListener('load', function () {
+  const idx = '0';
+  // Ensure exactly one hover-swap is active
+  document.querySelectorAll('.gallery-section .hover-swap[data-index]').forEach(s => {
+    s.classList.toggle('active', s.getAttribute('data-index') === idx);
+  });
+
+  // On mobile: show the column containing the active swap
+  if (window.innerWidth <= 375) {
+    document.querySelectorAll('.gallery-section .grid-row--column').forEach(col => {
+      col.classList.toggle('active-col', !!col.querySelector(`.hover-swap[data-index="${idx}"]`));
+    });
+  }
+
+  // For tablet/mobile behavior and highlights
+  if (typeof setActiveGalleryItem === 'function') setActiveGalleryItem(idx);
+  if (typeof setHighlight === 'function') setHighlight(idx);
+
+  // Start tablet swap only on tablet (not on mobile)
+  if (typeof startGallerySwap === 'function' && window.innerWidth > 375 && window.innerWidth <= 768) {
+    startGallerySwap(idx);
+  }
+
+  // Ensure portfolio item highlight/dim state is synced
+  document.querySelectorAll('.frame-3[data-index]').forEach(p => {
+    const is = p.getAttribute('data-index') === idx;
+    p.classList.toggle('active', is);
+    p.classList.toggle('dimmed', !is);
+    // ensure title/subtitle opacity matches (keeps consistency if JS elsewhere uses inline styles)
+    const title = p.querySelector('.gallery-caption');
+    const subtitle = p.querySelector('.text-wrapper-5');
+    if (title) title.style.opacity = is ? '1' : '0.5';
+    if (subtitle) subtitle.style.opacity = is ? '1' : '0.5';
+    p.style.opacity = '1';
+  });
+  });
+</script>
+
+  </body>
+
+  </html>

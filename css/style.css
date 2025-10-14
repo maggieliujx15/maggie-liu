@@ -489,9 +489,33 @@ html, body {
   gap: 24px;
 }
 
+#page-info {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  color: #00000;
+  padding: 0;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: inherit;
+  z-index: 99999;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  pointer-events: none; /* won't block clicks */
+  text-transform: uppercase;
+}
+#page-info .clock { font-weight: 400; letter-spacing: 0px; }
+
 @media (min-width: 376px) and (max-width: 768px) {
  /* simplify box model for predictable math */
   *, *::before, *::after { box-sizing: border-box; }
+
+  #page-info {
+    right: 16px;
+    bottom: 16px;
+    font-size: 11px;
+  }
 
   /* ensure parent lays out the two sections side-by-side */
   .d-landing .div {
@@ -631,6 +655,12 @@ html, body {
 }
 
 @media (max-width: 375px) {
+  #page-info {
+    right: 16px;
+    bottom: 16px;
+    font-size: 11px;
+  }
+  
   /* reset any absolute positioning that causes overlap on mobile */
   .d-landing .div,
   .d-landing .div * {
@@ -767,24 +797,13 @@ html, body {
 }
 
 @media (max-width: 375px) {
-  /* hide all gallery columns by default on mobile */
-  .gallery-section .grid-row--column {
-    display: none !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-  }
+  /* Mobile: hide all columns by default, show only the active column;
+     inside that column show only the hover-swap with .active */
+  .gallery-section .grid-row--column { display: none !important; }
+  .gallery-section .grid-row--column.active-col { display: block !important; }
 
-  /* show only the column marked active-col */
-  .gallery-section .grid-row--column.active-col {
-    display: block !important;
-  }
-
-  /* inside the visible column, show only the active hover-swap (fallback first-of-type) */
-  .gallery-section .grid-row--column.active-col .hover-swap { display: none !important; }
-  .gallery-section .grid-row--column.active-col .hover-swap.active,
-  .gallery-section .grid-row--column.active-col .hover-swap:first-of-type {
-    display: block !important;
-  }
+  .gallery-section .grid-row--column .hover-swap { display: none !important; }
+  .gallery-section .grid-row--column.active-col .hover-swap.active { display: block !important; }
 }
 
 
