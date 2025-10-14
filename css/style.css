@@ -489,11 +489,11 @@ html, body {
   gap: 24px;
 }
 
-#page-info {
+.page-info {
   position: fixed;
   right: 16px;
   bottom: 16px;
-  color: #00000;
+  color: #000000;
   padding: 0;
   border-radius: 8px;
   font-size: 12px;
@@ -505,7 +505,7 @@ html, body {
   pointer-events: none; /* won't block clicks */
   text-transform: uppercase;
 }
-#page-info .clock { font-weight: 400; letter-spacing: 0px; }
+.page-info .clock { font-weight: 400; letter-spacing: 0px; }
 
 @media (min-width: 376px) and (max-width: 768px) {
  /* simplify box model for predictable math */
