@@ -489,13 +489,12 @@ html, body {
   gap: 24px;
 }
 
-.page-info {
+#page-info {
   position: fixed;
   right: 16px;
   bottom: 16px;
   color: #000000;
   padding: 0;
-  border-radius: 8px;
   font-size: 12px;
   font-family: inherit;
   z-index: 99999;
@@ -505,17 +504,18 @@ html, body {
   pointer-events: none; /* won't block clicks */
   text-transform: uppercase;
 }
-.page-info .clock { font-weight: 400; letter-spacing: 0px; }
+#page-info .clock {
+  font-weight: 400;
+}
+
+#page-info .label {
+  opacity: 0.85;
+  text-transform: uppercase;
+}
 
 @media (min-width: 376px) and (max-width: 768px) {
  /* simplify box model for predictable math */
   *, *::before, *::after { box-sizing: border-box; }
-
-  #page-info {
-    right: 16px;
-    bottom: 16px;
-    font-size: 11px;
-  }
 
   /* ensure parent lays out the two sections side-by-side */
   .d-landing .div {
@@ -654,33 +654,60 @@ html, body {
   }
 }
 
-@media (max-width: 375px) {
-  #page-info {
+@media (max-width: 768px) {
+  /* Force only .hover-swap.active to be visible on mobile/tablet */
+  .gallery-section .hover-swap { display: none !important; position: static !important; width: 100% !important; }
+  .gallery-section .hover-swap.active { display: block !important; }
+
+  /* Ensure grid wrappers don't reintroduce overlap */
+  .gallery-section [class^="grid-col-"] { position: static !important; width: 100% !important; display:block !important; }
+}
+
+
+@media (max-width: 1023px) {
+
+  .frame-3.active {
+    opacity: 1 !important;
+  }
+
+  .frame-3.dimmed {
+    opacity: 0.5 !important;
+  }
+  
+ 
+  .gallery-section .grid-row--column {
+    display: none !important;
+  }
+  .gallery-section .grid-row--column.active-col {
+    display: block !important;
+  }
+
+  .gallery-section .grid-row--column .hover-swap {
+    display: none !important;
+  }
+  .gallery-section .grid-row--column.active-col .hover-swap.active {
+    display: block !important;
+  }
+
+  
+
+  .page-info {
     right: 16px;
     bottom: 16px;
     font-size: 11px;
   }
   
-  /* reset any absolute positioning that causes overlap on mobile */
-  .d-landing .div,
-  .d-landing .div * {
-    position: static !important;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    z-index: auto !important;
-  }
 
   /* force main wrapper to stack sections, full width and gutter */
   .d-landing .div {
     display: flex !important;
     flex-direction: column !important;
     gap: 16px !important;
-    padding: 16px !important;
+    padding: 64px 16px 16px 16px;
     margin: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    justify-content: center !important;
   }
 
   /* ensure gallery sits above portfolio and both span full width */
@@ -710,9 +737,19 @@ html, body {
   }
 
   /* show only one gallery item (active or first) */
-  .gallery-section .hover-swap { display: none !important; position: static !important; width: 100% !important; margin: 0 0 16px 0 !important; }
+  .gallery-section .hover-swap {
+    display: none !important;
+    position: static !important;
+    width: 100% !important;
+    
+    margin: 0 auto;
+  }
+
   .gallery-section .hover-swap.active,
-  .gallery-section .hover-swap:first-of-type { display: block !important; }
+  .gallery-section .hover-swap:first-of-type {
+    display: block !important; 
+    margin: 0 auto;
+  }
 
   /* hide decorative/absolutely positioned extras that cause overlap on small screens */
   .d-landing .component,
@@ -737,10 +774,6 @@ html, body {
 
   /* prevent horizontal scroll */
   html, body { overflow-x: hidden !important; }
-}
-
-/* Mobile: force the row container to stack and put gallery on top */
-@media (max-width: 375px) {
   /* Ensure any grid-row inside the main wrapper stacks its children */
   .d-landing .div .grid-row,
   .d-landing .div > .grid-row,
@@ -774,29 +807,11 @@ html, body {
   .grid-row > .portfolio-section {
     order: 0 !important;
   }
-}
 
-@media (max-width: 768px) {
-  /* Force only .hover-swap.active to be visible on mobile/tablet */
-  .gallery-section .hover-swap { display: none !important; position: static !important; width: 100% !important; }
-  .gallery-section .hover-swap.active { display: block !important; }
-
-  /* Ensure grid wrappers don't reintroduce overlap */
-  .gallery-section [class^="grid-col-"] { position: static !important; width: 100% !important; display:block !important; }
-}
-
-/* Mobile: force exactly one visible gallery item */
-@media (max-width: 375px) {
-  /* hide all gallery previews by default, show only the .active one (or fallback first-of-type) */
-  .gallery-section .hover-swap { display: none !important; position: static !important; width: 100% !important; box-sizing: border-box !important; }
-  .gallery-section .hover-swap.active { display: block !important; }
-  .gallery-section .hover-swap:first-of-type { display: block !important; } /* fallback if no .active */
 
   /* ensure grid-col wrappers don't reintroduce layout from larger breakpoints */
   .gallery-section [class^="grid-col-"] { position: static !important; width: 100% !important; display: block !important; }
-}
 
-@media (max-width: 375px) {
   /* Mobile: hide all columns by default, show only the active column;
      inside that column show only the hover-swap with .active */
   .gallery-section .grid-row--column { display: none !important; }
@@ -804,6 +819,7 @@ html, body {
 
   .gallery-section .grid-row--column .hover-swap { display: none !important; }
   .gallery-section .grid-row--column.active-col .hover-swap.active { display: block !important; }
+
 }
 
 

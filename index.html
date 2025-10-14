@@ -191,8 +191,8 @@ const allHoverSwap = document.querySelectorAll('.hover-swap');
 
 function setHighlight(activeIndex) {
   allPortfolioItems.forEach(item => {
-    const title = item.querySelector('.gallery-caption');
-    const subtitle = item.querySelector('.text-wrapper-5');
+    const title = item.querySelector('.frame-3');
+    const subtitle = item.querySelector('.frame-3');
     const isActive = item.getAttribute('data-index') === activeIndex;
     if (title) title.style.opacity = isActive ? '1' : '0.5';
     if (subtitle) subtitle.style.opacity = isActive ? '1' : '0.5';
@@ -266,27 +266,11 @@ function stopGallerySwap() {
 }
 
 function tabletHighlightLogic() {
-  if (window.innerWidth > 375 && window.innerWidth <= 768) {
+  if (window.innerWidth <= 1023) {
+    // Tablet: click-based single highlight (same as mobile)
     setActiveGalleryItem('0');
     setHighlight('0');
     startGallerySwap('0');
-
-    // attach scroll handler only once
-    if (!window._tabletScrollHandlerAttached) {
-      window._tabletScrollHandlerAttached = true;
-      window.addEventListener('scroll', () => {
-        let activeIndex = '0';
-        document.querySelectorAll('.frame-3[data-index]').forEach(item => {
-          const rect = item.getBoundingClientRect();
-          if (rect.top < window.innerHeight / 2) {
-            activeIndex = item.getAttribute('data-index');
-          }
-        });
-        setHighlight(activeIndex);
-        setActiveGalleryItem(activeIndex);
-        startGallerySwap(activeIndex);
-      });
-    }
 
     // Tap/click highlight (safe to reassign .onclick)
     document.querySelectorAll('.frame-3[data-index]').forEach(item => {
@@ -297,14 +281,8 @@ function tabletHighlightLogic() {
         startGallerySwap(index);
       };
     });
-  } else {
-    // cleanup mobile/non-tablet state
-    document.querySelectorAll('.gallery-section .hover-swap')
-      .forEach(item => item.classList.remove('active'));
-    resetHighlight();
-    stopGallerySwap();
-
-    // Desktop hover logic: also swap images to hover-img while hovering
+  } else if (window.innerWidth > 768) {
+    // Desktop: hover dimming
     allPortfolioItems.forEach(item => {
       item.onmouseenter = () => {
         const index = item.getAttribute('data-index');
@@ -392,7 +370,7 @@ window.addEventListener('resize', tabletHighlightLogic);
 /* Mobile column-switcher: show the column that contains the clicked gallery item
    and ensure only one preview is visible. */
 (function () {
-  const MOBILE_MAX = 375;
+  const MOBILE_MAX = 1023;
   function isMobile() { return window.innerWidth <= MOBILE_MAX; }
 
   function clearActiveStates() {
@@ -518,7 +496,7 @@ window.addEventListener('resize', tabletHighlightLogic);
   if (window._desktopResetAttached) return;
   window._desktopResetAttached = true;
 
-  function isDesktop() { return window.innerWidth > 768; }
+  function isDesktop() { return window.innerWidth > 1023; }
 
   function restoreAll() {
     // revert visual dimming/state
@@ -564,8 +542,7 @@ window.addEventListener('resize', tabletHighlightLogic);
    Also start tablet swap if on tablet. This is defensive (won't throw if helper functions absent). */
 document.addEventListener('DOMContentLoaded', function () {
   try {
-    // clean up any malformed leftover markup/scripts at file end before running
-    // (If you kept broken characters after </script> - remove them in the file.)
+
 
     // ensure one active hover-swap (prefer existing, else first)
     const swaps = Array.from(document.querySelectorAll('.gallery-section .hover-swap[data-index]'));
@@ -591,8 +568,8 @@ document.addEventListener('DOMContentLoaded', function () {
       p.classList.toggle('active', is);
       p.classList.toggle('dimmed', !is);
       // ensure title/subtitle opacity matches (keeps consistency if JS elsewhere uses inline styles)
-      const title = p.querySelector('.gallery-caption');
-      const subtitle = p.querySelector('.text-wrapper-5');
+      const title = p.querySelector('.frame-3');
+      const subtitle = p.querySelector('.frame-3');
       if (title) title.style.opacity = is ? '1' : '0.5';
       if (subtitle) subtitle.style.opacity = is ? '1' : '0.5';
       p.style.opacity = '1';
@@ -620,6 +597,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // log for debugging (remove in production)
     console.error('init gallery failed:', err);
   }
+  
 });
 </script>
 
@@ -634,7 +612,7 @@ window.addEventListener('load', function () {
   });
 
   // On mobile: show the column containing the active swap
-  if (window.innerWidth <= 375) {
+  if (window.innerWidth <= 1023) {
     document.querySelectorAll('.gallery-section .grid-row--column').forEach(col => {
       col.classList.toggle('active-col', !!col.querySelector(`.hover-swap[data-index="${idx}"]`));
     });
@@ -645,7 +623,7 @@ window.addEventListener('load', function () {
   if (typeof setHighlight === 'function') setHighlight(idx);
 
   // Start tablet swap only on tablet (not on mobile)
-  if (typeof startGallerySwap === 'function' && window.innerWidth > 375 && window.innerWidth <= 768) {
+  if (typeof startGallerySwap === 'function' && window.innerWidth <= 1023) {
     startGallerySwap(idx);
   }
 
@@ -656,12 +634,12 @@ window.addEventListener('load', function () {
     p.classList.toggle('dimmed', !is);
     // ensure title/subtitle opacity matches (keeps consistency if JS elsewhere uses inline styles)
     const title = p.querySelector('.gallery-caption');
-    const subtitle = p.querySelector('.text-wrapper-5');
+    const subtitle = p.querySelector('.frame-3');
     if (title) title.style.opacity = is ? '1' : '0.5';
     if (subtitle) subtitle.style.opacity = is ? '1' : '0.5';
     p.style.opacity = '1';
   });
-  });
+
 </script>
 
 </body>
