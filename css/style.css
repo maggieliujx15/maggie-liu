@@ -1,7 +1,7 @@
 /* Align subtitle to start after year in portfolio items */
 .frame-3 .text-wrapper-5 {
   margin-left: 0;
-  text-indent: 48px;
+  text-indent: 45px;
 }
 /* Add gap between portfolio item title and subtitle */
 .frame-3 > div {
@@ -195,7 +195,7 @@ html, body {
   color: #000000;
   font-size: 16px;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: 1.5;
   white-space: normal;
 }
 
@@ -517,7 +517,7 @@ html, body {
   .d-landing .div {
     height: 100vh;
     max-height: 100vh;
-    padding: 64px 16px 16px 16px;
+    padding: 72px 16px 16px 16px;
     display: flex;
     flex-direction: column !important;
     position: relative;
@@ -561,6 +561,7 @@ html, body {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    padding-bottom: 80px !important; /* space for contact button */
   }
 
   .frame-3.active {
@@ -595,8 +596,6 @@ html, body {
     margin: 0 auto !important;
     grid-column: span 4 !important; /* default for Toyota, Puma, Lufthansa, Alice */
   }
-
-  
 
   .gallery-section .hover-swap.active[data-index="0"],
   .gallery-section .hover-swap.active[data-index="1"] {
@@ -733,5 +732,37 @@ html, body {
   /* ensure popup wrapper doesn't add extra spacing below the last link */
   .contact-nav.contact-open > a:last-child {
     margin-bottom: 0;
+  }
+
+  .gallery-section {
+    position: fixed !important;
+    top: 56px !important; /* keeps 8px gap under logo */
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 2500 !important; /* sits above portfolio */
+    background: inherit !important;
+  }
+
+  /* constrain inner grid to match previous gutters */
+  .gallery-section .grid-row {
+    margin: 0 16px !important;
+    max-width: calc(100% - 32px) !important;
+  }
+
+  /* portfolio must clear the fixed gallery — use CSS var set by JS (fallback 0) */
+  .portfolio-section {
+    margin-top: calc(var(--gallery-fixed-height, 0px) + 16px) !important;
+  }
+
+  /* let clicks fall through the fixed gallery to the portfolio below */
+  .gallery-section {
+    pointer-events: none !important;
+  }
+
+  /* but keep interactive gallery pieces interactive */
+  .gallery-section .hover-swap,
+  .gallery-section .hover-swap * {
+    pointer-events: auto !important;
   }
 }

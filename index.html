@@ -802,6 +802,58 @@ window.addEventListener('load', function () {
 
 </script>
 
+<script>
+(function () {
+  // measure gallery height and publish to CSS var so portfolio is pushed down
+  const docEl = document.documentElement;
+  const GAP = 16; // extra gap below gallery
+
+  async function updateGalleryFixedHeight() {
+    const gallery = document.querySelector('.gallery-section');
+    const portfolio = document.querySelector('.portfolio-section');
+    if (!gallery) {
+      docEl.style.setProperty('--gallery-fixed-height', '0px');
+      if (portfolio) portfolio.style.marginTop = '';
+      return;
+    }
+
+    if (window.innerWidth > 1023) {
+      // clear on desktop
+      docEl.style.setProperty('--gallery-fixed-height', '0px');
+      if (portfolio) portfolio.style.marginTop = '';
+      return;
+    }
+
+    // wait for images inside gallery to settle to avoid 0 heights
+    const imgs = Array.from(gallery.querySelectorAll('img'));
+    await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(res => {
+      img.addEventListener('load', res, { once: true });
+      img.addEventListener('error', res, { once: true });
+    })));
+
+    // measure rendered gallery height
+    const rect = gallery.getBoundingClientRect();
+    const h = Math.max(0, Math.ceil(rect.height));
+
+    // publish CSS var and set inline portfolio margin as immediate fallback
+    docEl.style.setProperty('--gallery-fixed-height', h + 'px');
+    if (portfolio) portfolio.style.marginTop = (h + GAP) + 'px';
+  }
+
+  // expose for manual calls and for other scripts to call after dynamic changes
+  window.updateGalleryFixedHeight = updateGalleryFixedHeight;
+
+  // run on load and resize (throttled)
+  window.addEventListener('load', updateGalleryFixedHeight);
+  let __gTimeout = null;
+  window.addEventListener('resize', () => {
+    clearTimeout(__gTimeout);
+    __gTimeout = setTimeout(updateGalleryFixedHeight, 120);
+  });
+})();
+</script>
+
+
 </body>
 
 </html>
