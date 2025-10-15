@@ -854,6 +854,42 @@ window.addEventListener('load', function () {
 </script>
 
 
+<!-- add just before the closing </body> -->
+<script>
+(function () {
+  if (!window.matchMedia) return;
+  if (!window.matchMedia('(min-width: 1024px)').matches) return; // desktop only
+
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  document.body.appendChild(cursor);
+
+  // Position follow
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    // ensure visible when moving inside window
+    cursor.classList.remove('hidden');
+  });
+
+  document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
+  document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
+
+  // enlarge over interactive targets
+  const interactiveSelector = 'a, button, input, textarea, select, label, .hover-swap, [role="button"]';
+  document.addEventListener('pointerover', (e) => {
+    if (e.target.closest(interactiveSelector)) cursor.classList.add('grow');
+    else cursor.classList.remove('grow');
+  }, true);
+
+  // safety: remove grow on pointerout if leaving interactive
+  document.addEventListener('pointerout', (e) => {
+    const to = e.relatedTarget;
+    if (!to || !to.closest || !to.closest(interactiveSelector)) cursor.classList.remove('grow');
+  }, true);
+})();
+</script>
+
 </body>
 
 </html>

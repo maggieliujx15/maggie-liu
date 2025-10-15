@@ -1,3 +1,51 @@
+
+
+/* hide native cursor so our custom one is used */
+body {
+  cursor: none !important;
+}
+
+body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  .hover-swap,
+  [role="button"] {
+    cursor: none !important;
+  }
+
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;                 /* white circle */
+  mix-blend-mode: difference;          /* visually inverts colors beneath */
+  pointer-events: none;                /* don't block interaction */
+  z-index: 99999;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  opacity: 1;
+  will-change: transform, opacity, left, top;
+}
+
+/* larger state when over interactive elements */
+.custom-cursor.grow {
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+/* hide when leaving window */
+.custom-cursor.hidden {
+  opacity: 0;
+}
+
+
+
 /* Align subtitle to start after year in portfolio items */
 .frame-3 .text-wrapper-5 {
   margin-left: 0;
