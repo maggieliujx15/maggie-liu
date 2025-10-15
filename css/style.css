@@ -646,5 +646,92 @@ html, body {
     overflow-x: hidden !important;
   }
 
+  /* Contact nav -> collapsed button on small screens */
+  /* hide original nav (desktop layout) by default on small screens */
+  .contact-nav {
+    display: none !important;
+  }
 
+  /* floating button bottom-left */
+  #contact-toggle {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border: none;
+    z-index: 4000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  #contact-toggle img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    will-change: opacity, transform;
+  }
+
+  /* popup nav when opened */
+  .contact-nav.contact-open {
+    display: flex !important;
+    position: fixed !important;
+    flex-direction: column;
+    background: #000;
+    color: #fff;
+    z-index: 3999;
+    transform-origin: left bottom;
+    transition: transform .22s ease, opacity .22s ease;
+    opacity: 1;
+    left: 16px;
+    bottom: calc(16px + 40px + 8px); /* 8px gap between button and popup */
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* gap between the block of link containers and the button area (outer spacing) */
+    background: transparent; /* links themselves will be black blocks */
+    align-items: flex-start !important; /* <-- prevents children stretching to full width */
+    background: none !important;
+    box-shadow: none !important;
+    z-index: 3999;
+  }
+
+  /* hidden state for animation (initial) */
+  .contact-nav.contact-closed {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(6px) scale(.98);
+    pointer-events: none;
+  }
+
+  /* individual link containers */
+  .contact-nav.contact-open a {
+    display: inline-block !important;
+    width: auto !important;
+    background: #000;              /* black container */
+    color: #fff !important;
+    align-content: center;
+    padding: 12px;
+    width: 40px;
+    height: 40px;
+    margin: 0;                    /* reset default */
+    text-decoration: none;
+    white-space: nowrap; 
+    box-sizing: border-box;
+  }
+
+  /* 4px between each container */
+  .contact-nav.contact-open a + a {
+    margin-top: 2px;
+  }
+
+  /* ensure popup wrapper doesn't add extra spacing below the last link */
+  .contact-nav.contact-open > a:last-child {
+    margin-bottom: 0;
+  }
 }
