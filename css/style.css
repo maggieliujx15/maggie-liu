@@ -557,7 +557,6 @@ html, body {
 }
 
 #page-info .label {
-  opacity: 0.85;
   text-transform: uppercase;
 }
 
@@ -617,7 +616,7 @@ html, body {
   }
 
   .frame-3.dimmed {
-    opacity: 0.5 !important;
+    opacity: 0.25 !important;
   }
 
   .gallery-section .grid-row {

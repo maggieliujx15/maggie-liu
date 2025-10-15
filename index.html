@@ -258,12 +258,12 @@ function setHighlight(activeIndex) {
     const title = item.querySelector('.frame-3');
     const subtitle = item.querySelector('.frame-3');
     const isActive = item.getAttribute('data-index') === activeIndex;
-    if (title) title.style.opacity = isActive ? '1' : '0.5';
-    if (subtitle) subtitle.style.opacity = isActive ? '1' : '0.5';
+    if (title) title.style.opacity = isActive ? '1' : '0.25';
+    if (subtitle) subtitle.style.opacity = isActive ? '1' : '0.25';
     item.style.opacity = '1';
   });
   allGalleryItems.forEach(item => {
-    item.style.opacity = item.getAttribute('data-index') === activeIndex ? '1' : '0.5';
+    item.style.opacity = item.getAttribute('data-index') === activeIndex ? '1' : '0.25';
   });
 }
 
@@ -311,7 +311,7 @@ function startGallerySwap(index) {
       if (hoverImg)  { hoverImg.style.display = 'none'; hoverImg.style.opacity = '0'; }
       if (defaultImg){ defaultImg.style.display = 'block'; defaultImg.style.opacity = '1'; }
     }
-  }, 500);
+  }, 1000); // <- change this number (milliseconds)
 }
 
 function stopGallerySwap() {
@@ -352,10 +352,10 @@ function tabletHighlightLogic() {
         const index = item.getAttribute('data-index');
         setHighlight(index);
         allPortfolioItems.forEach(other => {
-          other.style.opacity = other === item ? '1' : '0.5';
+          other.style.opacity = other === item ? '1' : '0.25';
         });
         allGalleryItems.forEach(other => {
-          other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
+          other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.25';
         });
 
         // show hover image for the matching gallery item immediately
@@ -390,10 +390,10 @@ function tabletHighlightLogic() {
         const index = item.getAttribute('data-index');
         setHighlight(index);
         allGalleryItems.forEach(other => {
-          other.style.opacity = other === item ? '1' : '0.5';
+          other.style.opacity = other === item ? '1' : '0.25';
         });
         allPortfolioItems.forEach(other => {
-          other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.5';
+          other.style.opacity = other.getAttribute('data-index') === index ? '1' : '0.25';
         });
 
         // show hover image for this gallery item
@@ -730,8 +730,8 @@ document.addEventListener('DOMContentLoaded', function () {
       // ensure title/subtitle opacity matches (keeps consistency if JS elsewhere uses inline styles)
       const title = p.querySelector('.frame-3');
       const subtitle = p.querySelector('.frame-3');
-      if (title) title.style.opacity = is ? '1' : '0.5';
-      if (subtitle) subtitle.style.opacity = is ? '1' : '0.5';
+      if (title) title.style.opacity = is ? '1' : '0.25';
+      if (subtitle) subtitle.style.opacity = is ? '1' : '0.25';
       p.style.opacity = '1';
     });
 
@@ -795,8 +795,8 @@ window.addEventListener('load', function () {
     // ensure title/subtitle opacity matches (keeps consistency if JS elsewhere uses inline styles)
     const title = p.querySelector('.gallery-caption');
     const subtitle = p.querySelector('.frame-3');
-    if (title) title.style.opacity = is ? '1' : '0.5';
-    if (subtitle) subtitle.style.opacity = is ? '1' : '0.5';
+    if (title) title.style.opacity = is ? '1' : '0.25';
+    if (subtitle) subtitle.style.opacity = is ? '1' : '0.25';
     p.style.opacity = '1';
   });
 
@@ -854,7 +854,6 @@ window.addEventListener('load', function () {
 </script>
 
 
-<!-- add just before the closing </body> -->
 <script>
 (function () {
   if (!window.matchMedia) return;
