@@ -16,156 +16,92 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Maggie Liu - About</title>
-  <link rel="icon" href="img/about/link_icon_white.png" type="image" sizes="16x16">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/grid.css">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/flexbox.css">
-  <link rel="stylesheet" href="css/media.css">
+  <title>Maggie Liu Portfolio</title>
+	<link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/styleguide.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/grid.css" />
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap" rel="stylesheet">
 
 </head>
 
+
 <body>
+  <!-- site logo (fixed top-left, same as index) -->
+  <a href="index.html" class="m-logo">
+    <img src="/img/about/m_logo_green.svg" alt="Site Logo">
+  </a>
 
-  <div class="nav">
-    <div class="nav-container">
-      <a href="index.html" class="logo">Maggie Liu</a>
-      <div class="nav-right">
-        <a href="index.html#workContainer">Work</a>
-          <a href="about.html">About</a>
-          <a href="funs.html">Funs</a>
-          <a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a>
-      </div>
-    </div>
+  <!-- page info (city + time) top-right, same placement as index -->
+  <div id="page-info">
+    <span class="label">Amsterdam</span>
+    <span class="clock">00:00</span>
   </div>
 
-  <div class="info-wrap">
-    <h4 class="hero-text">Hey, I'm <!-- <span> -->Maggie Liu<!-- </span> -->! <!-- <img src="img/about/me_1.jpg"> --> 
-    	<br>A Product Designer based in Amsterdam.</h4>
-  </div>
+  <!-- contact nav (desktop) -->
+  <nav class="contact-nav">
+    <a href="about.html">ABOUT</a>
+    <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+    <a href="mailto:maggieliujx@gmail.com">MAGGIELIUJX@GMAIL.COM</a>
+  </nav>
 
-  <div class="info-wrap project-info-wrap">
-    <div class="project-detail-header">
-      <div id="mydiv">
-        <img src="img/about/me_1.jpg" loading="lazy">
-      </div>
+  <!-- collapsed contact toggle for mobile (40x40) -->
+  <button id="contact-toggle" aria-label="Open contact" aria-expanded="false" aria-controls="contact-nav" title="Contact">
+    <img src="img/index/icon_plus.png" alt="">
+  </button>
 
-      <p style="font-family: proza; margin: auto">You found the bts &#128539;</p>
-      <img src="img/about/me_4.jpg" loading="lazy" style="width: 78%">   
+  <!-- contact toggle script (keeps icon file and rotates on open/close) -->
+  <script>
+  (function () {
+    const toggle = document.getElementById('contact-toggle');
+    const nav = document.querySelector('.contact-nav');
+    if (!toggle || !nav) return;
+    const imgEl = toggle.querySelector('img');
+    if (imgEl) {
+      imgEl.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+      imgEl.style.willChange = 'transform, opacity';
+    }
 
-      <!-- <div class="project-detail-content contact">
-        <p><b>Reach me at:</b></p>
-        <p><a href="docs/Maggie Liu Resume.pdf">Resume</a></p>
-        <p><a href="https://www.linkedin.com/in/maggieliujx/">LinkedIn</a></p>
-        <p><a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a></p>
-      </div> -->
+    function setToggleState(isOpen) {
+      if (!imgEl) return;
+      imgEl.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0deg)';
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
 
-    </div>
+    function initState() {
+      if (window.innerWidth <= 1023) {
+        nav.classList.remove('contact-open');
+        nav.classList.add('contact-closed');
+        toggle.style.display = 'inline-flex';
+        setToggleState(false);
+      } else {
+        nav.classList.remove('contact-closed', 'contact-open');
+        nav.style.display = '';
+        toggle.style.display = 'none';
+        setToggleState(false);
+      }
+    }
 
-    <div class="project-detail-content about">
-      <p>
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('contact-open');
+      nav.classList.toggle('contact-closed', !isOpen);
+      setToggleState(isOpen);
+    });
 
-      I love working with my hands to translate concepts into tangible forms, whether they are physical or digital.
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth > 1023) return;
+      if (!nav.classList.contains('contact-open')) return;
+      if (e.target.closest('.contact-nav') || e.target.closest('#contact-toggle')) return;
+      nav.classList.remove('contact-open');
+      nav.classList.add('contact-closed');
+      setToggleState(false);
+    }, true);
 
-      <br><br>
-
-			I am currently a Product Designer at <a href="https://www.akqa.com/studios/amsterdam//">AKQA Amsterdam</a>, working with the world's largest car manufacturer to elevate their digital experience platform and ensure a seamless customer experience at every touchpoint.
-
- 			<br><br>
- 			
- 			I am always open to talk about my experiences and make new connections, so <a href="mailto:maggieliujx@gmail.com">let's chat</a>!
-
-			</p>
-
-    </div>
-  </div>
-
-  <div class="info-wrap project-info-wrap">
-    <div class="project-detail-header">
-    </div>
-    <div class="project-detail-content contact">
-      <!-- <div class="contact"> -->
-        <p><b>Reach me at:</b></p>
-        <p><a href="docs/Maggie Liu Resume 2023.pdf">Resume</a></p>
-        <p><a href="https://www.linkedin.com/in/maggieliujx/">LinkedIn</a></p>
-        <p><a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a></p>
-      <!-- </div> -->
-    </div>
-  </div>
-
-  <div class="info-wrap project-info-wrap">
-    <div class="brand-title">
-      Brands I got to work with:
-    </div>
-  </div>
-
-  <div class="project-info">
-    <div class="info-wrap project-info-wrap">
-      <img src="img/about/brands.png" class="dividerImg">
-    </div>
-  </div>
-
-  <div class="info-wrap project-info-wrap">
-    <div class="wide-comment" style="background-color: #F9F9F9; font-size: 1rem">
-      Coded with &#9749; and &#10084;
-    </div>
-  </div>
-
-  <br> <br> <br>
-
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/maggieliujx/">
-      <img src="img/linkedin-icon.png">
-    </a>
-  </div>
-
-
-<script>
-  dragElement(document.getElementById("mydiv"));
-
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id)) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
-</script>
-
+    window.addEventListener('resize', initState);
+    document.addEventListener('DOMContentLoaded', initState);
+  })();
+  </script>
 
 </body>
 
