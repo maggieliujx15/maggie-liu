@@ -396,11 +396,14 @@ window.addEventListener('resize', tabletHighlightLogic);
     });
 
     // highlight the matching portfolio item (dim others)
-    document.querySelectorAll('.frame-3[data-index]').forEach(p => {
-      const is = p.getAttribute('data-index') === targetIndex;
-      p.classList.toggle('active', is);
-      p.classList.toggle('dimmed', !is);
-    });
+  document.querySelectorAll('.frame-3[data-index]').forEach(p => {
+    const is = p.getAttribute('data-index') === targetIndex;
+    p.classList.toggle('active', is);
+    p.classList.toggle('dimmed', !is);
+  });
+
+  // remeasure gallery height for current vw/active item
+  if (typeof setGalleryHeight === 'function') setGalleryHeight();
   }
 
   function initMobileHandlers() {
@@ -491,6 +494,99 @@ window.addEventListener('resize', tabletHighlightLogic);
 </script>
 
 <script>
+// Calculate and set fixed height for gallery grid row based on tallest item
+async function setGalleryHeight() {
+  if (window.innerWidth > 1023) {
+    const gallerySection = document.querySelector('.gallery-section');
+    if (gallerySection) {
+      gallerySection.style.height = gallerySection.style.minHeight = '';
+      const gridRow = gallerySection.querySelector('.grid-row');
+      if (gridRow) gridRow.style.height = gridRow.style.minHeight = '';
+    }
+    return;
+  }
+
+  const gallerySection = document.querySelector('.gallery-section');
+  if (!gallerySection) return;
+  const swaps = Array.from(gallerySection.querySelectorAll('.hover-swap'));
+  if (!swaps.length) {
+    gallerySection.style.height = gallerySection.style.minHeight = '';
+    return;
+  }
+
+  const spanMap = {
+    '0': 2, '1': 2,
+    '2': 3, '3': 3,
+    '4': 4, '5': 4, '6': 4, '7': 4
+  };
+
+  const galleryInnerWidth = Math.max(1, gallerySection.clientWidth);
+
+  // ensure images loaded
+  const imgs = Array.from(gallerySection.querySelectorAll('img'));
+  await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(res => {
+    img.addEventListener('load', res, { once: true });
+    img.addEventListener('error', res, { once: true });
+  })));
+
+  let maxHeight = 0;
+
+  for (const swap of swaps) {
+    const idx = swap.getAttribute('data-index');
+    const span = spanMap[idx] || 4;
+    const img = swap.querySelector('.default-img') || swap.querySelector('img');
+
+    if (img && img.naturalWidth > 0) {
+      const displayWidth = Math.floor((span / 6) * galleryInnerWidth);
+      const h = Math.ceil(displayWidth * (img.naturalHeight / img.naturalWidth));
+      if (h > maxHeight) maxHeight = h;
+    } else {
+      // fallback: temporarily measure rendered swap (no flash)
+      const clone = swap.cloneNode(true);
+      clone.style.boxSizing = 'border-box';
+      clone.style.width = Math.max(1, Math.floor((span / 6) * galleryInnerWidth)) + 'px';
+      clone.style.position = 'absolute';
+      clone.style.left = '-99999px';
+      clone.style.top = '0';
+      clone.style.visibility = 'hidden';
+      document.body.appendChild(clone);
+      await new Promise(r => requestAnimationFrame(r));
+      const h = Math.ceil(clone.getBoundingClientRect().height);
+      document.body.removeChild(clone);
+      if (h > maxHeight) maxHeight = h;
+    }
+  }
+
+  // apply measured height to the grid-row (preferred) and set gallery section min-height as fallback
+  const gridRowEl = document.querySelector('.gallery-section .grid-row') || document.querySelector('.gallery-section');
+  if (maxHeight > 0) {
+    gridRowEl.style.height = gridRowEl.style.minHeight = maxHeight + 'px';
+    // keep section flow natural
+    const gallerySectionEl = document.querySelector('.gallery-section');
+    if (gallerySectionEl) {
+      gallerySectionEl.style.minHeight = maxHeight + 'px';
+      gallerySectionEl.style.height = 'auto';
+    }
+  } else {
+    gridRowEl.style.height = gridRowEl.style.minHeight = '';
+    const gallerySectionEl = document.querySelector('.gallery-section');
+    if (gallerySectionEl) gallerySectionEl.style.minHeight = gallerySectionEl.style.height = '';
+  }
+}
+
+// expose for manual calls
+window.setGalleryHeight = setGalleryHeight;
+
+// ensure it's run on load and resize
+window.addEventListener('load', setGalleryHeight);
+window.addEventListener('resize', () => {
+  // throttle a bit to avoid too-frequent runs
+  clearTimeout(window.___setGalleryHeightTimeout);
+  window.___setGalleryHeightTimeout = setTimeout(setGalleryHeight, 120);
+});
+</script>
+
+<script>
 (function () {
   // attach once
   if (window._desktopResetAttached) return;
@@ -536,7 +632,7 @@ window.addEventListener('resize', tabletHighlightLogic);
 </script>
 
 
-<!-- Replace the broken trailing script block with this initializer (put just before </body>) -->
+
 <script>
 /* Ensure first gallery preview (data-index="0") is visible on load and sync portfolio highlight.
    Also start tablet swap if on tablet. This is defensive (won't throw if helper functions absent). */
@@ -602,7 +698,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 
-<!-- ensure JDE (data-index="0") is the visible/active item on initial load for mobile + tablet -->
+
 <script>
 window.addEventListener('load', function () {
   const idx = '0';

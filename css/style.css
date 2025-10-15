@@ -79,7 +79,7 @@ html, body {
   padding: 0;
   position: fixed;
   top: 16px;
-  right: 16px;
+  left: 16px;
   width: 40px;
   height: 32px;
   z-index: 2000;
@@ -492,7 +492,7 @@ html, body {
 #page-info {
   position: fixed;
   right: 16px;
-  bottom: 16px;
+  top: 16px;
   color: #000000;
   padding: 0;
   font-size: 12px;
@@ -513,158 +513,55 @@ html, body {
   text-transform: uppercase;
 }
 
-@media (min-width: 376px) and (max-width: 768px) {
- /* simplify box model for predictable math */
-  *, *::before, *::after { box-sizing: border-box; }
-
-  /* ensure parent lays out the two sections side-by-side */
-  .d-landing .div {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-  }
-
-  /* gallery: positioning context, no extra padding */
-  .gallery-section {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-  }
-
-   /* make each section exactly half of viewport minus half the gutter so combined = 100vw */
-  .portfolio-section.grid-col-4of12,
-  .gallery-section.grid-col-8of12 {
-    position: relative;
-    flex: 0 0 calc(50% - 16px);
-    width: calc(50% - 16px);
-    max-width: calc(50% - 16px);
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* ensure portfolio and gallery each take half the viewport on tablet */
-  .portfolio-section.grid-col-4of12 {
-    position: relative;
-    width: 50vw;
-    max-width: 50vw;
-    flex: 0 0 50vw;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  .gallery-section.grid-col-8of12 {
-    position: relative;
-    width: 50vw;
-    max-width: 50vw;
-    flex: 0 0 50vw;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* ensure gallery section is exactly half viewport */
-  .gallery-section.grid-col-8of12 {
-    position: relative;
-    width: 50vw;
-    max-width: 50vw;
-    flex: 0 0 50vw;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* positioning context */
-  .gallery-section .grid-row {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    padding: 0;            /* remove extra padding that caused overflow */
-    display: block;
-    box-sizing: border-box;
-  }
-
-  /* keep columns stacked at top-left, visible but inert — inner .hover-swap controls visibility */
-  .gallery-section .grid-col-1of12,
-  .gallery-section .grid-col-2of12,
-  .gallery-section .grid-col-3of12,
-  .gallery-section .grid-col-4of12,
-  .gallery-section .grid-col-5of12,
-  .gallery-section .grid-col-6of12,
-  .gallery-section .grid-col-7of12,
-  .gallery-section .grid-col-8of12 {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    display: block;       /* keep column present so absolute children size correctly */
-    z-index: 1;
-  }
-
-  /* hide hover-swap items by default, show only .hover-swap.active */
-  .gallery-section .hover-swap {
-    display: none;
-    width: 100%;
-    margin-left: 0;
-    position: relative;
-  }
-  .gallery-section .hover-swap.active {
-    display: block;
-  }
-
-  /* size the visible .hover-swap (exact relative to viewport) */
-  /* special items (3/8 of viewport) */
-  .gallery-section .hover-swap[data-index="0"].active,
-  .gallery-section .hover-swap[data-index="1"].active,
-  .gallery-section .hover-swap[data-index="2"].active,
-  .gallery-section .hover-swap[data-index="3"].active {
-    width: calc(37.5vw - 8px); /* adjust gutter subtraction as desired */
-    max-width: calc(37.5vw - 8px);
-  }
-
-  /* other items (4/8 of viewport) */
-  .gallery-section .hover-swap[data-index="4"].active,
-  .gallery-section .hover-swap[data-index="5"].active,
-  .gallery-section .hover-swap[data-index="6"].active,
-  .gallery-section .hover-swap[data-index="7"].active {
-    width: calc(50vw - 16px);
-    max-width: calc(50vw - 16px);
-  }
-
-  /* ensure images inside scale to the hover-swap width */
-  .gallery-section .hover-swap.active .default-img,
-  .gallery-section .hover-swap.active .hover-img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-
-  /* ensure images inside scale to the hover-swap width */
-  .gallery-section .hover-swap.active .default-img,
-  .gallery-section .hover-swap.active .hover-img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-}
-
-@media (max-width: 768px) {
-  /* Force only .hover-swap.active to be visible on mobile/tablet */
-  .gallery-section .hover-swap { display: none !important; position: static !important; width: 100% !important; }
-  .gallery-section .hover-swap.active { display: block !important; }
-
-  /* Ensure grid wrappers don't reintroduce overlap */
-  .gallery-section [class^="grid-col-"] { position: static !important; width: 100% !important; display:block !important; }
-}
-
-
 @media (max-width: 1023px) {
+  .d-landing .div {
+    height: 100vh;
+    max-height: 100vh;
+    padding: 64px 16px 16px 16px;
+    display: flex;
+    flex-direction: column !important;
+    position: relative;
+    width: 100%;
+    align-content: center;
+    align-items: center !important;
+  }
+
+  .frame-2 {
+    max-width: 400px; /* constrain width */
+    margin: 0 auto; /* center horizontally */
+  }
+
+  .d-landing .div .grid-row {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .d-landing .div .grid-row > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .gallery-section {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    align-items: end !important;
+  }
+
+  .portfolio-section {
+    order: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
 
   .frame-3.active {
     opacity: 1 !important;
@@ -673,10 +570,17 @@ html, body {
   .frame-3.dimmed {
     opacity: 0.5 !important;
   }
-  
- 
+
+  .gallery-section .grid-row {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 16px !important;
+    margin: 0 16px !important;
+    align-items: end !important; /* align all items to the bottom of the grid row */
+  }
+
   .gallery-section .grid-row--column {
-    display: none !important;
+    display: contents !important;
   }
   .gallery-section .grid-row--column.active-col {
     display: block !important;
@@ -685,49 +589,32 @@ html, body {
   .gallery-section .grid-row--column .hover-swap {
     display: none !important;
   }
+
   .gallery-section .grid-row--column.active-col .hover-swap.active {
     display: block !important;
+    margin: 0 auto !important;
+    grid-column: span 4 !important; /* default for Toyota, Puma, Lufthansa, Alice */
   }
 
   
 
-  .page-info {
-    right: 16px;
-    bottom: 16px;
-    font-size: 11px;
-  }
-  
-
-  /* force main wrapper to stack sections, full width and gutter */
-  .d-landing .div {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
-    padding: 64px 16px 16px 16px;
-    margin: 0 !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    justify-content: center !important;
+  .gallery-section .hover-swap.active[data-index="0"],
+  .gallery-section .hover-swap.active[data-index="1"] {
+    width: calc(2/6 * 100%) !important;
   }
 
-  /* ensure gallery sits above portfolio and both span full width */
-  .gallery-section { order: -1 !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
-  .portfolio-section { order: 0 !important; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important; }
-
-  /* make rows and columns flow normally and fill width */
-  .grid-row,
-  .grid-row--column,
-  .grid-row > *,
-  .grid-row--column > * {
-    display: block !important;
-    width: 100% !important;
-    position: static !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+  .gallery-section .hover-swap.active[data-index="2"],
+  .gallery-section .hover-swap.active[data-index="3"] {
+    width: calc(3/6 * 100%) !important;
   }
 
-  /* ensure grid-col wrappers are not absolute and fill width */
+  .gallery-section .hover-swap.active[data-index="4"],
+  .gallery-section .hover-swap.active[data-index="5"],
+  .gallery-section .hover-swap.active[data-index="6"],
+  .gallery-section .hover-swap.active[data-index="7"] {
+    width: calc(4/6 * 100%) !important;
+  }
+
   .gallery-section [class^="grid-col-"] {
     position: static !important;
     width: 100% !important;
@@ -736,22 +623,6 @@ html, body {
     box-sizing: border-box !important;
   }
 
-  /* show only one gallery item (active or first) */
-  .gallery-section .hover-swap {
-    display: none !important;
-    position: static !important;
-    width: 100% !important;
-    
-    margin: 0 auto;
-  }
-
-  .gallery-section .hover-swap.active,
-  .gallery-section .hover-swap:first-of-type {
-    display: block !important; 
-    margin: 0 auto;
-  }
-
-  /* hide decorative/absolutely positioned extras that cause overlap on small screens */
   .d-landing .component,
   .d-landing .component-2,
   .d-landing .component-3,
@@ -763,7 +634,6 @@ html, body {
     display: none !important;
   }
 
-  /* ensure images and captions fill their container */
   .gallery-section .hover-swap img,
   .gallery-section .hover-swap .gallery-caption,
   .portfolio-item-content {
@@ -772,54 +642,9 @@ html, body {
     box-sizing: border-box !important;
   }
 
-  /* prevent horizontal scroll */
-  html, body { overflow-x: hidden !important; }
-  /* Ensure any grid-row inside the main wrapper stacks its children */
-  .d-landing .div .grid-row,
-  .d-landing .div > .grid-row,
-  .grid-row {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 16px !important;
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    box-sizing: border-box !important;
+  html, body {
+    overflow-x: hidden !important;
   }
 
-  /* Make direct children full width */
-  .d-landing .div .grid-row > *,
-  .grid-row > * {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  /* Ensure gallery appears before portfolio */
-  .d-landing .div .grid-row > .gallery-section,
-  .d-landing .div > .grid-row > .gallery-section,
-  .grid-row > .gallery-section {
-    order: -1 !important;
-  }
-
-  .d-landing .div .grid-row > .portfolio-section,
-  .d-landing .div > .grid-row > .portfolio-section,
-  .grid-row > .portfolio-section {
-    order: 0 !important;
-  }
-
-
-  /* ensure grid-col wrappers don't reintroduce layout from larger breakpoints */
-  .gallery-section [class^="grid-col-"] { position: static !important; width: 100% !important; display: block !important; }
-
-  /* Mobile: hide all columns by default, show only the active column;
-     inside that column show only the hover-swap with .active */
-  .gallery-section .grid-row--column { display: none !important; }
-  .gallery-section .grid-row--column.active-col { display: block !important; }
-
-  .gallery-section .grid-row--column .hover-swap { display: none !important; }
-  .gallery-section .grid-row--column.active-col .hover-swap.active { display: block !important; }
 
 }
-
-
