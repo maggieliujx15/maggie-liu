@@ -184,80 +184,13 @@ body {
           </div>
         </section>
       </div>
-
-      <nav class="contact-nav">
-          <a href="about.html">ABOUT</a>
-          <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-          <a href="mailto:maggieliujx@gmail.com">MAGGIELIUJX@GMAIL.COM</a>
-      </nav>
       
     </div>
   </main>
 
   
-  <!-- add toggle button (kept after nav) -->
-  <button id="contact-toggle" aria-label="Open contact" aria-expanded="false" aria-controls="contact-nav" title="Contact">
-    <img src="img/index/icon_plus.png" alt="">
-  </button>
   
-  <script>
-  /* filepath: /Users/maggieliu/Documents/maggie-liu/index.html */
-  /* small script to toggle contact nav on small screens */
-  (function () {
-    const toggle = document.getElementById('contact-toggle');
-    const nav = document.querySelector('.contact-nav');
-    if (!toggle || !nav) return;
-
-    const imgEl = toggle.querySelector('img');
-
-    // smooth transform transition
-    if (imgEl) {
-      imgEl.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
-      imgEl.style.willChange = 'transform, opacity';
-    }
-
-    function setToggleState(isOpen) {
-      if (!imgEl) return;
-      // open: rotate 135deg, closed: default (no rotation)
-      imgEl.style.transform = isOpen ? 'rotate(135deg)' : 'rotate(0deg)';
-      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    }
-
-    function initState() {
-      if (window.innerWidth <= 1023) {
-        nav.classList.remove('contact-open');
-        nav.classList.add('contact-closed');
-        toggle.style.display = 'inline-flex';
-        setToggleState(false);
-      } else {
-        nav.classList.remove('contact-closed', 'contact-open');
-        nav.style.display = ''; // let desktop css control it
-        toggle.style.display = 'none';
-        setToggleState(false);
-      }
-    }
-
-    toggle.addEventListener('click', (e) => {
-      const isOpen = nav.classList.toggle('contact-open');
-      nav.classList.toggle('contact-closed', !isOpen);
-      setToggleState(isOpen);
-    });
-
-    // close when clicking outside
-    document.addEventListener('click', (e) => {
-      if (window.innerWidth > 1023) return;
-      if (!nav.classList.contains('contact-open')) return;
-      if (e.target.closest('.contact-nav') || e.target.closest('#contact-toggle')) return;
-      nav.classList.remove('contact-open');
-      nav.classList.add('contact-closed');
-      setToggleState(false);
-    }, true);
-
-    window.addEventListener('resize', initState);
-    document.addEventListener('DOMContentLoaded', initState);
-  })();
-  </script>
-  <!-- ...existing code... -->
+  
     
 <script>
 const allPortfolioItems = document.querySelectorAll('.frame-3[data-index]');
@@ -652,8 +585,6 @@ window.addEventListener('resize', () => {
    Also start tablet swap if on tablet. This is defensive (won't throw if helper functions absent). */
 document.addEventListener('DOMContentLoaded', function () {
   try {
-
-
     // ensure one active hover-swap (prefer existing, else first)
     const swaps = Array.from(document.querySelectorAll('.gallery-section .hover-swap[data-index]'));
     if (swaps.length === 0) return;
@@ -710,7 +641,6 @@ document.addEventListener('DOMContentLoaded', function () {
   
 });
 </script>
-
 
 
 <script>
@@ -804,41 +734,6 @@ window.addEventListener('load', function () {
 })();
 </script>
 
-
-<script>
-(function () {
-  if (!window.matchMedia) return;
-  if (!window.matchMedia('(min-width: 1024px)').matches) return; // desktop only
-
-  const cursor = document.createElement('div');
-  cursor.className = 'custom-cursor';
-  document.body.appendChild(cursor);
-
-  // Position follow
-  document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    // ensure visible when moving inside window
-    cursor.classList.remove('hidden');
-  });
-
-  document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
-  document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
-
-  // enlarge over interactive targets
-  const interactiveSelector = 'a, button, input, textarea, select, label, .hover-swap, [role="button"]';
-  document.addEventListener('pointerover', (e) => {
-    if (e.target.closest(interactiveSelector)) cursor.classList.add('grow');
-    else cursor.classList.remove('grow');
-  }, true);
-
-  // safety: remove grow on pointerout if leaving interactive
-  document.addEventListener('pointerout', (e) => {
-    const to = e.relatedTarget;
-    if (!to || !to.closest || !to.closest(interactiveSelector)) cursor.classList.remove('grow');
-  }, true);
-})();
-</script>
 
 <script src="js/load-partials.js" defer></script>
 

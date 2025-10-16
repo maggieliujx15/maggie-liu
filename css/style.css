@@ -1,5 +1,3 @@
-
-
 /* hide native cursor so our custom one is used */
 body {
   cursor: none !important;
@@ -813,4 +811,66 @@ html, body {
   .gallery-section .hover-swap * {
     pointer-events: auto !important;
   }
+}
+
+/* Desktop-only fullscreen background carousel */
+@media (min-width: 1024px) {
+  .about-carousel {
+    position: fixed;
+    inset: 0;
+    pointer-events: none; /* let page content be interactive by default */
+    z-index: 0;
+  }
+
+  .about-carousel .about-slides {
+    position: absolute;
+    inset: 0;
+  }
+
+  .about-carousel .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity .6s ease;
+    pointer-events: none;
+    will-change: opacity;
+    /* render beneath content */
+    z-index: -1;
+  }
+
+  .about-carousel .slide.active {
+    opacity: 1;
+  }
+
+  /* controls sit above content and are interactive */
+  .about-carousel .controls {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    display: flex;
+    gap: 8px;
+    pointer-events: auto;
+    z-index: 10001;
+  }
+
+  .about-carousel .carousel-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0;
+  }
+
+  .about-carousel .carousel-btn:active { transform: scale(.98); }
 }

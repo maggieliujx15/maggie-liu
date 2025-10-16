@@ -28,12 +28,48 @@
 
 
 <body>
-  <!-- header injected from partial -->
-  <div id="site-header"></div>
+
+  <main class="d-landing">
+    <div class="div">
+
+
+    <!-- site logo (fixed top-left, same as index) -->
+    <a href="index.html" class="m-logo">
+      <img src="/img/about/m_logo_green.svg" alt="Site Logo">
+    </a>
+  
+    <!-- contact nav (desktop) -->
+    <nav class="contact-nav">
+      <a href="about.html">ABOUT</a>
+      <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+      <a href="mailto:maggieliujx@gmail.com">MAGGIELIUJX@GMAIL.COM</a>
+    </nav>
+
+    <div id="site-header"></div>
+
+    <!-- Fullscreen background carousel (desktop only) -->
+    <div class="about-carousel" aria-hidden="false">
+      <div class="about-slides">
+        <div class="slide" data-src="img/about/voorlinden.jpeg" style="background-image:url('img/about/voorlinden.jpeg')"></div>
+        <div class="slide" data-src="img/about/dolomiti.jpeg" style="background-image:url('img/about/dolomiti.jpeg')"></div>
+        <div class="slide" data-src="img/about/paris.jpeg" style="background-image:url('img/about/paris.jpeg')"></div>
+      </div>
+
+      <div class="controls" aria-hidden="false">
+        <button id="about-prev" class="carousel-btn" aria-label="Previous background">‹</button>
+        <button id="about-next" class="carousel-btn" aria-label="Next background">›</button>
+      </div>
+    </div>
+
+  <script src="js/about-carousel.js" defer></script>
+
   <script src="js/load-partials.js" defer></script>
 
 
 
+
+
+  
 
 </body>
 
