@@ -10,7 +10,6 @@
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
-
 	  gtag('config', 'UA-168203025-1');
 	</script>
 
@@ -39,10 +38,22 @@ body {
 
   <main class="d-landing">
     <div class="div">
-      <a href="index.html" class="m-logo">
-        <img src="/img/about/m_logo_green.svg" alt="Site Logo">
-      </a>
-      
+
+
+    <!-- site logo (fixed top-left, same as index) -->
+    <a href="index.html" class="m-logo">
+      <img src="/img/about/m_logo_green.svg" alt="Site Logo">
+    </a>
+  
+    <!-- contact nav (desktop) -->
+    <nav class="contact-nav">
+      <a href="about.html">ABOUT</a>
+      <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+      <a href="mailto:maggieliujx@gmail.com">MAGGIELIUJX@GMAIL.COM</a>
+    </nav>
+
+    <div id="site-header"></div>
+
       <div class="grid-row">
         
         <section class="portfolio-section grid-col-4of12">
@@ -496,67 +507,6 @@ window.addEventListener('resize', tabletHighlightLogic);
 })();
 </script>
 
-
-<div id="page-info" aria-hidden="true">
-  <span id="ip-city" class="label">—</span>
-  <span id="clock" class="clock">--:--:--</span>
-</div>
-
-<script>
-/* robust city + clock (tries ipapi.co then ipwho.is). */
-(async function () {
-  const ipCityEl = document.getElementById('ip-city');
-  const clockEl = document.getElementById('clock');
-
-  function updateClock() {
-    const d = new Date();
-    clockEl.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
-
-  async function fetchJsonWithTimeout(url, timeout = 5000) {
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeout);
-    try {
-      const res = await fetch(url, { signal: controller.signal });
-      clearTimeout(id);
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return await res.json();
-    } catch (err) {
-      clearTimeout(id);
-      throw err;
-    }
-  }
-
-  async function getCity() {
-    // try primary
-    try {
-      const data = await fetchJsonWithTimeout('https://ipapi.co/json/', 5000);
-      return data && (data.city || data.region) || null;
-    } catch (e) {
-      console.warn('ipapi.co failed:', e);
-    }
-    // fallback
-    try {
-      const data = await fetchJsonWithTimeout('https://ipwho.is/', 5000);
-      return data && (data.city || data.region) || null;
-    } catch (e) {
-      console.warn('ipwho.is failed:', e);
-    }
-    return null;
-  }
-
-  try {
-    const city = await getCity();
-    ipCityEl.textContent = city || '—';
-  } catch (err) {
-    console.error('City lookup error:', err);
-    ipCityEl.textContent = '—';
-  }
-})();
-</script>
-
 <script>
 // Calculate and set fixed height for gallery grid row based on tallest item
 async function setGalleryHeight() {
@@ -889,6 +839,8 @@ window.addEventListener('load', function () {
   }, true);
 })();
 </script>
+
+<script src="js/load-partials.js" defer></script>
 
 </body>
 

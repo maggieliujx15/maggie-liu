@@ -1,0 +1,129 @@
+<!-- header partial: logo, page-info, contact nav, contact-toggle, contact init, city+clock -->
+<a href="index.html" class="m-logo">
+  <img src="/img/about/m_logo_green.svg" alt="Site Logo">
+</a>
+
+<div id="site-info">
+  <div id="page-info" aria-hidden="false">
+    <span id="ip-city" class="label">—</span>
+    <span id="clock" class="clock">--:--:--</span>
+  </div>
+</div>
+
+<nav class="contact-nav">
+  <a href="about.html">ABOUT</a>
+  <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+  <a href="mailto:maggieliujx@gmail.com">MAGGIELIUJX@GMAIL.COM</a>
+</nav>
+
+<button id="contact-toggle" aria-label="Open contact" aria-expanded="false" aria-controls="contact-nav" title="Contact">
+  <img src="img/index/icon_plus.png" alt="">
+</button>
+
+<script>
+/* idempotent contact toggle init */
+if (!window.__contactToggleInitialized) {
+  window.__contactToggleInitialized = true;
+  (function () {
+    const toggle = document.getElementById('contact-toggle');
+    const nav = document.querySelector('.contact-nav');
+    if (!toggle || !nav) return;
+    const imgEl = toggle.querySelector('img');
+    if (imgEl) {
+      imgEl.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+      imgEl.style.willChange = 'transform, opacity';
+    }
+
+    function setToggleState(isOpen) {
+      if (!imgEl) return;
+      imgEl.style.transform = isOpen ? 'rotate(135deg)' : 'rotate(0deg)';
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function initState() {
+      if (window.innerWidth <= 1023) {
+        nav.classList.remove('contact-open');
+        nav.classList.add('contact-closed');
+        toggle.style.display = 'inline-flex';
+        setToggleState(false);
+      } else {
+        nav.classList.remove('contact-closed', 'contact-open');
+        nav.style.display = '';
+        toggle.style.display = 'none';
+        setToggleState(false);
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('contact-open');
+      nav.classList.toggle('contact-closed', !isOpen);
+      setToggleState(isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth > 1023) return;
+      if (!nav.classList.contains('contact-open')) return;
+      if (e.target.closest('.contact-nav') || e.target.closest('#contact-toggle')) return;
+      nav.classList.remove('contact-open');
+      nav.classList.add('contact-closed');
+      setToggleState(false);
+    }, true);
+
+    window.addEventListener('resize', initState);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initState, { once: true });
+    } else {
+      initState();
+    }
+  })();
+}
+
+</script>
+
+<script>
+/* city + clock (self-contained) */
+(async function () {
+  const ipCityEl = document.getElementById('ip-city');
+  const clockEl = document.getElementById('clock');
+
+  function updateClock() {
+    const d = new Date();
+    if (clockEl) clockEl.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  async function fetchJsonWithTimeout(url, timeout = 5000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(id);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } catch (err) {
+      clearTimeout(id);
+      throw err;
+    }
+  }
+
+  async function getCity() {
+    try {
+      const data = await fetchJsonWithTimeout('https://ipapi.co/json/', 5000);
+      return data && (data.city || data.region) || null;
+    } catch (e) { /* fallback */ }
+    try {
+      const data = await fetchJsonWithTimeout('https://ipwho.is/', 5000);
+      return data && (data.city || data.region) || null;
+    } catch (e) { /* final fallback */ }
+    return null;
+  }
+
+  try {
+    const city = await getCity();
+    if (ipCityEl) ipCityEl.textContent = city || '—';
+  } catch (err) {
+    if (ipCityEl) ipCityEl.textContent = '—';
+  }
+})();
+</script>

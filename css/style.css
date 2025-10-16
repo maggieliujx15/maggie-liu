@@ -527,6 +527,7 @@ html, body {
 .gallery-caption,
 .text-wrapper-5,
 .gallery-section [data-index],
+.frame-3,
 .hover-img {
   transition: opacity 0.5s;
 }
