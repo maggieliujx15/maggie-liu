@@ -559,6 +559,162 @@ html, body {
   text-transform: uppercase;
 }
 
+.about-paragraph {
+  position: fixed !important;
+  top: calc(16px + 32px + 40px) !important; /* 40px below logo */
+  width: calc(100% * 4 / 12 - 48px);
+  max-width: 500px;
+  background: #000 !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Make about-carousel controls available on all breakpoints (not only desktop) */
+.about-carousel {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* slides visually behind content */
+  z-index: 0;
+}
+
+.about-carousel .about-slides {
+  position: absolute;
+  inset: 0;
+}
+
+.about-carousel .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+  will-change: opacity;
+  z-index: -1;
+}
+
+.about-carousel .slide.active {
+  opacity: 1;
+}
+
+/* Controls are interactive at all sizes */
+.about-carousel .controls {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  gap: 8px;
+  pointer-events: auto; /* make buttons clickable */
+  z-index: 10001;
+}
+
+/* 40x40 white button with centered arrow (arrow image kept as-is, inverted to black) */
+.about-carousel .carousel-btn {
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  background: #fff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+.about-carousel .carousel-btn img {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: invert(1) !important; /* make white source appear black */
+  -webkit-filter: invert(1) !important;
+}
+
+/* rotate same arrow image for the "next" button (90deg as requested) */
+.about-carousel .carousel-btn.rotate img {
+  transform: rotate(180deg);
+  transition: transform .3s ease;
+}
+
+/* small active state */
+.about-carousel .carousel-btn:active { transform: scale(.98); }
+
+/* Make logo + page-info white only on the about page */
+.about-page #page-info,
+.about-page #page-info .label,
+.about-page #page-info .clock {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* If the logo is an <img> showing a darker asset, invert/brighten it on about page.
+   If your logo uses a background-image on the img element, this still applies. */
+.about-page .m-logo img {
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+}
+
+/* contact-nav adaptive colors based on background luminance */
+.about-dark .contact-nav a,
+.about-dark .contact-nav.contact-open a {
+  color: #fff !important;
+  background: none !important;
+}
+
+.about-light .contact-nav a,
+.about-light .contact-nav.contact-open a {
+  color: #000 !important;
+  background: none !important;
+}
+
+/* ensure toggle button also adapts (when present) */
+.about-dark #contact-toggle { background: rgba(0,0,0,0.8) !important; }
+.about-light #contact-toggle { background: rgba(255,255,255,0.95) !important; }
+
+.about-dark #contact-toggle img { filter: none !important; -webkit-filter: none !important; }
+.about-light #contact-toggle img { filter: invert(1) !important; -webkit-filter: invert(1) !important; }
+
+
+
+/* ensure the about carousel stays visually behind page content and prevent flashing/overlap */
+.about-carousel {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; /* background layer */
+}
+
+/* slides at same background level */
+.about-carousel .slide {
+  z-index: 0;
+}
+
+/* controls remain interactive above everything */
+.about-carousel .controls {
+  z-index: 10001;  /* keep buttons clickable and on top */
+  pointer-events: auto;
+}
+
+/* ensure main content (header, landing wrapper, about paragraph) sits above carousel */
+.d-landing,
+.d-landing .div,
+#site-header,
+.about-paragraph {
+  position: relative; /* create stacking context */
+  z-index: 2;
+}
+
+
+
+
+
 @media (max-width: 1023px) {
   .d-landing .div {
     height: 100vh;
@@ -843,114 +999,15 @@ html, body {
   .about-carousel .slide.active {
     opacity: 1;
   }
+
+
+  
+
+
+
+
+
 }
 
- 
 
-/* Make about-carousel controls available on all breakpoints (not only desktop) */
-.about-carousel {
-  position: fixed;
-  inset: 0;
-  pointer-events: none; /* slides visually behind content */
-  z-index: 0;
-}
 
-.about-carousel .about-slides {
-  position: absolute;
-  inset: 0;
-}
-
-.about-carousel .slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-  will-change: opacity;
-  z-index: -1;
-}
-
-.about-carousel .slide.active {
-  opacity: 1;
-}
-
-/* Controls are interactive at all sizes */
-.about-carousel .controls {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
-  display: flex;
-  gap: 8px;
-  pointer-events: auto; /* make buttons clickable */
-  z-index: 10001;
-}
-
-/* 40x40 white button with centered arrow (arrow image kept as-is, inverted to black) */
-.about-carousel .carousel-btn {
-  width: 40px !important;
-  height: 40px !important;
-  border: none !important;
-  background: #fff !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  padding: 0 !important;
-  cursor: pointer !important;
-  box-sizing: border-box !important;
-}
-
-.about-carousel .carousel-btn img {
-  width: 18px !important;
-  height: 18px !important;
-  object-fit: contain !important;
-  display: block !important;
-  filter: invert(1) !important; /* make white source appear black */
-  -webkit-filter: invert(1) !important;
-}
-
-/* rotate same arrow image for the "next" button (90deg as requested) */
-.about-carousel .carousel-btn.rotate img {
-  transform: rotate(180deg);
-  transition: transform .3s ease;
-}
-
-/* small active state */
-.about-carousel .carousel-btn:active { transform: scale(.98); }
-
-/* Make logo + page-info white only on the about page */
-.about-page #page-info,
-.about-page #page-info .label,
-.about-page #page-info .clock {
-  color: #ffffff !important;
-  text-shadow: none !important;
-}
-
-/* If the logo is an <img> showing a darker asset, invert/brighten it on about page.
-   If your logo uses a background-image on the img element, this still applies. */
-.about-page .m-logo img {
-  filter: brightness(0) invert(1) !important;
-  -webkit-filter: brightness(0) invert(1) !important;
-}
-
-/* contact-nav adaptive colors based on background luminance */
-.about-dark .contact-nav a,
-.about-dark .contact-nav.contact-open a {
-  color: #fff !important;
-  background: none !important;
-}
-
-.about-light .contact-nav a,
-.about-light .contact-nav.contact-open a {
-  color: #000 !important;
-  background: none !important;
-}
-
-/* ensure toggle button also adapts (when present) */
-.about-dark #contact-toggle { background: rgba(0,0,0,0.8) !important; }
-.about-light #contact-toggle { background: rgba(255,255,255,0.95) !important; }
-
-.about-dark #contact-toggle img { filter: none !important; -webkit-filter: none !important; }
-.about-light #contact-toggle img { filter: invert(1) !important; -webkit-filter: invert(1) !important; }
