@@ -1050,16 +1050,24 @@ html, body {
     opacity: 1;
   }
 
-  
+  /* allow native grab cursor on the about paragraph while keeping the custom cursor circle */
+.about-paragraph,
+.about-paragraph * {
+  /* override any global cursor:none rules */
+  cursor: grab !important;
+}
 
+/* when dragging */
+.about-paragraph.dragging,
+.about-paragraph.dragging * {
+  cursor: grabbing !important;
+}
 
-
-  
-
-
-
-
-
+/* ensure the custom cursor element stays visible and doesn't block interactions */
+.custom-cursor {
+  pointer-events: none; /* don't intercept events */
+  display: block;
+  z-index: 99999;
 }
 
 
