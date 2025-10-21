@@ -1,5 +1,5 @@
 <!-- header partial: logo, page-info, contact nav, contact-toggle, contact init, city+clock -->
-<a href="index.html" class="m-logo">
+<a href="work.html" class="m-logo">
   <img src="/img/about/m_logo_green.svg" alt="Site Logo">
 </a>
 
@@ -11,6 +11,7 @@
 </div>
 
 <nav class="contact-nav">
+  <a href="work.html">WORK</a>
   <a href="about.html">ABOUT</a>
   <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
   <a href="mailto:maggieliujx@gmail.com">MAGGIELIUJX@GMAIL.COM</a>
@@ -162,4 +163,49 @@ if (!window.__customCursorInitialized) {
     }, true);
   })();
 }
+</script>
+
+<!-- underline active nav item based on current page -->
+<style>
+  @media (min-width: 1024px) {
+    .contact-nav a.active {
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 2px;
+    }
+
+    body.about-page .contact-nav a.active{
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 2px;
+    }
+
+  }
+</style>
+
+<script>
+(function () {
+  const nav = document.querySelector('.contact-nav');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a'));
+  const current = (location.pathname || '').split('/').pop() || 'work.html';
+
+  links.forEach(a => {
+    try {
+      const resolved = new URL(a.getAttribute('href'), location.origin);
+      const hrefName = (resolved.pathname || '').split('/').pop() || 'work.html';
+
+      // mark active when href page matches current page
+      if (hrefName === current) a.classList.add('active');
+      // also handle root/work equivalence
+      else if ((hrefName === '' || hrefName === 'work.html') && (current === '' || current === 'work.html')) {
+        a.classList.add('active');
+      } else {
+        a.classList.remove('active');
+      }
+    } catch (e) {
+      // ignore invalid/absolute external hrefs (mailto, external links)
+    }
+  });
+})();
 </script>
