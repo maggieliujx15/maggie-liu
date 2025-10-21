@@ -569,7 +569,7 @@ html, body {
   font-size: 14px !important;
   padding: 24px !important;
   box-sizing: border-box !important;
-  margin: 0;
+  margin: 16px;
   line-height: 1.4;
 }
 
@@ -661,25 +661,6 @@ html, body {
   -webkit-filter: brightness(0) invert(1) !important;
 }
 
-/* contact-nav adaptive colors based on background luminance */
-.about-dark .contact-nav a,
-.about-dark .contact-nav.contact-open a {
-  color: #fff !important;
-  background: none !important;
-}
-
-.about-light .contact-nav a,
-.about-light .contact-nav.contact-open a {
-  color: #000 !important;
-  background: none !important;
-}
-
-/* ensure toggle button also adapts (when present) */
-.about-dark #contact-toggle { background: rgba(0,0,0,0.8) !important; }
-.about-light #contact-toggle { background: rgba(255,255,255,0.95) !important; }
-
-.about-dark #contact-toggle img { filter: none !important; -webkit-filter: none !important; }
-.about-light #contact-toggle img { filter: invert(1) !important; -webkit-filter: invert(1) !important; }
 
 
 
@@ -711,12 +692,9 @@ html, body {
   z-index: 2;
 }
 
-/* ensure contact nav is white on the About page */
-body.about-page .contact-nav,
-body.about-page .contact-nav a,
-body.about-page #contact-toggle {
-  color: #ffffff !important;
-}
+
+
+
 
 
 
@@ -968,6 +946,76 @@ body.about-page #contact-toggle {
   .contact-nav.contact-open a + a {
     margin-top: 2px !important;
   }
+
+  .about-paragraph {
+    top: calc(16px + 32px + 16px) !important; /* 40px below logo */
+    width: auto;
+    max-width: 500px !important;
+    text-align: left !important;
+    font-size: 12px !important;
+    padding: 16px !important;
+  }
+
+  .about-carousel .controls {
+    right: 16px;
+    bottom: 16px;
+  }
+  
+  /* ensure contact nav is white on the About page */
+  body.about-page .contact-nav,
+  body.about-page .contact-nav a,
+  body.about-page #contact-toggle {
+    background: #ffffff !important;
+  }
+
+  body.about-page #contact-toggle img {
+    filter: invert(1) !important;
+  }
+
+  body.about-page .contact-nav .contact-open {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 8px !important;
+    gap: 6px !important;
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    left: 16px !important;
+    bottom: calc(16px + 40px + 8px) !important;
+    position: fixed !important;
+    z-index: 3999 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  body.about-page .contact-nav .contact-open a {
+    display: block !important;
+    width: auto !important;
+    padding: 10px 14px !important;
+    margin: 6px 0 !important;
+    border-radius: 6px !important;
+    background: rgba(0,0,0,0.9) !important; /* default per-link background (black) */
+    color: #fff !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+  }
+
+  body.about-page .contact-nav,
+  .contact-nav.contact-open {
+    background: transparent !important;
+  }
+
+  body.about-page .contact-nav.contact-open a {
+    background: #ffffff !important;
+    color: #000 !important;
+  }
+
+
+
+
+
 }
 
 /* Desktop-only fullscreen background carousel */
@@ -1001,6 +1049,9 @@ body.about-page #contact-toggle {
   .about-carousel .slide.active {
     opacity: 1;
   }
+
+  
+
 
 
   
