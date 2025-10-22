@@ -103,6 +103,7 @@ body,
   display: block;
   object-fit: contain;
 }
+
 html, body {
   margin: 0;
   padding: 0;
@@ -135,7 +136,7 @@ html, body {
   align-items: center;
 }
 
-.d-landing .m-logo img {
+.m-logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -1092,6 +1093,155 @@ body.about-page .contact-nav a {
     z-index: 99999;
   }
 }
+
+
+/* Prevent the page container from centering vertically and place the writeup 48px below the header */
+.project-page {
+  margin: 16px !important;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;    /* Firefox */
+  padding-bottom: 80px !important;
+}
+
+/* push content below header/logo and keep writeup + visuals aligned at the same top */
+body.project-page .grid-row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;   /* align tops */
+  gap: 24px !important;
+  padding-top: calc(var(--site-header-height, 0px) + 48px) !important; /* 48px below logo */
+  box-sizing: border-box !important;
+}
+
+/* remove any per-column top offsets so both columns start at same baseline */
+body.project-page .writeup-section,
+body.project-page .visuals-section,
+body.project-page .grid-row > .grid-col-5of12,
+body.project-page .grid-row > .grid-col-7of12 {
+  margin-top: 24px !important;
+  padding-top: 0 !important;
+}
+
+/* ensure visuals fill its 7/12 column and do not escape it */
+body.project-page .grid-row > .grid-col-7of12,
+body.project-page .visuals-section {
+  flex: 0 0 calc(100% * 7 / 12) !important;
+  width: calc(100% * 7 / 12) !important;
+  max-width: calc(100% * 7 / 12) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* ensure writeup column uses 5/12 */
+body.project-page .writeup-section,
+body.project-page .grid-row > .grid-col-5of12 {
+  flex: 0 0 calc(100% * 5 / 12) !important;
+  width: calc(100% * 5 / 12) !important;
+  max-width: calc(100% * 5 / 12) !important;
+}
+
+/* visuals images scale to the column width */
+body.project-page .visuals-section img,
+body.project-page .grid-col-7of12 img {
+  display: block !important;
+  width: 100% !important;
+  max-width: calc(100% - 24px);
+  height: auto !important;
+  object-fit: cover !important;
+  position: relative !important;
+  transform: none !important;
+}
+
+.writeup-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+  line-height: 1.4;
+}
+
+/* Typography for writeup */
+.project-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.writeup-section p {
+  font-size: 14px;
+}
+
+.project-specs {
+  font-size: 12px;
+  color: #555555;
+
+}
+
+.writeup-section h2{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* visuals stack: two (or more) images stacked vertically with 24px gap */
+body.project-page .visual-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body.project-page .visual-stack .project-image img {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover;
+}
+
+
+
+/* Full-bleed visual: center reliably and fill 12/12 while staying aligned with page gutters */
+body.project-page .grid-row,
+body.project-page .grid-row > .grid-col-7of12,
+body.project-page .visuals-section {
+  overflow: visible !important; /* allow the fullwidth child to escape column */
+  transform: none !important;   /* prevent ancestor transforms from creating a clipping context */
+}
+
+body.project-page .project-image--fullwidth {
+  position: relative !important;
+  left: 45% !important;
+  transform: translateX(-50%) !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  z-index: 1 !important;
+}
+
+/* make image fill that container */
+body.project-page .project-image--fullwidth img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
+/* ensure ancestors do not clip the full-bleed (override common containers) */
+body.project-page,
+body.project-page .grid-row,
+body.project-page .grid-row > * ,
+body.project-page .grid-row > .grid-col-7of12,
+body.project-page .visuals-section {
+  overflow: visible !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  clip-path: none !important;
+}
+
+
 
 
 
