@@ -70,7 +70,7 @@ body,
 }
 /* Add gap between portfolio item title and subtitle */
 .frame-3 > div {
-  gap: 8px;
+  gap: 4px;
 }
 
 
