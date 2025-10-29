@@ -1393,7 +1393,9 @@ body.project-page .grid-row > .grid-col-3of12,
   body.project-page .visuals-section img,
   body.project-page .grid-col-7of12 img,
   body.project-page .grid-col-9of12 img,
-  body.project-page .project-image img {
+  body.project-page .
+  
+  img {
     width: 100% !important;
     max-width: 100% !important;   /* override calc(100% - 24px) */
     height: auto !important;
