@@ -1452,21 +1452,6 @@ body.project-page .visuals-section {
   clip-path: none !important;
 }
 
-/* Make images responsive and preserve aspect ratio (no cropping) */
-body.project-page .grid-col-9of12 img,
-body.project-page .visuals-section.grid-col-9of12 img {
-  display: block !important;
-  width: 100% !important;        /* follow the column width */
-  max-width: 100% !important;
-  height: auto !important;       /* preserve aspect ratio */
-  max-height: none !important;
-  object-fit: contain !important; /* avoid cropping if a height is applied elsewhere */
-  object-position: center center !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-}
-
 /* If you have wrappers that set a fixed height, let the image fit inside without cropping */
 body.project-page .grid-col-9of12 .project-image,
 body.project-page .grid-col-9of12 .visual-grid > .project-image {
