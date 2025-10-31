@@ -1,11 +1,14 @@
-
-<footer>
-  <div class="site-footer">
+<footer class="hidden">
+  <div class="site-footer" id="next-project">
     <a href="#" id="next-project-link">
-        <div class="footer-content">
-            <p>Next Project</p>
-            <img src="img/index/arrow_left.svg">
+      <div class="footer-content">
+        <div class="footer-text">
+          <p>Next Project</p>
         </div>
+        <div class="footer-icons">
+          <img src="img/index/arrow_left.svg" alt="Arrow Icon">
+        </div>
+      </div>
     </a>
   </div>
 </footer>
@@ -13,22 +16,28 @@
 <script>
   const nextProjectLink = document.getElementById('next-project-link');
 
-  nextProjectLink.addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the default link behavior
+  // Check if the footer is present on the page
+  if (document.querySelector('.site-footer')) {
+    nextProjectLink.addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent the default link behavior
 
-    // Get the project list from the portfolio-section frame-2 in work.html
-    const projectList = Array.from(document.querySelectorAll('.portfolio-section .frame-2 .project'));
+      // Get the current project element
+      const currentProject = document.querySelector('.portfolio-section .frame-2 .frame-3.active');
 
-    // Get the index of the current project in the project list
-    const currentIndex = projectList.findIndex(project => project.getAttribute('date-index') === event.target.closest('.project').getAttribute('date-index'));
+      // Get the index of the current project
+      const currentIndex = parseInt(currentProject.getAttribute('data-index'), 10);
 
-    // Calculate the index of the next project
-    const nextIndex = (currentIndex + 1) % projectList.length;
+      // Get the project list from the portfolio-section frame-2 in work.html
+      const projectList = Array.from(document.querySelectorAll('.portfolio-section .frame-2 .frame-3'));
 
-    // Get the next project element
-    const nextProject = projectList[nextIndex];
+      // Calculate the index of the next project
+      const nextIndex = (currentIndex + 1) % projectList.length;
 
-    // Scroll to the next project element
-    nextProject.scrollIntoView({ behavior: 'smooth' });
-  });
+      // Get the next project element
+      const nextProject = projectList[nextIndex];
+
+      // Navigate to the next project
+      window.location.href = nextProject.href;
+    });
+  }
 </script>
