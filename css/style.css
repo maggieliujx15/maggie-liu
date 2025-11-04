@@ -1,37 +1,4 @@
-@font-face {
-  font-family: 'SrabenGrotesk', sans-serif;
-  src: url('fonts/SrabenGrotesk-Black.otf') format('opentype');
-  src: url('fonts/SrabenGrotesk-Black.ttf') format('truetype');
-  font-weight: 800;
-}
 
-@font-face {
-  font-family: 'SrabenGrotesk', sans-serif;
-  src: url('fonts/SrabenGrotesk-ExtraBold.otf') format('opentype');
-  src: url('fonts/SrabenGrotesk-ExtraBold.ttf') format('truetype');
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: 'SrabenGrotesk', sans-serif;
-  src: url('fonts/SrabenGrotesk-Bold.otf') format('opentype');
-  src: url('fonts/SrabenGrotesk-Bold.ttf') format('truetype');
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: 'SrabenGrotesk', sans-serif;
-  src: url('fonts/SrabenGrotesk-Semibold.otf') format('opentype');
-  src: url('fonts/SrabenGrotesk-SemiBold.ttf') format('truetype');
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: 'SrabenGrotesk', sans-serif;
-  src: url('fonts/SrabenGrotesk-Medium.otf') format('opentype');
-  src: url('fonts/SrabenGrotesk-Medium.ttf') format('ttf');
-  font-weight: 400;
-}
 
 
 
