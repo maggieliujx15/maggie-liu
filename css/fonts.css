@@ -21,3 +21,33 @@
   font-weight: 700;
   font-style: italic;
 }
+
+@font-face {
+  font-family: 'SrabenGrotesk';
+  src: url('css/fonts/SrabenGrotesk-Black.otf') format('otf');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk';
+  src: url('css/fonts/LayGrotesk-ExtraBold.otf') format('otf');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk';
+  src: url('css/fonts/LayGrotesk-Bold.otf') format('otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk';
+  src: url('css/fonts/LayGrotesk-SemiBold.otf') format('otf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk';
+  src: url('css/fonts/LayGrotesk-Medium.otf') format('otf');
+  font-weight: 400;
+}

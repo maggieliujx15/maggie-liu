@@ -1,3 +1,4 @@
+
 /* hide native cursor so our custom one is used */
 body {
   cursor: none !important;
@@ -108,12 +109,12 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: 'Space Mono', monospace;
   background-color: #fffdf4;
   scroll-behavior: smooth;
 }
 
 .d-landing {
+  font-family: 'Space Mono', monospace;
   display: flex;
   flex-flow: row wrap;
   justify-content: left;
@@ -125,6 +126,7 @@ html, body {
 }
 
 .d-landing .div {
+  font-family: 'Space Mono', monospace;
   height: 100vh;
   max-height: 100vh;
   padding: 16px;
@@ -1108,6 +1110,7 @@ body.about-page .contact-nav a {
 
 /* push content below header/logo and keep writeup + visuals aligned at the same top */
 body.project-page .grid-row {
+  font-family: 'Space Mono', monospace;
   display: flex !important;
   flex-wrap: nowrap !important;
   align-items: flex-start !important;   /* align tops */
@@ -1479,12 +1482,13 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 }
 
 .site-footer {
+  font-family: 'Space Mono';
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 240px;
   margin-bottom: 180px;
-  font-size: 72px;
+  font-size: 56px;
 }
 
 .next-project-content {
@@ -1520,31 +1524,52 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   transition: transform 0.3s ease-in-out;
 }
 
+
+
 .contact-me-section {
-  gap: 80px;
-  padding: 160px;
-  background-color: black;
-  color: white;
-  font-size: 48px;
-  text-align: center;
-  width: 100vw !important;
-  margin: 0 !important;
+  font-family: 'SrabenGrotesk', sans-serif;
+  font-weight: 800;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding-bottom: 80px;
+  padding-top: 80px;
+  margin-left: -14px;
+  margin-right: -7px;
 }
 
-.contact-me-section p {
-  max-width: 900px;
+.contact-me-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.contact-me-title {
+  font-family: 'SrabenGrotesk', sans-serif;
+  font-weight: 800;
+  font-size: 190px;
+  text-align: center;
 }
 
 .email-container {
-  padding: 24px 32px;
-  background-color: white;
-  color: black;
-  font-size: 40px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 
-.email-container a {
+.email-content {
+  font-family: 'Space Mono', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.email-link {
   color: inherit;
   text-decoration: none;
 }
