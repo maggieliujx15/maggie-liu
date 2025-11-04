@@ -1,3 +1,41 @@
+@font-face {
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('fonts/SrabenGrotesk-Black.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-Black.ttf') format('truetype');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('fonts/SrabenGrotesk-ExtraBold.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-ExtraBold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('fonts/SrabenGrotesk-Bold.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-Bold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('fonts/SrabenGrotesk-Semibold.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-SemiBold.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('fonts/SrabenGrotesk-Medium.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-Medium.ttf') format('ttf');
+  font-weight: 400;
+}
+
+
+
+
 
 /* hide native cursor so our custom one is used */
 body {
@@ -114,7 +152,7 @@ html, body {
 }
 
 .d-landing {
-  font-family: 'Space Mono', monospace;
+  font-family: 'SpaceMono', monospace;
   display: flex;
   flex-flow: row wrap;
   justify-content: left;
@@ -126,7 +164,7 @@ html, body {
 }
 
 .d-landing .div {
-  font-family: 'Space Mono', monospace;
+  font-family: 'SpaceMono', monospace;
   height: 100vh;
   max-height: 100vh;
   padding: 16px;
@@ -190,7 +228,7 @@ html, body {
   position: absolute;
   top: 864px;
   left: 16px;
-  font-family: "Space Mono", Helvetica;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -203,7 +241,7 @@ html, body {
   position: absolute;
   top: 810px;
   left: 16px;
-  font-family: "Space Mono", Helvetica;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -216,7 +254,7 @@ html, body {
   position: absolute;
   top: 837px;
   left: 16px;
-  font-family: "Space Mono", Helvetica;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -258,7 +296,7 @@ html, body {
   position: relative;
   width: fit-content;
   margin-top: -1.00px;
-  font-family: "Space Mono", Helvetica;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #000000;
   font-size: 16px;
@@ -271,7 +309,7 @@ html, body {
   position: relative;
   width: fit-content;
   margin-top: -1.00px;
-  font-family: "Space Mono", Helvetica;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #0C4C1F;
   font-size: 12px;
@@ -472,7 +510,7 @@ html, body {
 }
 
 .contact-nav {
-  font-family: "Space Mono", Helvetica;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #000000;
   font-size: 12px;
@@ -569,7 +607,7 @@ body.about-page .contact-nav a {
   color: #000000;
   padding: 0;
   font-size: 12px;
-  font-family: inherit;
+  font-family: "SpaceMono", monospace;
   z-index: 99999;
   display: inline-flex;
   gap: 10px;
@@ -1110,7 +1148,7 @@ body.about-page .contact-nav a {
 
 /* push content below header/logo and keep writeup + visuals aligned at the same top */
 body.project-page .grid-row {
-  font-family: 'Space Mono', monospace;
+  font-family: 'SpaceMono', monospace;
   display: flex !important;
   flex-wrap: nowrap !important;
   align-items: flex-start !important;   /* align tops */
@@ -1482,7 +1520,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 }
 
 .site-footer {
-  font-family: 'Space Mono';
+  font-family: 'SpaceMono', monospace;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1528,21 +1566,20 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 
 .contact-me-section {
   font-family: 'SrabenGrotesk', sans-serif;
-  font-weight: 800;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-bottom: 80px;
-  padding-top: 80px;
-  margin-left: -14px;
-  margin-right: -7px;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .contact-me-text {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  
 }
 
 .contact-me-title {
@@ -1550,28 +1587,65 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   font-weight: 800;
   font-size: 190px;
   text-align: center;
+  
 }
 
 .email-container {
+  position: absolute; 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
+  background-color: #0C4C1F;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
 }
 
+
 .email-content {
-  font-family: 'Space Mono', sans-serif;
+  font-family: 'SpaceMono', monospace;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: 24px;
+  color: white;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .email-link {
   color: inherit;
   text-decoration: none;
+}
+
+.email-container:hover .email-content {
+  opacity: 1; /* Add this line */
+  transform: translateY(200%); /* Add this line */
+  
+}
+
+.email-copy {
+  font-family: 'SpaceMono', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out; 
+}
+
+.email-container:hover .email-copy {
+  opacity: 1;
 }
 
 

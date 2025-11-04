@@ -1,3 +1,6 @@
+
+
+
 <footer class="hidden">
   <!--
   <div class="site-footer" id="next-project">
@@ -14,13 +17,17 @@
   </div>
 -->
 
+
   <div class="contact-me-section">
     <div class="contact-me-text">
       <h2 class="contact-me-title">MAGS</h2>
       <h2 class="contact-me-title">FOLIO</h2>
     </div>
     <div class="email-container">
-      <div class="email-content">
+      <div class="email-content" id="email-content">
+        <a href="mailto:maggieliujx@gmail.com" class="email-link">maggieliujx@gmail.com</a>
+      </div>
+       <div class="email-copy" id="email-copy">
         <a href="mailto:maggieliujx@gmail.com" class="email-link">maggieliujx@gmail.com</a>
       </div>
     </div>
@@ -55,4 +62,19 @@
       window.location.href = nextProject.href;
     });
   }
+</script>
+
+<script>
+  const emailContainer = document.querySelector('.email-container');
+const emailContent = document.querySelector('#email-content');
+const emailCopy = document.querySelector('#email-copy');
+
+emailContainer.addEventListener('mouseenter', function() {
+  emailCopy.style.opacity = 1;
+});
+
+emailContainer.addEventListener('mouseleave', function() {
+  emailCopy.style.opacity = 0;
+});
+
 </script>

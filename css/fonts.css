@@ -1,53 +1,65 @@
 .space-mono-regular {
-  font-family: "Space Mono", monospace;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   font-style: normal;
 }
 
 .space-mono-bold {
-  font-family: "Space Mono", monospace;
+  font-family: "SpaceMono", monospace;
   font-weight: 700;
   font-style: normal;
 }
 
 .space-mono-regular-italic {
-  font-family: "Space Mono", monospace;
+  font-family: "SpaceMono", monospace;
   font-weight: 400;
   font-style: italic;
 }
 
 .space-mono-bold-italic {
-  font-family: "Space Mono", monospace;
+  font-family: "SpaceMono", monospace;
   font-weight: 700;
   font-style: italic;
 }
 
 @font-face {
-  font-family: 'SrabenGrotesk';
-  src: url('css/fonts/SrabenGrotesk-Black.otf') format('otf');
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('css/fonts/SrabenGrotesk-Black.otf') format('opentype');
+  src: url('css/fonts/SrabenGrotesk-Black.ttf') format('truetype');
   font-weight: 800;
 }
 
 @font-face {
-  font-family: 'SrabenGrotesk';
-  src: url('css/fonts/LayGrotesk-ExtraBold.otf') format('otf');
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('css/fonts/SrabenGrotesk-ExtraBold.otf') format('opentype');
+  src: url('css/fonts/SrabenGrotesk-ExtraBold.ttf') format('truetype');
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'SrabenGrotesk';
-  src: url('css/fonts/LayGrotesk-Bold.otf') format('otf');
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('css/fonts/SrabenGrotesk-Bold.otf') format('opentype');
+  src: url('css/fonts/SrabenGrotesk-Bold.ttf') format('truetype');
   font-weight: 600;
 }
 
 @font-face {
-  font-family: 'SrabenGrotesk';
-  src: url('css/fonts/LayGrotesk-SemiBold.otf') format('otf');
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('css/fonts/SrabenGrotesk-Semibold.otf') format('opentype');
+  src: url('css/fonts/SrabenGrotesk-SemiBold.ttf') format('truetype');
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'SrabenGrotesk';
-  src: url('css/fonts/LayGrotesk-Medium.otf') format('otf');
+  font-family: 'SrabenGrotesk', sans-serif;
+  src: url('css/fonts/SrabenGrotesk-Medium.otf') format('opentype');
+  src: url('css/fonts/SrabenGrotesk-Medium.ttf') format('truetype');
   font-weight: 400;
+}
+
+
+@font-face {
+  font-family: 'LayGrotesk', sans-serif;
+  src: url('css/fonts/LayGrotesk-Trial-Black.otf') format('otf');
+  font-weight: 800;
 }
