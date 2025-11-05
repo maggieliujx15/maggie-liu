@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<style>
+  body {
+    margin: 0;
+    font-family: sans-serif;
+  }
+
+  /* sections just to show light/dark/text behind */
+  section {
+    height: 100vh;
+    font-size: 64px;
+
+  }
+  .dark {
+    background: black;
+    color: #fffdf4;
+  }
+  .light {
+    background: #fffdf4;
+    color: black;
+  }
+
+  /* fixed nav that inverts automatically */
+  .contact-nav {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-family: monospace;
+    font-size: 14px;
+    mix-blend-mode: difference;
+    z-index: 999;
+  }
+
+  .contact-nav a {
+    color: #fffdf4; /* start with white so it can invert */
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .contact-nav a:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+
+<body>
+  <nav class="contact-nav">
+    <a href="#">WORK</a>
+    <a href="#">ABOUT</a>
+    <a href="https://linkedin.com" target="_blank">LINKEDIN</a>
+    <a href="mailto:test@example.com">EMAIL</a>
+  </nav>
+
+  <section class="light">
+    <p>Light background<br>text behind the nav</p>
+  </section>
+
+  <section class="light">
+    <p>Back to light<br>text behind the nav</p>
+  </section>
+
+  <section class="light">
+    <p>Back to light<br>text behind the nav</p>
+  </section>
+
+  <section class="light">
+    <p>Back to light<br>text behind the nav</p>
+  </section>
+</body>
+</html>

@@ -216,3 +216,32 @@ if (!window.__customCursorInitialized) {
   });
 })();
 </script>
+
+<script>
+  window.addEventListener('scroll', function() {
+  var contactNav = document.querySelector('.contact-nav');
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Check if the contact navigation bar is visible within the viewport
+  var contactNavTop = contactNav.getBoundingClientRect().top;
+  var contactNavBottom = contactNav.getBoundingClientRect().bottom;
+  var viewportTop = window.innerHeight - 50; // Adjust the value as needed
+  var viewportBottom = window.innerHeight;
+
+  if (scrollTop > contactNavTop && scrollTop < contactNavBottom && scrollTop > 0) {
+    contactNav.classList.add('scrolling');
+  } else {
+    contactNav.classList.remove('scrolling');
+  }
+
+  // Add or remove the 'scrolling' class to the contact navigation links
+  var contactNavLinks = contactNav.querySelectorAll('.contact-nav a');
+  contactNavLinks.forEach(function(link) {
+    if (contactNav.classList.contains('scrolling')) {
+      link.classList.add('scrolling');
+    } else {
+      link.classList.remove('scrolling');
+    }
+  });
+});
+</script>

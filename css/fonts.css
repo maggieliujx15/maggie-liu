@@ -1,26 +1,29 @@
-.space-mono-regular {
-  font-family: "SpaceMono", monospace;
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-Regular.ttf') format('truetype');
   font-weight: 400;
-  font-style: normal;
 }
 
-.space-mono-bold {
-  font-family: "SpaceMono", monospace;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.space-mono-regular-italic {
-  font-family: "SpaceMono", monospace;
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-Italic.ttf') format('truetype');
   font-weight: 400;
   font-style: italic;
 }
 
-.space-mono-bold-italic {
-  font-family: "SpaceMono", monospace;
-  font-weight: 700;
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-BoldItalic.ttf') format('truetype');
+  font-weight: 600;
   font-style: italic;
 }
+
 
 @font-face {
   font-family: 'SrabenGrotesk';

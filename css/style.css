@@ -158,6 +158,7 @@ html, body {
   z-index: 2000;
   background-image: url(./img/vector-36.svg);
   background-size: 100% 100%;
+
 }
 
 .gallery-image-hover {
@@ -479,10 +480,7 @@ html, body {
 .contact-nav {
   font-family: "SpaceMono", monospace;
   font-weight: 400;
-  color: #000000;
   font-size: 12px;
-  letter-spacing: 0;
-  line-height: 1;
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -490,23 +488,25 @@ html, body {
   left: 16px;
   z-index: 1000;
   gap: 8px;
+  mix-blend-mode: difference;
 }
+
+
 
 body.about-page .contact-nav a {
   color: #ffffff;
 }
 
 .contact-nav a {
-  color: #000000;
+  color: black;
 }
 
 .contact-nav a:visited,
 .contact-nav a:link,
 .contact-nav a:active {
-  color: #000000;
   white-space: nowrap;
   text-decoration: none;
-  transition: color 0.2s ease;
+  mix-blend-mode: difference;
 }
 
 .contact-nav a:hover,
@@ -1110,7 +1110,7 @@ body.about-page .contact-nav a {
   overflow-y: auto !important;
   -ms-overflow-style: none; /* IE 10+ */
   scrollbar-width: none;    /* Firefox */
-  padding-bottom: 80px !important;
+  padding-bottom: 120px !important;
 }
 
 /* push content below header/logo and keep writeup + visuals aligned at the same top */
@@ -1146,11 +1146,11 @@ body.project-page .visuals-section {
 }
 
 /* ensure visuals fill its 7/12 column and do not escape it */
-body.project-page .grid-row > .grid-col-8of12,
+body.project-page .grid-row > .grid-col-7of12,
 body.project-page .visuals-section {
-  flex: 0 0 calc(100% * 8 / 12) !important;
-  width: calc(100% * 8 / 12) !important;
-  max-width: calc(100% * 8 / 12) !important;
+  flex: 0 0 calc(100% * 7 / 12) !important;
+  width: calc(100% * 7 / 12) !important;
+  max-width: calc(100% * 7 / 12) !important;
   position: relative !important;
   overflow: hidden !important;
 }
@@ -1235,23 +1235,23 @@ body.project-page .grid-col-12of12 img {
 
 /* Typography for writeup */
 .project-title {
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .writeup-section p {
-  font-size: 14px;
+  font-family: 'SrabenGrotesk';
+  font-size: 16px;
 }
 
 .project-specs {
-  font-size: 12px;
+  font-family: 'SrabenGrotesk';
+  font-size: 14px;
   color: #555555;
-
 }
 
 .writeup-section h2{
-  font-size: 14px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 /* visuals stack: two (or more) images stacked vertically with 24px gap */
@@ -1308,7 +1308,7 @@ body.project-page .visuals-section {
 /* centered page-spanning H2 for project pages */
 body.project-page h2.centered,
 body.project-page h2.section-title.centered {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   display: block;
   grid-column: 1 / -1;        /* span the full grid row */
@@ -1487,7 +1487,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 }
 
 .site-footer {
-  font-family: 'SpaceMono', monospace;
+  font-family: 'SpaceMono';
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1553,8 +1553,28 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   font-family: 'SrabenGrotesk', sans-serif;
   font-weight: 800;
   font-size: 190px;
-  text-align: center;
-  
+  margin-left: -20px;
+  margin-right: -6px;
+}
+
+.footer-eyebrow {
+  font-family: "SpaceMono";
+  font-size: 16px;
+  font-weight: 600;
+  color: #0C4C1F;
+}
+
+.contact-me-left {
+  text-align: right;
+  padding: -16px;
+}
+
+.contact-me-right {
+  text-align: left;
+}
+
+.contact-me-right .footer-eyebrow {
+  margin-left: -7px;
 }
 
 .email-container {
@@ -1569,7 +1589,6 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   transition: transform 0.3s ease-in-out;
   overflow: hidden;
 }
-
 
 .email-content {
   font-family: 'SpaceMono', monospace;
