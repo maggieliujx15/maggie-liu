@@ -1634,6 +1634,20 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   opacity: 1;
 }
 
+.marina-prototype {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Adjust this value based on the aspect ratio of your content */
+}
+
+.marina-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 
 
 
