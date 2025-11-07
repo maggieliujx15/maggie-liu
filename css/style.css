@@ -322,7 +322,7 @@ html, body {
   width: 100%;
 }
 
-/* Gallery section uses flex and fills its grid-col-8of12 container */
+/* Gallery section uses flex and fills its grid-col-4of12 container */
 .gallery-section.grid-col-4of12 {
   display: flex;
   flex-direction: row;
@@ -1135,7 +1135,7 @@ body.project-page .grid-row > .grid-col-8of12 {
   padding-top: 0 !important;
 }
 
-/* ensure visuals fill its 7/12 column and do not escape it */
+/* ensure visuals fill its 4/12 column and do not escape it */
 body.project-page .grid-row > .grid-col-4of12,
 body.project-page .visuals-section {
   flex: 0 0 calc(100% * 4 / 12) !important;
@@ -1155,6 +1155,16 @@ body.project-page .visuals-section {
   overflow: hidden !important;
 }
 
+/* ensure visuals fill its 8/12 column and do not escape it */
+body.project-page .grid-row > .grid-col-8of12,
+body.project-page .visuals-section {
+  flex: 0 0 calc(100% * 8 / 12) !important;
+  width: calc(100% * 8 / 12) !important;
+  max-width: calc(100% * 8 / 12) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
 /* ensure visuals fill its 9/12 column and do not escape it */
 body.project-page .grid-row > .grid-col-9of12,
 body.project-page .visuals-section {
@@ -1164,11 +1174,6 @@ body.project-page .visuals-section {
   position: relative !important;
   overflow: hidden !important;
 }
-
-
-
-
-
 
 /* ensure writeup column uses 5/12 */
 body.project-page .writeup-section,
@@ -1194,11 +1199,6 @@ body.project-page .grid-row > .grid-col-4of12 {
   max-width: calc(100% * 4 / 12) !important;
 }
 
-
-
-
-
-
 /* visuals images scale to the column width */
 body.project-page .visuals-section img,
 body.project-page .grid-col-8of12 img,
@@ -1219,6 +1219,7 @@ body.project-page .grid-col-12of12 {
   max-width: none !important;
   position: relative !important;
   overflow: hidden !important;
+  translate: ;
 }
 
 body.project-page .grid-col-12of12 img {
@@ -1255,29 +1256,13 @@ body.project-page .grid-col-12of12 img {
 }
 
 /* visuals stack: two (or more) images stacked vertically with 24px gap */
-body.project-page .visual-stack {
+body.project-page .visual-stack .project-image img {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   width: 100%;
-  box-sizing: border-box;
-}
-
-body.project-page .visual-stack .project-image img {
-  display: block;
-  width: 100% !important;
+  box-sizing: border-box !important;
   height: auto !important;
-  object-fit: cover;
-}
-
-
-
-/* Full-bleed visual: center reliably and fill 12/12 while staying aligned with page gutters */
-body.project-page .grid-row,
-body.project-page .grid-row > .grid-col-8of12,
-body.project-page .visuals-section {
-  overflow: visible !important; /* allow the fullwidth child to escape column */
-  transform: none !important;   /* prevent ancestor transforms from creating a clipping context */
 }
 
 body.project-page .project-image--fullwidth {
@@ -1382,12 +1367,6 @@ body.project-page .full-bleed img {
     box-sizing: border-box !important;
     padding: 0 16px !important; /* respect page gutters */
     margin: 0 auto !important;
-  }
-
-  /* keep stacked visuals spacing and ensure they fill their 4-col area */
-  body.project-page .visual-stack {
-    width: 100% !important;
-    box-sizing: border-box !important;
   }
 
   body.project-page .visual-stack .project-image img,
@@ -1656,11 +1635,13 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   display: block !important;
 }
 
+
+
 .grid-col-4of12 img, video {
   width: 100% !important;
   height: auto !important;
-  
 }
+
 
 
 
