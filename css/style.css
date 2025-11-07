@@ -1650,5 +1650,20 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 }
 
 
+.project-video video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-4of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  
+}
+
+
+
+
 
 
