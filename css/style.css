@@ -306,11 +306,19 @@ html, body {
   flex: 0 0 auto;
 }
 
-.grid-row {
+.d-landing .div .grid-row {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 24px;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .gallery-section .grid-row {
@@ -1266,7 +1274,7 @@ body.project-page .visual-stack .project-image img {
 }
 
 body.project-page .project-image--fullwidth {
- width: 100% !important;
+  width: 100% !important;
   max-width: none !important;
   height: auto !important;
 }
@@ -1629,22 +1637,12 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 }
 
 
-.project-video video {
-  width: 100% !important;
-  height: auto !important;
-  display: block !important;
-}
 
 
 
 .grid-col-4of12 img, video {
   width: 100% !important;
   height: auto !important;
+  display: block !important;
 }
-
-
-
-
-
-
 
