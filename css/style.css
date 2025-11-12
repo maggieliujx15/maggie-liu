@@ -1703,3 +1703,24 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   display: block !important;
 }
 
+.play-icon {
+  font-family: 'ScrabenGrotesk';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .project-video .play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

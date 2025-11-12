@@ -39,6 +39,8 @@
         <section class="visuals-section grid-col-7of12">
             <div class="project-video">
                 <video id="project-video" src="vd/photography/mirror.mp4" loop>
+                <div class="play-icon">TESTING</div>
+                <div class="stop-icon">❚❚</div>
             </div>
         </section>
     </div>
@@ -50,7 +52,9 @@
         <div class="grid-col-4of12">
             <div class="project-video">
                 <video id="project-video" src="vd/photography/dolo_2.mp4" loop>
-            </div>
+                    <div class="play-icon">▶</div>
+                    <div class="stop-icon">❚❚</div>
+                </div>
         </div>
         <div class="grid-col-4of12">
             <img src="img/photography/dolo_3.png">
@@ -240,7 +244,34 @@
         });
     </script>
 
+    <script>
+        const videos = document.querySelectorAll('video');
 
+        if (window.innerWidth <= 1023) {
+        videos.forEach(video => {
+            const btn = document.createElement('button');
+            btn.classList.add('play-icon');
+            btn.textContent = '▶';
+            // wrap video in a container if not already
+            const wrapper = document.createElement('div');
+            wrapper.style.position = 'relative';
+            video.parentNode.insertBefore(wrapper, video);
+            wrapper.appendChild(video);
+            wrapper.appendChild(btn);
+
+            // toggle play/pause
+            btn.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+                btn.textContent = '⏸';
+            } else {
+                video.pause();
+                btn.textContent = '▶';
+            }
+            });
+        });
+        }
+    </script>
 
 
 </body>
