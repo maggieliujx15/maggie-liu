@@ -1522,6 +1522,9 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 
 
 
+
+
+
 .contact-me-section {
   font-family: 'SrabenGrotesk', sans-serif;
   position: relative;
@@ -1543,7 +1546,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 .contact-me-title {
   font-family: 'SrabenGrotesk', sans-serif;
   font-weight: 800;
-  font-size: 190px;
+  font-size: calc(100vw / 7); /* Calculate the font size based on the screen width */
   margin-left: -20px;
   margin-right: -6px;
 }
@@ -1556,12 +1559,11 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 }
 
 .contact-me-left {
-  text-align: right;
-  padding: -16px;
+  text-align: left;
 }
 
 .contact-me-right {
-  text-align: left;
+  text-align: right;
 }
 
 .contact-me-right .footer-eyebrow {
@@ -1579,6 +1581,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   z-index: 1;
   transition: transform 0.3s ease-in-out;
   overflow: hidden;
+  margin-top: 8px;
 }
 
 .email-content {
@@ -1624,6 +1627,50 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 .email-container:hover .email-copy {
   opacity: 1;
 }
+
+
+@media (max-width: 1023px) {
+  .site-footer {
+    margin-top: 120px;
+    margin-bottom: 80px;
+    font-size: 24px;
+  }
+
+  .next-project-content img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .next-project-content {
+    gap: 8px;
+  }
+
+  .contact-me-title {
+    
+    margin-left: -4px;
+    margin-right: -1px;
+  }
+
+  .footer-eyebrow {
+    font-size: 12px;
+  }
+
+  .email-container {
+    padding: 8px;
+  }
+
+  .email-content {
+    font-size: 12px;
+  }
+
+  .contact-me-right.footer-eyebrow {
+    text-align: left;
+    margin-left: 24px !important;
+  }
+}
+
+
+
 
 .marina-prototype {
   position: relative;
