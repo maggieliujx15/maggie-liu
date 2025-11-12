@@ -1119,17 +1119,19 @@ body.about-page .contact-nav a {
   -ms-overflow-style: none; /* IE 10+ */
   scrollbar-width: none;    /* Firefox */
   padding-bottom: 120px !important;
+  gap: 24px ;
+  padding-top: 24px !important;
 }
 
 /* push content below header/logo and keep writeup + visuals aligned at the same top */
-body.project-page .grid-row {
+.project-page .grid-row {
   font-family: 'SpaceMono', monospace;
   display: flex !important;
   flex-wrap: nowrap !important;
   align-items: flex-start !important;   /* align tops */
   gap: 24px !important;
-  padding-top: 80px !important;
   box-sizing: border-box !important;
+  padding-top: 24px !important;
 }
 
 /* remove any per-column top offsets so both columns start at same baseline */
@@ -1246,6 +1248,7 @@ body.project-page .grid-col-12of12 img {
 .project-title {
   font-size: 18px;
   font-weight: 600;
+  padding-top: 80px !important;
 }
 
 .writeup-section p {
@@ -1355,6 +1358,7 @@ body.project-page .full-bleed img {
 
   /* visuals: also span 4 of 6 (stacked after writeup) */
   html body.project-page .grid-row > .visuals-section,
+  html body.project-page .grid-row > .grid-col-4of12,
   html body.project-page .grid-row > .grid-col-8of12,
   html body.project-page .grid-row > .grid-col-9of12 {
     grid-column: 1 / -1 !important;
