@@ -1212,8 +1212,7 @@ body.project-page .grid-row > .grid-col-4of12 {
 /* visuals images scale to the column width */
 body.project-page .visuals-section img,
 body.project-page .grid-col-8of12 img,
-body.project-page .grid-col-9of12 img,
-body.project-page .grid-col-12of12 img {
+body.project-page .grid-col-9of12 img {
   display: block !important;
   width: 100% !important;
   max-width: calc(100% - 24px);
@@ -1248,7 +1247,6 @@ body.project-page .grid-col-12of12 img {
 .project-title {
   font-size: 18px;
   font-weight: 600;
-  padding-top: 80px !important;
 }
 
 .writeup-section p {
@@ -1266,14 +1264,17 @@ body.project-page .grid-col-12of12 img {
   font-weight: 600;
 }
 
-/* visuals stack: two (or more) images stacked vertically with 24px gap */
-body.project-page .visual-stack .project-image img {
+/* visuals stack: two (or more) images stacked vertically */
+body.project-page .vertical-stack .project-image img {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   width: 100%;
-  box-sizing: border-box !important;
   height: auto !important;
+}
+
+.vertical-stack > * {
+  padding-bottom: 24px;
 }
 
 body.project-page .project-image--fullwidth {
@@ -1691,7 +1692,31 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 
 
 
+.grid-col-2of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-3of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
 .grid-col-4of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-5of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-6of12 img, video {
   width: 100% !important;
   height: auto !important;
   display: block !important;
