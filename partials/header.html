@@ -245,3 +245,17 @@ if (!window.__customCursorInitialized) {
   });
 });
 </script>
+
+<script>
+  // Get all video elements on the page
+  const videos = document.querySelectorAll('video');
+
+  // Add event listener to each video element
+  videos.forEach(video => {
+    video.addEventListener('loadedmetadata', () => {
+      // Video metadata has been loaded
+      // Start downloading the video data in the background
+      video.play();
+    });
+  });
+</script>
