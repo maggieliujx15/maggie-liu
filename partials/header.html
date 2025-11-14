@@ -247,15 +247,19 @@ if (!window.__customCursorInitialized) {
 </script>
 
 <script>
-  // Get all video elements on the page
-  const videos = document.querySelectorAll('video');
+  function playVideos(videoIndex) {
+    const videos = document.querySelectorAll('video');
 
-  // Add event listener to each video element
-  videos.forEach(video => {
-    video.addEventListener('loadedmetadata', () => {
-      // Video metadata has been loaded
-      // Start downloading the video data in the background
-      video.play();
-    });
-  });
+    if (videoIndex < videos.length) {
+      videos[videoIndex].play();
+
+      // Check if the video has finished playing
+      videos[videoIndex].addEventListener('ended', () => {
+        playVideos(videoIndex + 1);
+      });
+    }
+  }
+
+  // Start playing videos from the first video
+  playVideos(0);
 </script>

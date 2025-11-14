@@ -1391,6 +1391,7 @@ body.project-page .full-bleed img {
     height: auto !important;
     display: block !important;
     object-fit: cover !important;
+    gap: 24px !important;
   }
 
   /* ensure fullwidth visual starts at the left edge of the viewport on small screens */
