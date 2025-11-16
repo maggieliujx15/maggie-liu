@@ -1729,3 +1729,24 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
     justify-content: center;
   }
 }
+
+.outcome-section {
+    margin-top: 80px;
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+ 
+  }
+
+  .outcome-section .title {
+    max-width: 215px;
+    margin-right: 24px;
+  }
+
+  .outcome-section .body {
+    max-width: 453px;
+  }
