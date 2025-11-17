@@ -340,7 +340,7 @@ html, body {
   height: 100%;
 }
 
-.gallery-section .grid-col-1of12 { flex: 1. !important; }
+.gallery-section .grid-col-1of12 { flex: 1 !important; }
 .gallery-section .grid-col-2of12 { flex: 2 !important; }
 .gallery-section .grid-col-3of12 { flex: 3 !important; }
 
