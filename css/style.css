@@ -1363,6 +1363,9 @@ body.project-page .full-bleed img {
   html body.project-page .grid-row > .visuals-section,
   html body.project-page .grid-row > .grid-col-2of12,
   html body.project-page .grid-row > .grid-col-4of12,
+  html body.project-page .grid-row > .grid-col-5of12,
+  html body.project-page .grid-row > .grid-col-6of12,
+  html body.project-page .grid-row > .grid-col-7of12,
   html body.project-page .grid-row > .grid-col-8of12,
   html body.project-page .grid-row > .grid-col-9of12 {
     grid-column: 1 / -1 !important;
@@ -1381,7 +1384,7 @@ body.project-page .full-bleed img {
     max-width: 100% !important;
     flex: 0 0 100% !important;
     box-sizing: border-box !important;
-    padding: 0 16px !important; /* respect page gutters */
+    /*padding: 0 16px !important;  respect page gutters */
     margin: 0 auto !important;
   }
 
@@ -1722,31 +1725,48 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   display: none;
 }
 
+
+
+.outcome-section {
+  margin-top: 80px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  padding: 80px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.outcome-section .wrapper {
+  gap: 24px;
+  max-width: 454px;
+}
+
+.outcome-section .title {
+  font-family: spaceMono;
+  font-weight: 600;
+  line-height: 1.3;
+  padding-bottom: 24px;
+}
+
+.outcome-section .body {
+  font-family: SrabenGrotesk;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
 @media (max-width: 1023px) {
   .project-video .play-icon {
     display: flex;
     align-items: center;
     justify-content: center;
   }
+
+  .outcome-section {
+    margin-top: 40px;
+    padding: 40px 16px;
+  }
 }
-
-.outcome-section {
-    margin-top: 80px;
-    width: 100%;
-    background-color: black;
-    color: white;
-    padding-top: 80px;
-    padding-bottom: 80px;
-    display: flex;
-    justify-content: center;
- 
-  }
-
-  .outcome-section .title {
-    max-width: 215px;
-    margin-right: 24px;
-  }
-
-  .outcome-section .body {
-    max-width: 453px;
-  }
