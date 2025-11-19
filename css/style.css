@@ -1109,6 +1109,10 @@ body.about-page .contact-nav a {
   }
 }
 
+.writeup-section a {
+  text-decoration: underline; /* Add underline to the link */
+  color: inherit; /* Inherit the text color from the parent element */
+}
 
 /* Prevent the page container from centering vertically and place the writeup 48px below the header */
 .project-page {
@@ -1415,11 +1419,11 @@ ol.numbered-list li {
 
   /* ensure fullwidth visual starts at the left edge of the viewport on small screens */
   body.project-page .project-image--fullwidth.grid-col-12of12 {
-    grid-column: 1 / -1 !important;                /* span full grid row */
+    grid-column: 1 / -1 !important;    /* span full grid row */
     position: relative !important;
     left: 0 !important;
     transform: none !important;
-    width: 100% !important;                       /* full viewport width */
+    width: 100% !important;            /* full viewport width */
     max-width: 100% !important;
     /* shift to viewport left when page has horizontal gutters/scrollbar */
     margin-left: 0 !important;
@@ -1718,6 +1722,12 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   border: none;
 }
 
+.project-page .wrapper iframe {
+  width: 100% !important;
+  max-width: calc(100% - 24px);
+  height: auto !important;
+}
+
 
 
 
@@ -1792,6 +1802,12 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
     margin-top: 40px;
     padding: 40px 16px;
   }
+
+  .project-page .wrapper iframe {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+}
 }
 
 html[data-theme="photography"] .project-page {
