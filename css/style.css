@@ -1364,6 +1364,7 @@ ol.numbered-list li {
     grid-template-columns: repeat(6, 1fr) !important;
     padding-top: 8px !important;
     gap: 8px !important;
+    width: 100% !important;
   }
 
   /* writeup: start at first column and span 4 of 6 */
@@ -1737,6 +1738,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 .project-page .grid-col-4of12 img, video,
 .project-page .grid-col-5of12 img, video,
 .project-page .grid-col-6of12 img, video,
+.project-page .grid-col-7of12 img, video,
 .project-page .grid-col-12of12 img, video {
   width: 100% !important;
   height: auto !important;
