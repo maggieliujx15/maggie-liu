@@ -1198,6 +1198,14 @@ body.project-page .grid-row > .grid-col-5of12 {
   max-width: calc(100% * 5 / 12) !important;
 }
 
+/* ensure writeup column uses 2/12 */
+body.project-page .writeup-section,
+body.project-page .grid-row > .grid-col-3of12 {
+  flex: 0 0 calc(100% * 2 / 12) !important;
+  width: calc(100% * 2 / 12) !important;
+  max-width: calc(100% * 2 / 12) !important;
+}
+
 /* ensure writeup column uses 3/12 */
 body.project-page .writeup-section,
 body.project-page .grid-row > .grid-col-3of12 {
@@ -1381,6 +1389,7 @@ ol.numbered-list li {
 
   /* visuals: also span 4 of 6 (stacked after writeup) */
   html body.project-page .grid-row > .visuals-section,
+  html body.project-page .grid-row > .grid-col-1of12,
   html body.project-page .grid-row > .grid-col-2of12,
   html body.project-page .grid-row > .grid-col-3of12,
   html body.project-page .grid-row > .grid-col-4of12,
@@ -1388,7 +1397,9 @@ ol.numbered-list li {
   html body.project-page .grid-row > .grid-col-6of12,
   html body.project-page .grid-row > .grid-col-7of12,
   html body.project-page .grid-row > .grid-col-8of12,
-  html body.project-page .grid-row > .grid-col-9of12 {
+  html body.project-page .grid-row > .grid-col-9of12,
+  html body.project-page .grid-row > .grid-col-10of12,
+  html body.project-page .grid-row > .grid-col-11of12 {
     grid-column: 1 / -1 !important;
     position: relative !important;
     padding: 0 !important;
@@ -1732,13 +1743,15 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
 
 
 
-
+.project-page .grid-col-1of12 img, video,
 .project-page .grid-col-2of12 img, video,
 .project-page .grid-col-3of12 img, video,
 .project-page .grid-col-4of12 img, video,
 .project-page .grid-col-5of12 img, video,
 .project-page .grid-col-6of12 img, video,
 .project-page .grid-col-7of12 img, video,
+.project-page .grid-col-10of12 img, video,
+.project-page .grid-col-11of12 img, video,
 .project-page .grid-col-12of12 img, video {
   width: 100% !important;
   height: auto !important;
@@ -1801,7 +1814,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   }
 
   .outcome-section {
-    margin-top: 40px;
+    margin-top: 40px;wh
     padding: 40px 16px;
   }
 
@@ -1809,7 +1822,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   width: 100% !important;
   max-width: 100%;
   height: auto !important;
-}
+  }
 }
 
 html[data-theme="photography"] .project-page {
