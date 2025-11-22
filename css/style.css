@@ -155,7 +155,7 @@ html, body {
   left: 16px;
   width: 40px;
   height: 32px;
-  z-index: 2000;
+  z-index: 10000;
   background-image: url(./img/vector-36.svg);
   background-size: 100% 100%;
 
@@ -319,6 +319,7 @@ html, body {
   gap: 24px;
   box-sizing: border-box;
   width: 100%;
+  z-index: 1;
 }
 
 .gallery-section .grid-row {
@@ -462,7 +463,7 @@ html, body {
   position: absolute;
   top: 24px;
   right: 16px;
-  z-index: 10;
+  z-index: 99999;
 }
 
 .portfolio-section {
@@ -494,12 +495,11 @@ html, body {
   flex-direction: column;
   bottom: 16px;
   left: 16px;
-  z-index: 1000;
+  z-index: 10000;
   gap: 8px;
+  background: none;
   mix-blend-mode: difference;
 }
-
-
 
 body.about-page .contact-nav a {
   color: #ffffff;
@@ -527,6 +527,16 @@ body.about-page .contact-nav a {
   outline: 2px solid #4a90e2;
   outline-offset: 2px;
 }
+
+.bug-report {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 16px;
+  right: 16px;
+}
+
+
 
 /* Ensure all interactive elements have proper focus states */
 .frame-3:focus-within,
@@ -650,7 +660,7 @@ body.about-page .contact-nav a {
   display: flex;
   gap: 8px;
   pointer-events: auto; /* make buttons clickable */
-  z-index: 10001;
+  z-index: 10000;
 }
 
 /* 40x40 white button with centered arrow (arrow image kept as-is, inverted to black) */
@@ -727,7 +737,7 @@ body.about-page .contact-nav a {
 #site-header,
 .about-paragraph {
   position: relative; /* create stacking context */
-  z-index: 2;
+  z-index: 1000;
 }
 
 
