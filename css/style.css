@@ -495,11 +495,10 @@ html, body {
   flex-direction: column;
   bottom: 16px;
   left: 16px;
-  z-index: 10000;
   gap: 8px;
   background: none;
-  mix-blend-mode: difference;
 }
+
 
 body.about-page .contact-nav a {
   color: #ffffff;
@@ -508,13 +507,14 @@ body.about-page .contact-nav a {
 .contact-nav a {
   color: black;
 }
+  
 
 .contact-nav a:visited,
 .contact-nav a:link,
 .contact-nav a:active {
   white-space: nowrap;
   text-decoration: none;
-  mix-blend-mode: difference;
+
 }
 
 .contact-nav a:hover,
@@ -534,6 +534,21 @@ body.about-page .contact-nav a {
   flex-direction: column;
   bottom: 16px;
   right: 16px;
+}
+
+/* DESKTOP — 1024px and above */
+@media (min-width: 1023px) {
+  .contact-nav,
+  .contact-nav a {
+    mix-blend-mode: difference !important;
+    background: none !important;
+
+  }
+
+  /* remove any forced colors that break blending */
+  body.about-page .contact-nav a {
+    color: white !important;
+  }
 }
 
 
@@ -620,6 +635,7 @@ body.about-page .contact-nav a {
   box-sizing: border-box !important;
   margin: 16px;
   line-height: 1.4;
+  z-index: 10 !important;
 }
 
 /* Make about-carousel controls available on all breakpoints (not only desktop) */
@@ -627,7 +643,6 @@ body.about-page .contact-nav a {
   position: fixed;
   inset: 0;
   pointer-events: none; /* slides visually behind content */
-  z-index: 0;
 }
 
 .about-carousel .about-slides {
@@ -654,13 +669,15 @@ body.about-page .contact-nav a {
 
 /* Controls are interactive at all sizes */
 .about-carousel .controls {
-  position: fixed;
-  right: 24px;
-  bottom: 24px;
+  position: absolute;
+  bottom: 16px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: 8px;
   pointer-events: auto; /* make buttons clickable */
-  z-index: 10000;
+  z-index: 500;
 }
 
 /* 40x40 white button with centered arrow (arrow image kept as-is, inverted to black) */
@@ -674,6 +691,7 @@ body.about-page .contact-nav a {
   justify-content: center !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+  z-index: 500;
 }
 
 .about-carousel .carousel-btn img {
@@ -710,26 +728,6 @@ body.about-page .contact-nav a {
 }
 
 
-
-
-/* ensure the about carousel stays visually behind page content and prevent flashing/overlap */
-.about-carousel {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0; /* background layer */
-}
-
-/* slides at same background level */
-.about-carousel .slide {
-  z-index: 0;
-}
-
-/* controls remain interactive above everything */
-.about-carousel .controls {
-  z-index: 10001;  /* keep buttons clickable and on top */
-  pointer-events: auto;
-}
 
 /* ensure main content (header, landing wrapper, about paragraph) sits above carousel */
 .d-landing,
@@ -930,7 +928,7 @@ body.about-page .contact-nav a {
     align-items: flex-start !important; /* <-- prevents children stretching to full width */
     background: none !important;
     box-shadow: none !important;
-    z-index: 3999;
+    z-index: 9999;
   }
 
   /* hidden state for animation (initial) */
@@ -944,6 +942,13 @@ body.about-page .contact-nav a {
   /* ensure popup wrapper doesn't add extra spacing below the last link */
   .contact-nav.contact-open > a:last-child {
     margin-bottom: 0;
+  }
+
+  .bug-report {
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: block !important;
   }
 
   .gallery-section {
@@ -961,6 +966,7 @@ body.about-page .contact-nav a {
     margin: 0 16px !important;
     max-width: calc(100% - 32px) !important;
   }
+
 
   /* portfolio must clear the fixed gallery — use CSS var set by JS (fallback 0) */
   .portfolio-section {
@@ -1007,6 +1013,7 @@ body.about-page .contact-nav a {
   .about-carousel .controls {
     right: 16px;
     bottom: 16px;
+    width: auto;
   }
   
   /* ensure contact nav is white on the About page */
