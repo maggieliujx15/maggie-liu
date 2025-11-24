@@ -495,7 +495,7 @@ html, body {
   flex-direction: column;
   bottom: 16px;
   left: 16px;
-  gap: 8px;
+  gap: 12px;
   background: none;
 }
 
@@ -508,13 +508,21 @@ body.about-page .contact-nav a {
   color: black;
 }
   
+.contact-nav img {
+  filter: invert(1) !important; /* make white source appear black */
+  -webkit-filter: invert(1) !important;
+}
+
+.about-page .contact-nav img {
+  filter: invert(0) !important; /* make source default white */
+  -webkit-filter: invert(0) !important;
+}
 
 .contact-nav a:visited,
 .contact-nav a:link,
 .contact-nav a:active {
   white-space: nowrap;
   text-decoration: none;
-
 }
 
 .contact-nav a:hover,
@@ -531,10 +539,13 @@ body.about-page .contact-nav a {
 .bug-report {
   position: fixed;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   bottom: 16px;
   right: 16px;
+  align-items: end;
 }
+
+
 
 /* DESKTOP — 1024px and above */
 @media (min-width: 1023px) {
@@ -542,7 +553,6 @@ body.about-page .contact-nav a {
   .contact-nav a {
     mix-blend-mode: difference !important;
     background: none !important;
-
   }
 
   /* remove any forced colors that break blending */
@@ -655,7 +665,7 @@ body.about-page .contact-nav a {
 .about-carousel .about-slides {
   position: absolute;
   inset: 0;
-  background: rgba(0, 20, 10, 0.7); /* green overlay */
+  background: rgba(0, 16, 8, 0.7); /* green overlay */
 }
 
 .about-carousel .slide {
@@ -952,6 +962,16 @@ body.about-page .contact-nav a {
   .contact-nav.contact-open > a:last-child {
     margin-bottom: 0;
   }
+
+  .contact-nav img {
+    filter: invert(0) !important; /* make white source appear black */
+    -webkit-filter: invert(0) !important;
+  }
+
+  .about-page .contact-nav img {
+  filter: invert(1) !important; /* make white source appear black */
+  -webkit-filter: invert(1) !important;
+}
 
   .bug-report {
     position: static !important;
@@ -1840,7 +1860,7 @@ body.project-page .grid-col-9of12 .visual-grid > .project-image {
   }
 
   .outcome-section {
-    margin-top: 40px;wh
+    margin-top: 40px;
     padding: 40px 16px;
   }
 
