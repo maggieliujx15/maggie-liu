@@ -625,17 +625,24 @@ body.about-page .contact-nav a {
 
 .about-paragraph {
   position: fixed !important;
+  font-family: srabenGrotesk;
+  font-size: 16px;
+  line-height: 1.4;
   top: calc(16px + 32px + 40px) !important; /* 40px below logo */
   width: calc(100% * 4 / 12 - 48px);
   max-width: 500px;
-  background: #000 !important;
+  /*background: #000 !important;*/
   color: #fff !important;
   font-size: 14px !important;
-  padding: 24px !important;
+  padding: 16px !important;
   box-sizing: border-box !important;
   margin: 16px;
-  line-height: 1.4;
   z-index: 10 !important;
+}
+
+.about-paragraph a {
+  text-decoration: underline;
+  color: #fff !important;
 }
 
 /* Make about-carousel controls available on all breakpoints (not only desktop) */
@@ -648,6 +655,7 @@ body.about-page .contact-nav a {
 .about-carousel .about-slides {
   position: absolute;
   inset: 0;
+  background: rgba(0, 20, 10, 0.7); /* green overlay */
 }
 
 .about-carousel .slide {
@@ -661,6 +669,7 @@ body.about-page .contact-nav a {
   pointer-events: none;
   will-change: opacity;
   z-index: -1;
+  
 }
 
 .about-carousel .slide.active {
