@@ -653,6 +653,7 @@ body.about-page .contact-nav a {
 .about-paragraph a {
   text-decoration: underline;
   color: #fff !important;
+  cursor: pointer;
 }
 
 /* Make about-carousel controls available on all breakpoints (not only desktop) */

@@ -33,14 +33,14 @@
 
     <div id="site-header"></div>
  
-      <div class="about-paragraph">
+      <div class="about-paragraph" id="about-paragraph" draggable="true">
         <p>
-          I love turning ideas into things you can see, touch, and experience — whether digital or physical. Guided by curiosity, I'm always exploring, questioning, and seeking fresh perspectives. Inspiration comes from everywhere: bustling cities, quiet mountain villages, and even chance conversations. Let's chat!
+          Hey, I'm Maggie! A Product Designer based in Amsterdam. I love turning ideas into things you can see, touch, and experience — whether digital or physical. Guided by curiosity, I'm always exploring, questioning, and seeking fresh perspectives. Inspiration comes from everywhere: bustling cities, quiet mountain villages, and even chance conversations. <a href="mailto:maggieliujx@gmail.com">Let's chat!</a>
         </p>
         <br>
         <h2 style="font-family: spaceMono; font-weight: 600;">EXPERIENCES</h2>
         <p>
-          <span><a href="https://www.akqa.com/">AKQA</a> - Product Designer 2022-2025</span>
+          <a href="https://www.akqa.com/">AKQA</a> - Product Designer 2022-2025
           <br>
           <span><a href="https://trengo.com/">Trengo</a> - Product Designer 2021</span>
           <br>
@@ -77,6 +77,28 @@
   <script src="js/about-carousel.js" defer></script>
   <script src="js/load-partials.js" defer></script>
   <script src="js/about-paragraph-drag.js" defer></script>
+
+  <script>
+  const aboutParagraph = document.getElementById('about-paragraph');
+
+  aboutParagraph.addEventListener('dragstart', function(event) {
+    // Your existing dragstart event handling code
+  });
+
+  aboutParagraph.addEventListener('click', function(event) {
+    if (event.target.tagName === 'A') {
+      event.preventDefault();
+      // Open the link in a new tab
+      if (event.target.getAttribute('href').startsWith('mailto:')) {
+        window.location.href = event.target.getAttribute('href');
+      } else {
+        window.open(event.target.href, '_blank');
+      }
+    }
+  });
+</script>
+
+
 
 </body>
 
