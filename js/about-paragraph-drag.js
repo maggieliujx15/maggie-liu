@@ -41,9 +41,7 @@ if (!window.__aboutParagraphDragInitialized) {
         }
       } catch (err) {}
     }
-
-    restorePositionFromStorage();
-
+    
     document.addEventListener('DOMContentLoaded', () => {
       const e = getEl();
       if (!e) return;
@@ -130,4 +128,6 @@ if (!window.__aboutParagraphDragInitialized) {
     }, true);
 
   })();
+
+  
 }
