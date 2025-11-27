@@ -132,29 +132,52 @@ if (!window.__aboutParagraphDragInitialized) {
   
 }
 
-const slides = document.querySelectorAll('.about-carousel .slide');
-const captionEl = document.querySelector('.about-carousel .caption');
-let currentIndex = 0;
+//bg image captions
+document.addEventListener('DOMContentLoaded', () => {
+  const carousel = document.querySelector('.about-carousel');
+  if (!carousel) return;
 
-function showSlide(index) {
-  slides.forEach((s, i) => {
-    s.classList.toggle('active', i === index);
+  const slides = carousel.querySelectorAll('.slide');
+  const captionEl = carousel.querySelector('.caption');
+  const prevBtn = carousel.querySelector('#about-prev');
+  const nextBtn = carousel.querySelector('#about-next');
+
+  if (!slides.length || !captionEl || !prevBtn || !nextBtn) return;
+
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    slides.forEach((s, i) => {
+      s.classList.toggle('active', i === index);
+    });
+
+    // Update caption
+    const caption = slides[index].dataset.caption || '';
+    captionEl.textContent = caption;
+
+    // Optional: fade effect
+    captionEl.classList.remove('active');
+    setTimeout(() => captionEl.classList.add('active'), 10);
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  }
+
+  prevBtn.addEventListener('click', prevSlide);
+  nextBtn.addEventListener('click', nextSlide);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    else if (e.key === 'ArrowRight') nextSlide();
   });
 
-  const caption = slides[index].dataset.caption || '';
-  captionEl.textContent = caption;
-  captionEl.classList.add('active');
-}
-
-document.getElementById('about-prev').addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  // Initialize
   showSlide(currentIndex);
 });
-
-document.getElementById('about-next').addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % slides.length;
-  showSlide(currentIndex);
-});
-
-// Initialize
-showSlide(currentIndex);
