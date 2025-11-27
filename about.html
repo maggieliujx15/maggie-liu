@@ -54,15 +54,17 @@
           <span>Adidas / Google / Jacobs Douwe Egberts / Kia / Lexus / Lufthansa / Montblanc / Puma / Somersby / Toyota</span>
       </div>
       
-      <!-- Fullscreen background carousel (desktop only) -->
+      <!-- Fullscreen background carousel -->
       <div class="about-carousel" aria-hidden="false">
         <div class="about-slides">
-          <div class="slide" data-src="media/about/voorlinden.jpeg" style="background-image:url('media/about/voorlinden.jpeg')"></div>
-          <div class="slide" data-src="media/about/dolomiti_1.png" style="background-image:url('media/about/dolomiti_1.png')"></div>
-          <div class="slide" data-src="media/about/marina.png" style="background-image:url('media/about/marina.png')"></div>
-          <div class="slide" data-src="media/about/dolomiti_2.png" style="background-image:url('media/about/dolomiti_2.png')"></div>
-          <div class="slide" data-src="media/about/panorama.png" style="background-image:url('media/about/panorama.png')"></div>
+          <div class="slide" data-src="media/about/voorlinden.jpeg" data-caption="[Richard Serra, Open Ended]" style="background-image:url('media/about/voorlinden.jpeg')"></div>
+          <div class="slide" data-src="media/about/dolomiti_1.png" data-caption="[Berggasthaus Pederü, Dolomiti, Italy]" style="background-image:url('media/about/dolomiti_1.png')"></div>
+          <div class="slide" data-src="media/about/marina.png" data-caption="[Marina Abramović, The Current]" style="background-image:url('media/about/marina.png')"></div>
+          <div class="slide" data-src="media/about/dolomiti_2.png" data-caption="[Forcella del Lago, Dolomiti, Italy]" style="background-image:url('media/about/dolomiti_2.png')"></div>
+          <div class="slide" data-src="media/about/panorama.png" data-caption="[Panorama Ridge, BC, Canada]" style="background-image:url('media/about/panorama.png')"></div>
         </div>
+
+        <div class="caption" aria-hidden="false"></div>
 
         <div class="controls" aria-hidden="false">
           <button id="about-prev" class="carousel-btn" aria-label="Previous background" title="Previous">
@@ -80,24 +82,24 @@
   <script src="js/about-paragraph-drag.js" defer></script>
 
   <script>
-  const aboutParagraph = document.getElementById('about-paragraph');
+    const aboutParagraph = document.getElementById('about-paragraph');
 
-  aboutParagraph.addEventListener('dragstart', function(event) {
-    // Your existing dragstart event handling code
-  });
+    aboutParagraph.addEventListener('dragstart', function(event) {
+      // Your existing dragstart event handling code
+    });
 
-  aboutParagraph.addEventListener('click', function(event) {
-    if (event.target.tagName === 'A') {
-      event.preventDefault();
-      // Open the link in a new tab
-      if (event.target.getAttribute('href').startsWith('mailto:')) {
-        window.location.href = event.target.getAttribute('href');
-      } else {
-        window.open(event.target.href, '_blank');
+    aboutParagraph.addEventListener('click', function(event) {
+      if (event.target.tagName === 'A') {
+        event.preventDefault();
+        // Open the link in a new tab
+        if (event.target.getAttribute('href').startsWith('mailto:')) {
+          window.location.href = event.target.getAttribute('href');
+        } else {
+          window.open(event.target.href, '_blank');
+        }
       }
-    }
-  });
-</script>
+    });
+  </script>
 
 
 

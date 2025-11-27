@@ -68,6 +68,24 @@ body,
   border-radius: 4px;
 }
 
+.about-carousel .caption {
+  position: absolute;
+  bottom: 70px; /* sits just above the controls */
+  width: 100%;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 10px;
+  font-weight: 500;
+  pointer-events: none;
+  z-index: 400;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.about-carousel .caption.active {
+  opacity: 1;
+}
+
 
 /* Align subtitle to start after year in portfolio items */
 .frame-3 .text-wrapper-5 {
@@ -1044,6 +1062,13 @@ body.about-page .contact-nav a {
     bottom: 16px;
     width: auto;
   }
+
+  .about-carousel .caption {
+    right: 16px;
+    text-align: right;
+  }
+
+  
   
   /* ensure contact nav is white on the About page */
   body.about-page .contact-nav,

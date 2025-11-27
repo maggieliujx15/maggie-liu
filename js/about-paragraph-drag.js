@@ -131,3 +131,30 @@ if (!window.__aboutParagraphDragInitialized) {
 
   
 }
+
+const slides = document.querySelectorAll('.about-carousel .slide');
+const captionEl = document.querySelector('.about-carousel .caption');
+let currentIndex = 0;
+
+function showSlide(index) {
+  slides.forEach((s, i) => {
+    s.classList.toggle('active', i === index);
+  });
+
+  const caption = slides[index].dataset.caption || '';
+  captionEl.textContent = caption;
+  captionEl.classList.add('active');
+}
+
+document.getElementById('about-prev').addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  showSlide(currentIndex);
+});
+
+document.getElementById('about-next').addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
+});
+
+// Initialize
+showSlide(currentIndex);
