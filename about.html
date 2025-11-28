@@ -16,155 +16,91 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Maggie Liu - About</title>
-  <link rel="icon" href="img/about/link_icon_white.png" type="image" sizes="16x16">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/grid.css">
-  <link rel="stylesheet" href="css/fonts.css">
-  <link rel="stylesheet" href="css/flexbox.css">
-  <link rel="stylesheet" href="css/media.css">
+  <title>About</title>
+	<link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/styleguide.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/grid.css" />
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono&display=swap" rel="stylesheet">
 
 </head>
 
-<body>
 
-  <div class="nav">
-    <div class="nav-container">
-      <a href="index.html" class="logo">Maggie Liu</a>
-      <div class="nav-right">
-        <a href="index.html#workContainer">Work</a>
-          <a href="about.html">About</a>
-          <a href="funs.html">Funs</a>
-          <a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a>
+<body class="about-page">
+
+  <main class="d-landing">
+
+    <div id="site-header"></div>
+ 
+      <div class="about-paragraph">
+        <p>
+          Hey, I'm Maggie! A Product Designer based in Amsterdam. I love turning ideas into things you can see, touch, and experience — whether digital or physical. Guided by curiosity, I'm always exploring, questioning, and seeking fresh perspectives. Inspiration comes from everywhere: bustling cities, quiet mountain villages, and even chance conversations. <a href="mailto:maggieliujx@gmail.com">Let's chat!</a>
+        </p>
+        <br>
+        <h2 style="font-family: spaceMono; font-weight: 600;">EXPERIENCES</h2>
+        <p>
+          <a href="https://www.akqa.com/">AKQA</a> - Product Designer 2022-2025
+          <br>
+          <span><a href="https://trengo.com/">Trengo</a> - Product Designer 2021</span>
+          <br>
+          <span><a href="https://www.monks.com/">Monks</a> - Freelance UX Designer 2021</span>
+          <br>
+          <span><a href="https://www.monks.com/">Monks</a> - UX Design Intern 2019</span>
+        </p>
+        <br>
+        <h2 style="font-family: spaceMono; font-weight: 600;">CLIENTS</h2>
+        <p>
+          <span>Adidas / Google / Jacobs Douwe Egberts / Kia / Lexus / Lufthansa / Montblanc / Puma / Somersby / Toyota</span>
       </div>
-    </div>
-  </div>
+      
+      <!-- Fullscreen background carousel -->
+      <div class="about-carousel" aria-hidden="false">
+        <div class="about-slides">
+          <div class="slide" data-src="media/about/voorlinden.jpeg" data-caption="[Open Ended, Richard Serra]" style="background-image:url('media/about/voorlinden.jpeg')"></div>
+          <div class="slide" data-src="media/about/dolomiti_1.png" data-caption="[Berggasthaus Pederü, Dolomiti, Italy]" style="background-image:url('media/about/dolomiti_1.png')"></div>
+          <div class="slide" data-src="media/about/marina.png" data-caption="[The Current,Marina Abramović]" style="background-image:url('media/about/marina.png')"></div>
+          <div class="slide" data-src="media/about/dolomiti_2.png" data-caption="[Forcella del Lago, Dolomiti, Italy]" style="background-image:url('media/about/dolomiti_2.png')"></div>
+          <div class="slide" data-src="media/about/panorama.png" data-caption="[Panorama Ridge, BC, Canada]" style="background-image:url('media/about/panorama.png')"></div>
+        </div>
 
-  <div class="info-wrap">
-    <h4 class="hero-text">Hey, I'm <!-- <span> -->Maggie Liu<!-- </span> -->! <!-- <img src="img/about/me_1.jpg"> --> 
-    	<br>A Product Designer based in Amsterdam.</h4>
-  </div>
+        <div class="caption" aria-hidden="false"></div>
 
-  <div class="info-wrap project-info-wrap">
-    <div class="project-detail-header">
-      <div id="mydiv">
-        <img src="img/about/me_1.jpg" loading="lazy">
+        <div class="controls" aria-hidden="false">
+          <button id="about-prev" class="carousel-btn" aria-label="Previous background" title="Previous">
+            <img src="media/index/arrow_left.svg" alt="prev">
+          </button>
+          <button id="about-next" class="carousel-btn rotate" aria-label="Next background" title="Next">
+            <img src="media/index/arrow_left.svg" alt="next">
+          </button>
+        </div>
       </div>
+  </main>
 
-      <p style="font-family: proza; margin: auto">You found the bts &#128539;</p>
-      <img src="img/about/me_4.jpg" loading="lazy" style="width: 78%">   
+  <script src="js/about-carousel.js" defer></script>
+  <script src="js/load-partials.js" defer></script>
+  <script src="js/about-paragraph-drag.js" defer></script>
 
-      <!-- <div class="project-detail-content contact">
-        <p><b>Reach me at:</b></p>
-        <p><a href="docs/Maggie Liu Resume.pdf">Resume</a></p>
-        <p><a href="https://www.linkedin.com/in/maggieliujx/">LinkedIn</a></p>
-        <p><a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a></p>
-      </div> -->
+  <script>
+    const aboutParagraph = document.getElementById('about-paragraph');
 
-    </div>
+    aboutParagraph.addEventListener('dragstart', function(event) {
+      // Your existing dragstart event handling code
+    });
 
-    <div class="project-detail-content about">
-      <p>
+    aboutParagraph.addEventListener('click', function(event) {
+      if (event.target.tagName === 'A') {
+        event.preventDefault();
+        // Open the link in a new tab
+        if (event.target.getAttribute('href').startsWith('mailto:')) {
+          window.location.href = event.target.getAttribute('href');
+        } else {
+          window.open(event.target.href, '_blank');
+        }
+      }
+    });
+  </script>
 
-      I love working with my hands to translate concepts into tangible forms, whether they are physical or digital.
-
-      <br><br>
-
-			I am currently a Product Designer at <a href="https://www.akqa.com/studios/amsterdam//">AKQA Amsterdam</a>, working with the world's largest car manufacturer to elevate their digital experience platform and ensure a seamless customer experience at every touchpoint.
-
- 			<br><br>
- 			
- 			I am always open to talk about my experiences and make new connections, so <a href="mailto:maggieliujx@gmail.com">let's chat</a>!
-
-			</p>
-
-    </div>
-  </div>
-
-  <div class="info-wrap project-info-wrap">
-    <div class="project-detail-header">
-    </div>
-    <div class="project-detail-content contact">
-      <!-- <div class="contact"> -->
-        <p><b>Reach me at:</b></p>
-        <p><a href="docs/Maggie Liu Resume 2023.pdf">Resume</a></p>
-        <p><a href="https://www.linkedin.com/in/maggieliujx/">LinkedIn</a></p>
-        <p><a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com</a></p>
-      <!-- </div> -->
-    </div>
-  </div>
-
-  <div class="info-wrap project-info-wrap">
-    <div class="brand-title">
-      Brands I got to work with:
-    </div>
-  </div>
-
-  <div class="project-info">
-    <div class="info-wrap project-info-wrap">
-      <img src="img/about/brands.png" class="dividerImg">
-    </div>
-  </div>
-
-  <div class="info-wrap project-info-wrap">
-    <div class="wide-comment" style="background-color: #F9F9F9; font-size: 1rem">
-      Coded with &#9749; and &#10084;
-    </div>
-  </div>
-
-  <br> <br> <br>
-
-  <div class="social-links">
-    <a href="https://www.linkedin.com/in/maggieliujx/">
-      <img src="img/linkedin-icon.png">
-    </a>
-  </div>
-
-
-<script>
-  dragElement(document.getElementById("mydiv"));
-
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id)) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id).onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
-
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
-</script>
 
 
 </body>

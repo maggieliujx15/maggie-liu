@@ -1,14 +1,54 @@
+/* Utility class for vertical stacking in grid-row */
+.grid-row--column {
+	display: flex;
+	flex-direction: column;
+}
+
 *, *::after, *::before {
-	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
+/*
+.grid-row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-left: 16px;
+	margin-right: 16px;
+}
+*/
+
+/*
+.grid-col-1of12 { flex: 0 0 calc((100% - 11 * 24px - 2 * 16px) / 12); max-width: calc((100% - 11 * 24px - 2 * 16px) / 12); }
+.grid-col-2of12 { flex: 0 0 calc(2 * ((100% - 11 * 24px - 2 * 16px) / 12) + 24px); max-width: calc(2 * ((100% - 11 * 24px - 2 * 16px) / 12) + 24px); }
+.grid-col-3of12 { flex: 0 0 calc(3 * ((100% - 11 * 24px - 2 * 16px) / 12) + 2 * 24px); max-width: calc(3 * ((100% - 11 * 24px - 2 * 16px) / 12) + 2 * 24px); }
+.grid-col-4of12 { flex: 0 0 calc(4 * ((100% - 11 * 24px - 2 * 16px) / 12) + 3 * 24px); max-width: calc(4 * ((100% - 11 * 24px - 2 * 16px) / 12) + 3 * 24px); }
+.grid-col-5of12 { flex: 0 0 calc(5 * ((100% - 11 * 24px - 2 * 16px) / 12) + 4 * 24px); max-width: calc(5 * ((100% - 11 * 24px - 2 * 16px) / 12) + 4 * 24px); }
+.grid-col-6of12 { flex: 0 0 calc(6 * ((100% - 11 * 24px - 2 * 16px) / 12) + 5 * 24px); max-width: calc(6 * ((100% - 11 * 24px - 2 * 16px) / 12) + 5 * 24px); }
+.grid-col-7of12 { flex: 0 0 calc(7 * ((100% - 11 * 24px - 2 * 16px) / 12) + 6 * 24px); max-width: calc(7 * ((100% - 11 * 24px - 2 * 16px) / 12) + 6 * 24px); }
+.grid-col-8of12 { flex: 0 0 calc(8 * ((100% - 11 * 24px - 2 * 16px) / 12) + 7 * 24px); max-width: calc(8 * ((100% - 11 * 24px - 2 * 16px) / 12) + 7 * 24px); }
+.grid-col-9of12 { flex: 0 0 calc(9 * ((100% - 11 * 24px - 2 * 16px) / 12) + 8 * 24px); max-width: calc(9 * ((100% - 11 * 24px - 2 * 16px) / 12) + 8 * 24px); }
+.grid-col-10of12 { flex: 0 0 calc(10 * ((100% - 11 * 24px - 2 * 16px) / 12) + 9 * 24px); max-width: calc(10 * ((100% - 11 * 24px - 2 * 16px) / 12) + 9 * 24px); }
+.grid-col-11of12 { flex: 0 0 calc(11 * ((100% - 11 * 24px - 2 * 16px) / 12) + 10 * 24px); max-width: calc(11 * ((100% - 11 * 24px - 2 * 16px) / 12) + 10 * 24px); }
+.grid-col-12of12 { flex: 0 0 calc(12 * ((100% - 11 * 24px - 2 * 16px) / 12) + 11 * 24px); max-width: calc(12 * ((100% - 11 * 24px - 2 * 16px) / 12) + 11 * 24px); }
+*/
+
+
 [class^='grid-col-'] {
 	float: left;
-	padding 15px;
-	/*align-content: center;
-*/}
+	
+}
+
+/* Vertically center items in gallery section grid row */
+.gallery-section .grid-row {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
 
 .grid-col-1of12 {
 	width: 8.33%;
@@ -58,8 +98,11 @@
 	width: 100%;
 }
 
+/*
 .grid-row::after {
 	content: "";
-	display: table; /*block*/
+	display: table; block
 	clear: both;
 }
+	*/
+

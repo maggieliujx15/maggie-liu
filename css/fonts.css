@@ -1,97 +1,68 @@
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 300;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Light.otf);
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-Regular.ttf') format('truetype');
+  font-weight: 400;
 }
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 300;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-LightItalic.otf);
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
 }
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 400;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Regular.otf);
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-Bold.ttf') format('truetype');
+  font-weight: 600;
 }
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 400;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-RegularItalic.otf);
+  font-family: 'SpaceMono';
+  src: url('fonts/SpaceMono-BoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'SrabenGrotesk';
+  src: url('fonts/SrabenGrotesk-Black.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-Black.ttf') format('truetype');
+  font-weight: 800;
 }
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 500;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Book.otf);
+  font-family: 'SrabenGrotesk';
+  src: url('fonts/SrabenGrotesk-ExtraBold.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-ExtraBold.ttf') format('truetype');
+  font-weight: 700;
 }
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 500;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-BookItalic.otf);
+  font-family: 'SrabenGrotesk';
+  src: url('fonts/SrabenGrotesk-Bold.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-Bold.ttf') format('truetype');
+  font-weight: 600;
 }
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 600;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-SemiBold.otf);
+  font-family: 'SrabenGrotesk';
+  src: url('fonts/SrabenGrotesk-Semibold.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-SemiBold.ttf') format('truetype');
+  font-weight: 500;
 }
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 600;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-SemiBoldItalic.otf);
+  font-family: 'SrabenGrotesk';
+  src: url('fonts/SrabenGrotesk-Medium.otf') format('opentype');
+  src: url('fonts/SrabenGrotesk-Medium.ttf') format('truetype');
+  font-weight: 400;
 }
 
-@font-face {
-	font-family: cormorantInfant;
-	font-weight: 700;
-	font-style: normal;
-	src: url(fonts/CormorantInfant-Bold.otf);
-}
 
 @font-face {
-	font-family: cormorantInfant;
-	font-weight: 700;
-	font-style: italic;
-	src: url(fonts/CormorantInfant-BoldItalic.otf);
-}
-
-@font-face {
-	font-family: proza;
-	font-weight: 400;
-	font-style: normal;
-	src: url(fonts/ProzaLibre-Regular.ttf);
-}
-
-@font-face {
-	font-family: proza;
-	font-weight: 500;
-	font-style: normal;
-	src: url(fonts/ProzaLibre-Medium.ttf);
-}
-
-@font-face {
-	font-family: ZCOOL;
-	font-weight: 400;
-	font-style: normal;
-	src: url(fonts/ZCOOLXiaoWei-Regular.ttf);
-}
-
-@font-face {
-	font-family: noto;
-	font-weight: 300;
-	font-style: normal;
-	src: url(fonts/NotoSerifSC-Light.otf);
+  font-family: 'LayGrotesk', sans-serif;
+  src: url('css/fonts/LayGrotesk-Trial-Black.otf') format('otf');
+  font-weight: 800;
 }

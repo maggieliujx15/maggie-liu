@@ -1,0 +1,267 @@
+<!-- header partial: logo, page-info, contact nav, contact-toggle, contact init, city+clock -->
+<a href="work.html" class="m-logo">
+  <img src="media/index/m_logo_green.svg" alt="Site Logo">
+</a>
+
+<div id="site-info">
+  <div id="page-info" aria-hidden="false">
+    <span id="ip-city" class="label">—</span>
+    <span id="clock" class="clock">--:--:--</span>
+  </div>
+</div>
+
+<nav class="contact-nav">
+  <a href="work.html">work</a>
+  <a href="about.html">about</a>
+  <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">linkedIn<img src="media/index/link_out.svg" style="height: 8px; padding-left: 8px; color: white !important;"></a>
+  <a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com<img src="media/index/link_out.svg" style="height: 8px; padding-left: 8px; color: white !important;"></a>
+    <a class="bug-report" href="mailto:maggieliujx@gmail.com?subject=Maggie Portfolio Bug Report">vide-coded, report bug here<img src="media/index/link_out.svg" style="height: 8px; padding-left: 8px; color: white !important;"></a>
+</nav>
+
+<button id="contact-toggle" aria-label="Open contact" aria-expanded="false" aria-controls="contact-nav" title="Contact">
+  <img src="media/index/icon_plus.svg" alt="">
+</button>
+
+<script>
+/* idempotent contact toggle init */
+if (!window.__contactToggleInitialized) {
+  window.__contactToggleInitialized = true;
+  (function () {
+    const toggle = document.getElementById('contact-toggle');
+    const nav = document.querySelector('.contact-nav');
+    if (!toggle || !nav) return;
+    const imgEl = toggle.querySelector('img');
+    if (imgEl) {
+      imgEl.style.transition = 'transform 0.5s ease, opacity 0.5s ease';
+      imgEl.style.willChange = 'transform, opacity';
+    }
+
+    function setToggleState(isOpen) {
+      if (!imgEl) return;
+      imgEl.style.transform = isOpen ? 'rotate(135deg)' : 'rotate(0deg)';
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function initState() {
+      if (window.innerWidth <= 1023) {
+        nav.classList.remove('contact-open');
+        nav.classList.add('contact-closed');
+        toggle.style.display = 'inline-flex';
+        setToggleState(false);
+      } else {
+        nav.classList.remove('contact-closed', 'contact-open');
+        nav.style.display = '';
+        toggle.style.display = 'none';
+        setToggleState(false);
+      }
+    }
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('contact-open');
+      nav.classList.toggle('contact-closed', !isOpen);
+      setToggleState(isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (window.innerWidth > 1023) return;
+      if (!nav.classList.contains('contact-open')) return;
+      if (e.target.closest('.contact-nav') || e.target.closest('#contact-toggle')) return;
+      nav.classList.remove('contact-open');
+      nav.classList.add('contact-closed');
+      setToggleState(false);
+    }, true);
+
+    window.addEventListener('resize', initState);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initState, { once: true });
+    } else {
+      initState();
+    }
+  })();
+}
+</script>
+
+<script>
+/* city + clock (self-contained) */
+(async function () {
+  const ipCityEl = document.getElementById('ip-city');
+  const clockEl = document.getElementById('clock');
+
+  function updateClock() {
+    const d = new Date();
+    if (clockEl) clockEl.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
+  }
+  updateClock();
+  setInterval(updateClock, 1000);
+
+  async function fetchJsonWithTimeout(url, timeout = 5000) {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), timeout);
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      clearTimeout(id);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return await res.json();
+    } catch (err) {
+      clearTimeout(id);
+      throw err;
+    }
+  }
+
+  async function getCity() {
+    try {
+      const data = await fetchJsonWithTimeout('https://ipapi.co/json/', 5000);
+      return data && (data.city || data.region) || null;
+    } catch (e) { /* fallback */ }
+    try {
+      const data = await fetchJsonWithTimeout('https://ipwho.is/', 5000);
+      return data && (data.city || data.region) || null;
+    } catch (e) { /* final fallback */ }
+    return null;
+  }
+
+  try {
+    const city = await getCity();
+    if (ipCityEl) ipCityEl.textContent = city || '—';
+  } catch (err) {
+    if (ipCityEl) ipCityEl.textContent = '—';
+  }
+})();
+</script>
+
+<script>
+/* init custom desktop cursor (idempotent) */
+if (!window.__customCursorInitialized) {
+  window.__customCursorInitialized = true;
+  (function () {
+    if (!(window.matchMedia && window.matchMedia('(min-width:1024px)').matches)) return;
+
+    // create visual cursor element
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    // position follow
+    const setPos = (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      cursor.classList.remove('hidden');
+    };
+    document.addEventListener('mousemove', setPos);
+    document.addEventListener('mouseenter', () => cursor.classList.remove('hidden'));
+    document.addEventListener('mouseleave', () => cursor.classList.add('hidden'));
+
+    // enlarge over interactive targets
+    const interactiveSelector = 'a, button, input, textarea, select, label, .hover-swap, [role="button"]';
+    document.addEventListener('pointerover', (e) => {
+      if (e.target.closest && e.target.closest(interactiveSelector)) cursor.classList.add('grow');
+      else cursor.classList.remove('grow');
+
+     // also grow cursor when hovering the about paragraph
+     if (e.target.closest && e.target.closest('.about-paragraph')) {
+       cursor.classList.add('about-hover');
+     } else {
+       cursor.classList.remove('about-hover');
+     }
+    }, true);
+    document.addEventListener('pointerout', (e) => {
+      const to = e.relatedTarget;
+      if (!to || !to.closest || !to.closest(interactiveSelector)) cursor.classList.remove('grow');
+    }, true);
+  })();
+}
+</script>
+
+<!-- underline active nav item based on current page -->
+<style>
+  @media (min-width: 1024px) {
+    .contact-nav a.active {
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 2px;
+    }
+
+    body.about-page .contact-nav a.active{
+      text-decoration: underline !important;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 2px;
+    }
+
+  }
+</style>
+
+<script>
+(function () {
+  const nav = document.querySelector('.contact-nav');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('a'));
+  const current = (location.pathname || '').split('/').pop() || 'work.html';
+
+  links.forEach(a => {
+    try {
+      const resolved = new URL(a.getAttribute('href'), location.origin);
+      const hrefName = (resolved.pathname || '').split('/').pop() || 'work.html';
+
+      // mark active when href page matches current page
+      if (hrefName === current) a.classList.add('active');
+      // also handle root/work equivalence
+      else if ((hrefName === '' || hrefName === 'work.html') && (current === '' || current === 'work.html')) {
+        a.classList.add('active');
+      } else {
+        a.classList.remove('active');
+      }
+    } catch (e) {
+      // ignore invalid/absolute external hrefs (mailto, external links)
+    }
+  });
+})();
+</script>
+
+<script>
+  window.addEventListener('scroll', function() {
+  var contactNav = document.querySelector('.contact-nav');
+  var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+  // Check if the contact navigation bar is visible within the viewport
+  var contactNavTop = contactNav.getBoundingClientRect().top;
+  var contactNavBottom = contactNav.getBoundingClientRect().bottom;
+  var viewportTop = window.innerHeight - 50; // Adjust the value as needed
+  var viewportBottom = window.innerHeight;
+
+  if (scrollTop > contactNavTop && scrollTop < contactNavBottom && scrollTop > 0) {
+    contactNav.classList.add('scrolling');
+  } else {
+    contactNav.classList.remove('scrolling');
+  }
+
+  // Add or remove the 'scrolling' class to the contact navigation links
+  var contactNavLinks = contactNav.querySelectorAll('.contact-nav a');
+  contactNavLinks.forEach(function(link) {
+    if (contactNav.classList.contains('scrolling')) {
+      link.classList.add('scrolling');
+    } else {
+      link.classList.remove('scrolling');
+    }
+  });
+});
+</script>
+
+<script>
+  function playVideos(videoIndex) {
+    const videos = document.querySelectorAll('video');
+
+    if (videoIndex < videos.length) {
+      videos[videoIndex].play();
+
+      // Check if the video has finished playing
+      videos[videoIndex].addEventListener('ended', () => {
+        playVideos(videoIndex + 1);
+      });
+    }
+  }
+
+  // Start playing videos from the first video
+  playVideos(0);
+</script>
+
+

@@ -1,0 +1,1751 @@
+
+
+
+
+
+
+/* hide native cursor so our custom one is used */
+body {
+  cursor: none !important;
+}
+
+body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  label,
+  .hover-swap,
+  [role="button"] {
+    cursor: none !important;
+  }
+
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #ffffff;                 /* white circle */
+  mix-blend-mode: difference;          /* visually inverts colors beneath */
+  pointer-events: none;                /* don't block interaction */
+  z-index: 99999;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  opacity: 1;
+  will-change: transform, opacity, left, top;
+}
+
+/* larger state when over interactive elements */
+.custom-cursor.grow {
+  transform: translate(-50%, -50%) scale(1.4);
+}
+
+/* hide when leaving window */
+.custom-cursor.hidden {
+  opacity: 0;
+}
+
+/* enlarge cursor circle when hovering the about paragraph */
+.custom-cursor.about-hover {
+  transform: translate(-50%, -50%) scale(1.4) !important;
+  transition: transform 0.12s ease !important;
+}
+
+/* keep existing interactive grow state compatible */
+.custom-cursor.grow.about-hover,
+.custom-cursor.about-hover.grow {
+  transform: translate(-50%, -50%) scale(1.4) !important;
+}
+
+/* small tweak so grab indicator aligns when enlarged */
+.custom-cursor.about-hover::after {
+  bottom: -8px;
+  width: 18px;
+  height: 7px;
+  border-radius: 4px;
+}
+
+
+/* Align subtitle to start after year in portfolio items */
+.frame-3 .text-wrapper-5 {
+  margin-left: 0;
+  text-indent: 45px;
+}
+/* Add gap between portfolio item title and subtitle */
+.frame-3 > div {
+  gap: 4px;
+}
+
+
+
+
+.hover-swap {
+  position: relative;
+  display: inline-block;
+}
+.hover-swap .default-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.hover-swap .hover-img {
+  display: none;
+  width: 100%;
+  height: auto;
+}
+.hover-swap:hover .default-img {
+  display: none;
+}
+.hover-swap:hover .hover-img {
+  display: block;
+}
+
+[class^='-col-'] img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #fffdf4;
+  scroll-behavior: smooth;
+}
+
+.d-landing {
+  font-family: 'SpaceMono', monospace;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: left;
+  height: 100vh;
+  max-height: 100vh;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+}
+
+.d-landing .div {
+  font-family: 'SpaceMono', monospace;
+  height: 100vh;
+  max-height: 100vh;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+}
+
+.m-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 32px;
+  z-index: 2000;
+  background-image: url(./img/vector-36.svg);
+  background-size: 100% 100%;
+
+}
+
+.gallery-image-hover {
+  position: relative;
+  display: inline-block;
+}
+.gallery-image-hover .static-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.gallery-image-hover .gif-img {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.gallery-image-hover:hover .static-img {
+  display: none;
+}
+.gallery-image-hover:hover .gif-img {
+  display: block;
+}
+
+.gallery-caption {
+  display: grid;
+  grid-template-columns: auto 1fr; /* year column + title column */
+  column-gap: 8px;                 /* gap between year and title */
+  align-items: start;
+}
+
+.d-landing .text-wrapper {
+  position: absolute;
+  top: 864px;
+  left: 16px;
+  font-family: "SpaceMono", monospace;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.d-landing .text-wrapper-2 {
+  position: absolute;
+  top: 810px;
+  left: 16px;
+  font-family: "SpaceMono", monospace;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.d-landing .text-wrapper-3 {
+  position: absolute;
+  top: 837px;
+  left: 16px;
+  font-family: "SpaceMono", monospace;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.d-landing .frame {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-start;
+  gap: 32px;
+  position: relative;
+  top: 0;
+}
+
+.d-landing .frame-2 {
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.d-landing .frame-3 {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.d-landing .text-wrapper-4 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "SpaceMono", monospace;
+  font-weight: 400;
+  color: #000000;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 1.5;
+  white-space: normal;
+}
+
+.d-landing .text-wrapper-5 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: "SpaceMono", monospace;
+  font-weight: 400;
+  color: #0C4C1F;
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.d-landing .frame-4 {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+}
+
+.d-landing .frame-5 {
+  width: 406px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.d-landing .div .grid-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.gallery-section .grid-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Gallery section uses flex and fills its grid-col-4of12 container */
+.gallery-section.grid-col-4of12 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-section .grid-col-1of12 { flex: 1; }
+.gallery-section .grid-col-2of12 { flex: 2; }
+.gallery-section .grid-col-3of12 { flex: 3; }
+
+
+
+
+.d-landing .component {
+  position: absolute;
+  width: 96px;
+  height: 112px;
+  top: 470px;
+  left: 135px;
+  background-image: url(./img/group-29616135.png);
+  background-size: 100% 100%;
+}
+
+.d-landing .pen-new-clean-file {
+  position: absolute;
+  width: 5px;
+  height: 76px;
+  top: 22px;
+  left: 3px;
+}
+
+.d-landing .component-2 {
+  position: absolute;
+  width: 215px;
+  height: 121px;
+  top: 465px;
+  left: 493px;
+  aspect-ratio: 1.78;
+  background-image: url(./img/screenshot-2025-08-29-at-12-32-02.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.d-landing .image-t-wrapper {
+  display: flex;
+  width: 95px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: absolute;
+  top: 437px;
+  left: 971px;
+}
+
+.d-landing .image-t {
+  position: relative;
+  width: 77px;
+  height: 177px;
+}
+
+.d-landing .component-3 {
+  position: absolute;
+  width: 95px;
+  height: 118px;
+  top: 467px;
+  left: 1090px;
+  aspect-ratio: 0.8;
+  background-image: url(./img/screenshot-2025-08-29-at-12-09-38-2.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.d-landing .component-4 {
+  position: absolute;
+  width: 215px;
+  height: 160px;
+  top: 446px;
+  left: 1209px;
+  aspect-ratio: 1.34;
+  background-image: url(./img/image-47830.png);
+  background-size: 100% 100%;
+}
+
+.d-landing .overlap-group-wrapper {
+  position: absolute;
+  width: 95px;
+  height: 135px;
+  top: 458px;
+  left: 16px;
+}
+
+.d-landing .overlap-group {
+  position: relative;
+  height: 135px;
+}
+
+.d-landing .mask-group {
+  position: absolute;
+  width: 48px;
+  height: 135px;
+  top: 0;
+  left: 0;
+}
+
+.d-landing .img {
+  position: absolute;
+  width: 48px;
+  height: 135px;
+  top: 0;
+  left: 48px;
+}
+
+.d-landing .image-2 {
+  position: absolute;
+  width: 72px;
+  height: 19px;
+  top: 2px;
+  left: 72px;
+  aspect-ratio: 3.77;
+  object-fit: cover;
+}
+/* Original CSS code should be injected here */
+
+/* Additional semantic and accessibility improvements */
+.header {
+  position: absolute;
+  top: 24px;
+  right: 16px;
+  z-index: 10;
+}
+
+.portfolio-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.gallery-section {
+  
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  width: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+}
+
+.contact-nav {
+  font-family: "SpaceMono", monospace;
+  font-weight: 400;
+  font-size: 12px;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 16px;
+  left: 16px;
+  z-index: 1000;
+  gap: 8px;
+  mix-blend-mode: difference;
+}
+
+
+
+body.about-page .contact-nav a {
+  color: #ffffff;
+}
+
+.contact-nav a {
+  color: black;
+}
+
+.contact-nav a:visited,
+.contact-nav a:link,
+.contact-nav a:active {
+  white-space: nowrap;
+  text-decoration: none;
+  mix-blend-mode: difference;
+}
+
+.contact-nav a:hover,
+.contact-nav a:focus {
+  color: var(--tokens-dark-green);
+  outline: none;
+}
+
+.contact-nav a:focus-visible {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+}
+
+/* Ensure all interactive elements have proper focus states */
+.frame-3:focus-within,
+.frame-4:focus-within {
+  outline: 2px solid #4a90e2;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Improve semantic structure positioning */
+.d-landing .text-wrapper {
+  position: static;
+}
+
+.d-landing .text-wrapper-2 {
+  position: static;
+}
+
+.d-landing .text-wrapper-3 {
+  position: static;
+}
+
+/* Ensure proper heading hierarchy */
+.text-wrapper-4 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Improve accessibility for background images */
+[role="img"] {
+  background-repeat: no-repeat;
+}
+
+.gallery-caption,
+.text-wrapper-5,
+.gallery-section [data-index],
+.frame-3,
+.hover-img {
+  transition: opacity 0.5s;
+}
+
+.grid-row--column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#page-info {
+  position: fixed;
+  right: 16px;
+  top: 16px;
+  color: #000000;
+  padding: 0;
+  font-size: 12px;
+  font-family: "SpaceMono", monospace;
+  z-index: 99999;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  pointer-events: none; /* won't block clicks */
+  text-transform: uppercase;
+}
+#page-info .clock {
+  font-weight: 400;
+}
+
+#page-info .label {
+  text-transform: uppercase;
+}
+
+.about-paragraph {
+  position: fixed !important;
+  top: calc(16px + 32px + 40px) !important; /* 40px below logo */
+  width: calc(100% * 4 / 12 - 48px);
+  max-width: 500px;
+  background: #000 !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  margin: 16px;
+  line-height: 1.4;
+}
+
+/* Make about-carousel controls available on all breakpoints (not only desktop) */
+.about-carousel {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* slides visually behind content */
+  z-index: 0;
+}
+
+.about-carousel .about-slides {
+  position: absolute;
+  inset: 0;
+}
+
+.about-carousel .slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+  will-change: opacity;
+  z-index: -1;
+}
+
+.about-carousel .slide.active {
+  opacity: 1;
+}
+
+/* Controls are interactive at all sizes */
+.about-carousel .controls {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  display: flex;
+  gap: 8px;
+  pointer-events: auto; /* make buttons clickable */
+  z-index: 10001;
+}
+
+/* 40x40 white button with centered arrow (arrow image kept as-is, inverted to black) */
+.about-carousel .carousel-btn {
+  width: 40px !important;
+  height: 40px !important;
+  border: none !important;
+  background: #fff !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.about-carousel .carousel-btn img {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter: invert(1) !important; /* make white source appear black */
+  -webkit-filter: invert(1) !important;
+}
+
+/* rotate same arrow image for the "next" button (90deg as requested) */
+.about-carousel .carousel-btn.rotate img {
+  transform: rotate(180deg);
+  transition: transform .3s ease;
+}
+
+/* small active state */
+.about-carousel .carousel-btn:active { transform: scale(.98); }
+
+/* Make logo + page-info white only on the about page */
+.about-page #page-info,
+.about-page #page-info .label,
+.about-page #page-info .clock {
+  color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+/* If the logo is an <img> showing a darker asset, invert/brighten it on about page.
+   If your logo uses a background-image on the img element, this still applies. */
+.about-page .m-logo img {
+  filter: brightness(0) invert(1) !important;
+  -webkit-filter: brightness(0) invert(1) !important;
+}
+
+
+
+
+/* ensure the about carousel stays visually behind page content and prevent flashing/overlap */
+.about-carousel {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0; /* background layer */
+}
+
+/* slides at same background level */
+.about-carousel .slide {
+  z-index: 0;
+}
+
+/* controls remain interactive above everything */
+.about-carousel .controls {
+  z-index: 10001;  /* keep buttons clickable and on top */
+  pointer-events: auto;
+}
+
+/* ensure main content (header, landing wrapper, about paragraph) sits above carousel */
+.d-landing,
+.d-landing .div,
+#site-header,
+.about-paragraph {
+  position: relative; /* create stacking context */
+  z-index: 2;
+}
+
+
+
+
+
+
+
+@media (max-width: 1023px) {
+  .d-landing .div {
+    height: 100vh;
+    max-height: 100vh;
+    padding: 72px 16px 16px 16px;
+    display: flex;
+    flex-direction: column !important;
+    position: relative;
+    width: 100%;
+    align-content: center;
+    align-items: center !important;
+  }
+
+  .frame-2 {
+    max-width: 400px; /* constrain width */
+    margin: 0 auto; /* center horizontally */
+  }
+
+  .d-landing .div .grid-row {
+    flex: 0 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .d-landing .div .grid-row > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .gallery-section {
+    order: -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    align-items: end !important;
+  }
+
+  .portfolio-section {
+    order: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-bottom: 80px !important; /* space for contact button */
+  }
+
+  .frame-3.active {
+    opacity: 1 !important;
+  }
+
+  .frame-3.dimmed {
+    opacity: 0.25 !important;
+  }
+
+  .gallery-section .grid-row {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 16px !important;
+    margin: 0 16px !important;
+    align-items: end !important; /* align all items to the bottom of the grid row */
+  }
+
+  .gallery-section .grid-row--column {
+    display: contents !important;
+  }
+  .gallery-section .grid-row--column.active-col {
+    display: block !important;
+  }
+
+  .gallery-section .grid-row--column .hover-swap {
+    display: none !important;
+  }
+
+  .gallery-section .grid-row--column.active-col .hover-swap.active {
+    display: block !important;
+    margin: 0 auto !important;
+    grid-column: span 4 !important; /* default for Toyota, Puma, Lufthansa, Alice */
+  }
+
+  .gallery-section .hover-swap.active[data-index="0"],
+  .gallery-section .hover-swap.active[data-index="1"] {
+    width: calc(2/6 * 100%) !important;
+  }
+
+  .gallery-section .hover-swap.active[data-index="2"],
+  .gallery-section .hover-swap.active[data-index="3"] {
+    width: calc(3/6 * 100%) !important;
+  }
+
+  .gallery-section .hover-swap.active[data-index="4"],
+  .gallery-section .hover-swap.active[data-index="5"],
+  .gallery-section .hover-swap.active[data-index="6"],
+  .gallery-section .hover-swap.active[data-index="7"] {
+    width: calc(4/6 * 100%) !important;
+  }
+
+  .gallery-section [class^="grid-col-"] {
+    position: static !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .d-landing .component,
+  .d-landing .component-2,
+  .d-landing .component-3,
+  .d-landing .component-4,
+  .d-landing .overlap-group-wrapper,
+  .d-landing .image-t-wrapper,
+  .d-landing .mask-group,
+  .d-landing .img {
+    display: none !important;
+  }
+
+  .gallery-section .hover-swap img,
+  .gallery-section .hover-swap .gallery-caption,
+  .portfolio-item-content {
+    width: 100% !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  html, body {
+    overflow-x: hidden !important;
+  }
+
+  /* Contact nav -> collapsed button on small screens */
+  /* hide original nav (desktop layout) by default on small screens */
+  .contact-nav {
+    display: none !important;
+  }
+
+  /* floating button bottom-left */
+  #contact-toggle {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border: none;
+    z-index: 4000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  #contact-toggle img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    will-change: opacity, transform;
+  }
+
+  /* popup nav when opened */
+  .contact-nav.contact-open {
+    display: inline-flex !important;
+    position: fixed !important;
+    flex-direction: column;
+    background: #000;
+    color: #fff;
+    z-index: 3999;
+    transform-origin: left bottom;
+    transition: transform .22s ease, opacity .22s ease;
+    opacity: 1;
+    left: 16px;
+    bottom: calc(16px + 40px + 8px); /* 8px gap between button and popup */
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* gap between the block of link containers and the button area (outer spacing) */
+    background: transparent; /* links themselves will be black blocks */
+    align-items: flex-start !important; /* <-- prevents children stretching to full width */
+    background: none !important;
+    box-shadow: none !important;
+    z-index: 3999;
+  }
+
+  /* hidden state for animation (initial) */
+  .contact-nav.contact-closed {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(6px) scale(.98);
+    pointer-events: none;
+  }
+
+  /* ensure popup wrapper doesn't add extra spacing below the last link */
+  .contact-nav.contact-open > a:last-child {
+    margin-bottom: 0;
+  }
+
+  .gallery-section {
+    position: fixed !important;
+    top: 56px !important; /* keeps 8px gap under logo */
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 2500 !important; /* sits above portfolio */
+    background: inherit !important;
+  }
+
+  /* constrain inner grid to match previous gutters */
+  .gallery-section .grid-row {
+    margin: 0 16px !important;
+    max-width: calc(100% - 32px) !important;
+  }
+
+  /* portfolio must clear the fixed gallery — use CSS var set by JS (fallback 0) */
+  .portfolio-section {
+    margin-top: calc(var(--gallery-fixed-height, 0px) + 16px) !important;
+  }
+
+  /* let clicks fall through the fixed gallery to the portfolio below */
+  .gallery-section {
+    pointer-events: none !important;
+  }
+
+  /* but keep interactive gallery pieces interactive */
+  .gallery-section .hover-swap,
+  .gallery-section .hover-swap * {
+    pointer-events: auto !important;
+  }
+
+  /* mobile: make opened contact items appear as dark blocks */
+  .contact-nav.contact-open a {
+    display: block !important;
+    width: auto !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    background: rgba(0,0,0,0.9) !important; /* black background */
+    color: #fff !important;                  /* white text */
+    text-decoration: none !important;
+    pointer-events: auto !important;
+  }
+
+  /* small spacing between items */
+  .contact-nav.contact-open a + a {
+    margin-top: 2px !important;
+  }
+
+  .about-paragraph {
+    top: calc(16px + 32px + 16px) !important; /* 40px below logo */
+    width: auto;
+    max-width: 500px !important;
+    text-align: left !important;
+    font-size: 12px !important;
+    padding: 16px !important;
+  }
+
+  .about-carousel .controls {
+    right: 16px;
+    bottom: 16px;
+  }
+  
+  /* ensure contact nav is white on the About page */
+  body.about-page .contact-nav,
+  body.about-page .contact-nav a,
+  body.about-page #contact-toggle {
+    background: #ffffff !important;
+  }
+
+  body.about-page #contact-toggle img {
+    filter: invert(1) !important;
+  }
+
+  body.about-page .contact-nav .contact-open {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 8px !important;
+    gap: 6px !important;
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    left: 16px !important;
+    bottom: calc(16px + 40px + 8px) !important;
+    position: fixed !important;
+    z-index: 3999 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    pointer-events: auto !important;
+  }
+
+  body.about-page .contact-nav .contact-open a {
+    display: block !important;
+    width: auto !important;
+    padding: 10px 14px !important;
+    margin: 6px 0 !important;
+    border-radius: 6px !important;
+    background: rgba(0,0,0,0.9) !important; /* default per-link background (black) */
+    color: #fff !important;
+    white-space: nowrap !important;
+    text-decoration: none !important;
+    box-sizing: border-box !important;
+  }
+
+  body.about-page .contact-nav,
+  .contact-nav.contact-open {
+    background: transparent !important;
+  }
+
+  body.about-page .contact-nav.contact-open a {
+    background: #ffffff !important;
+    color: #000 !important;
+  }
+
+
+
+
+
+}
+
+/* Desktop-only fullscreen background carousel */
+@media (min-width: 1024px) {
+  .about-carousel {
+    position: fixed;
+    inset: 0;
+    pointer-events: none; /* let page content be interactive by default */
+    z-index: 0;
+  }
+
+  .about-carousel .about-slides {
+    position: absolute;
+    inset: 0;
+  }
+
+  .about-carousel .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity .6s ease;
+    pointer-events: none;
+    will-change: opacity;
+    /* render beneath content */
+    z-index: -1;
+  }
+
+  .about-carousel .slide.active {
+    opacity: 1;
+  }
+
+  /* allow native grab cursor on the about paragraph while keeping the custom cursor circle */
+  .about-paragraph,
+  .about-paragraph * {
+    /* override any global cursor:none rules */
+    cursor: grab !important;
+  }
+
+  /* when dragging */
+  .about-paragraph.dragging,
+  .about-paragraph.dragging * {
+    cursor: grabbing !important;
+  }
+
+  /* ensure the custom cursor element stays visible and doesn't block interactions */
+  .custom-cursor {
+    pointer-events: none; /* don't intercept events */
+    display: block;
+    z-index: 99999;
+  }
+}
+
+
+/* Prevent the page container from centering vertically and place the writeup 48px below the header */
+.project-page {
+  margin: 48px 16px !important;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none;    /* Firefox */
+  padding-bottom: 120px !important;
+  gap: 24px ;
+  padding-top: 24px !important;
+}
+
+/* push content below header/logo and keep writeup + visuals aligned at the same top */
+.project-page .grid-row {
+  font-family: 'SpaceMono', monospace;
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;   /* align tops */
+  gap: 24px !important;
+  box-sizing: border-box !important;
+  padding-top: 24px !important;
+}
+
+/* remove any per-column top offsets so both columns start at same baseline */
+body.project-page .writeup-section,
+body.project-page .visuals-section,
+body.project-page .grid-row > .grid-col-3of12,
+body.project-page .grid-row > .grid-col-4of12,
+body.project-page .grid-row > .grid-col-5of12,
+body.project-page .grid-row > .grid-col-8of12 {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* ensure visuals fill its 4/12 column and do not escape it */
+body.project-page .grid-row > .grid-col-4of12,
+body.project-page .visuals-section {
+  flex: 0 0 calc(100% * 4 / 12) !important;
+  width: calc(100% * 4 / 12) !important;
+  max-width: calc(100% * 4 / 12) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* ensure visuals fill its 7/12 column and do not escape it */
+body.project-page .grid-row > .grid-col-7of12,
+body.project-page .visuals-section {
+  flex: 0 0 calc(100% * 7 / 12) !important;
+  width: calc(100% * 7 / 12) !important;
+  max-width: calc(100% * 7 / 12) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* ensure visuals fill its 8/12 column and do not escape it */
+body.project-page .grid-row > .grid-col-8of12,
+body.project-page .visuals-section {
+  flex: 0 0 calc(100% * 8 / 12) !important;
+  width: calc(100% * 8 / 12) !important;
+  max-width: calc(100% * 8 / 12) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* ensure visuals fill its 9/12 column and do not escape it */
+body.project-page .grid-row > .grid-col-9of12,
+body.project-page .visuals-section {
+  flex: 0 0 calc(100% * 9 / 12) !important;
+  width: calc(100% * 9 / 12) !important;
+  max-width: calc(100% * 9 / 12) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* ensure writeup column uses 5/12 */
+body.project-page .writeup-section,
+body.project-page .grid-row > .grid-col-5of12 {
+  flex: 0 0 calc(100% * 5 / 12) !important;
+  width: calc(100% * 5 / 12) !important;
+  max-width: calc(100% * 5 / 12) !important;
+}
+
+/* ensure writeup column uses 3/12 */
+body.project-page .writeup-section,
+body.project-page .grid-row > .grid-col-3of12 {
+  flex: 0 0 calc(100% * 3 / 12) !important;
+  width: calc(100% * 3 / 12) !important;
+  max-width: calc(100% * 3 / 12) !important;
+}
+
+/* ensure writeup column uses 4/12 */
+body.project-page .writeup-section,
+body.project-page .grid-row > .grid-col-4of12 {
+  flex: 0 0 calc(100% * 4 / 12) !important;
+  width: calc(100% * 4 / 12) !important;
+  max-width: calc(100% * 4 / 12) !important;
+}
+
+/* visuals images scale to the column width */
+body.project-page .visuals-section img,
+body.project-page .grid-col-8of12 img,
+body.project-page .grid-col-9of12 img {
+  display: block !important;
+  width: 100% !important;
+  max-width: calc(100% - 24px);
+  height: auto !important;
+  object-fit: cover !important;
+  position: relative !important;
+  transform: none !important;
+}
+
+body.project-page .grid-col-12of12 {
+  grid-column: 1 / -1 !important;
+  width: 100% !important;
+  max-width: none !important;
+  position: relative !important;
+  overflow: hidden !important;
+
+}
+
+body.project-page .grid-col-12of12 img {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.writeup-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  line-height: 1.4;
+}
+
+/* Typography for writeup */
+.project-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.writeup-section p {
+  font-family: 'SrabenGrotesk';
+  font-size: 16px;
+}
+
+.project-specs {
+  font-family: 'SrabenGrotesk';
+  font-size: 14px;
+  color: #555555;
+}
+
+.writeup-section h2{
+  font-weight: 600;
+}
+
+/* visuals stack: two (or more) images stacked vertically */
+body.project-page .vertical-stack .project-image img {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  height: auto !important;
+}
+
+.vertical-stack > * {
+  padding-bottom: 24px;
+}
+
+body.project-page .project-image--fullwidth {
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+}
+
+/* make image fill that container */
+body.project-page .project-image--fullwidth img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
+/* ensure ancestors do not clip the full-bleed (override common containers) */
+body.project-page,
+body.project-page .grid-row,
+body.project-page .grid-row > * ,
+body.project-page .grid-row > .grid-col-8of12,
+body.project-page .visuals-section {
+  transform: none !important;
+  -webkit-transform: none !important;
+  clip-path: none !important;
+}
+
+/* centered page-spanning H2 for project pages */
+body.project-page h2.centered,
+body.project-page h2.section-title.centered {
+  font-size: 16px;
+  font-weight: bold;
+  display: block;
+  grid-column: 1 / -1;        /* span the full grid row */
+  width: 100%;
+  text-align: center;         /* horizontally center text */
+  margin: 0 auto 24px;        /* adjust bottom spacing as needed */
+  padding: 0 16px;            /* respect page gutters */
+  box-sizing: border-box;
+  max-width: 900px;           /* optional content cap, remove or change if undesired */
+}
+
+/* full-bleed wrapper: centers and spans the viewport */
+body.project-page .full-bleed {
+  position: relative !important;
+
+  width: 100vw !important;        /* span viewport width */
+  max-width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 16px !important;     /* optional gutters to align with page content */
+  box-sizing: border-box !important;
+  z-index: 1 !important;
+}
+
+/* image fills the full-bleed container */
+body.project-page .full-bleed img {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover !important;
+}
+
+@media (max-width: 1023px) {
+  /* ensure 6-col grid */
+  body.project-page .grid-row {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 16px !important;
+  }
+
+  /* writeup: start at first column and span 4 of 6 */
+  html body.project-page .grid-row > .writeup-section,
+  html body.project-page .grid-row > .grid-col-5of12 {
+    grid-column: 1 / -1 !important;
+    position: relative !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    margin-left: 0 !important;      /* center within page */
+    box-sizing: border-box !important;
+  }
+
+  /* visuals: also span 4 of 6 (stacked after writeup) */
+  html body.project-page .grid-row > .visuals-section,
+  html body.project-page .grid-row > .grid-col-4of12,
+  html body.project-page .grid-row > .grid-col-8of12,
+  html body.project-page .grid-row > .grid-col-9of12 {
+    grid-column: 1 / -1 !important;
+    position: relative !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 500px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  body.project-page .grid-row > .grid-col-3of12,
+  body.project-page .writeup-section.grid-col-3of12 {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+    box-sizing: border-box !important;
+    padding: 0 16px !important; /* respect page gutters */
+    margin: 0 auto !important;
+  }
+
+  body.project-page .visual-stack .project-image img,
+  body.project-page .visuals-section img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  /* ensure fullwidth visual starts at the left edge of the viewport on small screens */
+  body.project-page .project-image--fullwidth.grid-col-12of12 {
+    grid-column: 1 / -1 !important;                /* span full grid row */
+    position: relative !important;
+    left: 0 !important;
+    transform: none !important;
+    width: 100% !important;                       /* full viewport width */
+    max-width: 100% !important;
+    /* shift to viewport left when page has horizontal gutters/scrollbar */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box !important;
+    padding: 0 !important;
+  }
+
+  /* remove artificial right gap and reliably center full-bleed */
+  body.project-page .visuals-section img,
+  body.project-page .grid-col-8of12 img,
+  body.project-page .grid-col-9of12 img,
+  body.project-page .grid-col-12of12 img {
+    width: 100% !important;
+    max-width: 100% !important;   /* override calc(100% - 24px) */
+    height: auto !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+
+  /* center full-bleed and avoid 45% offset that created right gap */
+  body.project-page .project-image--fullwidth {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100vw !important;      /* full viewport width */
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  
+
+}
+
+body.project-page .grid-col-12of12 {
+  flex: 0 0 100% !important;
+  width: 100% !important;
+  position: relative !important;
+  overflow: hidden !important;
+  max-width: none; /* Remove or modify the max-width property */
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* responsive gallery grid */
+body.project-page .visual-grid {
+  display: grid;
+  row-gap: 16px;
+  column-gap: 0 !important;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: start;
+}
+
+body.project-page .visual-grid .project-image img {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Ensure images inside 9/12 columns scale down with the column width and never get cropped */
+
+/* Prevent ancestor clipping that can visually cut images */
+body.project-page .grid-row,
+body.project-page .grid-col-9of12,
+body.project-page .visuals-section {
+  overflow: visible !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  clip-path: none !important;
+}
+
+/* If you have wrappers that set a fixed height, let the image fit inside without cropping */
+body.project-page .grid-col-9of12 .project-image,
+body.project-page .grid-col-9of12 .visual-grid > .project-image {
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.site-footer {
+  font-family: 'SpaceMono';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 240px;
+  margin-bottom: 180px;
+  font-size: 56px;
+}
+
+.next-project-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.next-project-content {
+  display: flex;
+  align-items: center;
+}
+
+.next-project-content img {
+  transform: rotate(180deg);
+  filter: invert(1) !important;
+  width: 48px;
+  height: 48px;
+}
+
+.site-footer:hover .next-project-content img {
+  transform: rotate(-180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.site-footer:not(:hover) .next-project-content img {
+  transform: rotate(180deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+
+
+
+
+
+.contact-me-section {
+  font-family: 'SrabenGrotesk', sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.contact-me-text {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  
+}
+
+.contact-me-title {
+  font-family: 'SrabenGrotesk', sans-serif;
+  font-weight: 800;
+  font-size: calc(100vw / 7); /* Calculate the font size based on the screen width */
+  margin-left: -20px;
+  margin-right: -6px;
+}
+
+.footer-eyebrow {
+  font-family: "SpaceMono";
+  font-size: 16px;
+  font-weight: 600;
+  color: #0C4C1F;
+}
+
+.contact-me-left {
+  text-align: left;
+}
+
+.contact-me-right {
+  text-align: right;
+}
+
+.contact-me-right .footer-eyebrow {
+  margin-left: -7px;
+}
+
+.email-container {
+  position: absolute; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: #0C4C1F;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.email-content {
+  font-family: 'SpaceMono', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.email-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.email-container:hover .email-content {
+  opacity: 1; /* Add this line */
+  transform: translateY(200%); /* Add this line */
+  
+}
+
+.email-copy {
+  font-family: 'SpaceMono', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out; 
+}
+
+.email-container:hover .email-copy {
+  opacity: 1;
+}
+
+
+@media (max-width: 1023px) {
+  .site-footer {
+    margin-top: 120px;
+    margin-bottom: 80px;
+    font-size: 24px;
+  }
+
+  .next-project-content img {
+    width: 24px;
+    height: 24px;
+  }
+
+  .next-project-content {
+    gap: 8px;
+  }
+
+  .contact-me-title {
+    
+    margin-left: -4px;
+    margin-right: -1px;
+  }
+
+  .footer-eyebrow {
+    font-size: 12px;
+  }
+
+  .email-container {
+    padding: 8px;
+  }
+
+  .email-content {
+    font-size: 12px;
+  }
+
+  .contact-me-right.footer-eyebrow {
+    text-align: left;
+    margin-left: 24px !important;
+  }
+}
+
+
+
+
+.marina-prototype {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* Adjust this value based on the aspect ratio of your content */
+}
+
+.marina-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+
+
+
+
+.grid-col-2of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-3of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-4of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-5of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-6of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.grid-col-12of12 img, video {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+.play-icon {
+  font-family: 'ScrabenGrotesk';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .project-video .play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
