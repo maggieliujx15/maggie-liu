@@ -660,19 +660,18 @@
     startGallerySwap(idx);
   }
 
-  // Ensure portfolio item highlight/dim state is synced
   document.querySelectorAll('.frame-3[data-index]').forEach(p => {
-    const is = p.getAttribute('data-index') === idx;
-    p.classList.toggle('active', is);
-    p.classList.toggle('dimmed', !is);
-    // ensure title/subtitle opacity matches (keeps consistency if JS elsewhere uses inline styles)
-    const title = p.querySelector('.gallery-caption');
-    const subtitle = p.querySelector('.frame-3');
-    if (title) title.style.opacity = is ? '1' : '0.25';
-    if (subtitle) subtitle.style.opacity = is ? '1' : '0.25';
-    p.style.opacity = '1';
-  });
-  
+  // remove active/dimmed classes entirely
+  p.classList.remove('active', 'dimmed');
+
+  // make sure titles and subtitles are fully opaque
+  const title = p.querySelector('.gallery-caption');
+  const subtitle = p.querySelector('.frame-3');
+  if (title) title.style.opacity = '1';
+  if (subtitle) subtitle.style.opacity = '1';
+  p.style.opacity = '1';
+});
+});
 </script>
 
 <script>

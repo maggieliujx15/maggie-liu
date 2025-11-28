@@ -622,6 +622,8 @@ body.about-page .contact-nav a {
   transition: opacity 0.5s;
 }
 
+
+
 .grid-row--column {
   display: flex;
   flex-direction: column;
