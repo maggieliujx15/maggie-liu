@@ -1301,7 +1301,7 @@ body.project-page .grid-col-8of12 img,
 body.project-page .grid-col-9of12 img {
   display: block !important;
   width: 100% !important;
-  max-width: calc(100% - 24px);
+  /*max-width: calc(100% - 24px);*/
   height: auto !important;
   object-fit: cover !important;
   position: relative !important;
@@ -1431,6 +1431,16 @@ ol.numbered-list {
 
 ol.numbered-list li {
   display: list-item;
+}
+
+.list-wrapper {
+  gap: 0 !important;
+}
+
+.list-wrapper ul {
+  font-family: srabenGrotesk;
+  list-style: circle;
+  padding-left: 1rem;
 }
 
 
