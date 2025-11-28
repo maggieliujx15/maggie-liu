@@ -11,7 +11,7 @@
 </div>
 
 <nav class="contact-nav">
-  <a href="work.html">work</a>
+  <a href="index.html">work</a>
   <a href="about.html">about</a>
   <a href="https://linkedin.com/in/maggieliujx" target="_blank" rel="noopener noreferrer">linkedIn<img src="media/index/link_out.svg" style="height: 8px; padding-left: 8px; color: white !important;"></a>
   <a href="mailto:maggieliujx@gmail.com">maggieliujx@gmail.com<img src="media/index/link_out.svg" style="height: 8px; padding-left: 8px; color: white !important;"></a>
@@ -195,17 +195,17 @@ if (!window.__customCursorInitialized) {
   const nav = document.querySelector('.contact-nav');
   if (!nav) return;
   const links = Array.from(nav.querySelectorAll('a'));
-  const current = (location.pathname || '').split('/').pop() || 'work.html';
+  const current = (location.pathname || '').split('/').pop() || 'index.html';
 
   links.forEach(a => {
     try {
       const resolved = new URL(a.getAttribute('href'), location.origin);
-      const hrefName = (resolved.pathname || '').split('/').pop() || 'work.html';
+      const hrefName = (resolved.pathname || '').split('/').pop() || 'index.html';
 
       // mark active when href page matches current page
       if (hrefName === current) a.classList.add('active');
       // also handle root/work equivalence
-      else if ((hrefName === '' || hrefName === 'work.html') && (current === '' || current === 'work.html')) {
+      else if ((hrefName === '' || hrefName === 'index.html') && (current === '' || current === 'index.html')) {
         a.classList.add('active');
       } else {
         a.classList.remove('active');
