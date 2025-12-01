@@ -5,7 +5,7 @@
 
 <div id="site-info">
   <div id="page-info" aria-hidden="false">
-    <span id="ip-city" class="label">—</span>
+    <a id="ip-city" class="label" href="https://maps.app.goo.gl/dqEzbPqaAedVGFGy8" target="_blank" rel="noopener noreferrer">—</a>
     <span id="clock" class="clock">--:--:--</span>
   </div>
 </div>
@@ -81,53 +81,34 @@ if (!window.__contactToggleInitialized) {
 }
 </script>
 
+
 <script>
-/* city + clock (self-contained) */
-(async function () {
-  const ipCityEl = document.getElementById('ip-city');
-  const clockEl = document.getElementById('clock');
+  /* fixed Amsterdam city + Amsterdam timezone clock */
+  (function () {
+    const ipCityEl = document.getElementById('ip-city');
+    const clockEl = document.getElementById('clock');
 
-  function updateClock() {
-    const d = new Date();
-    if (clockEl) clockEl.textContent = d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-  }
-  updateClock();
-  setInterval(updateClock, 1000);
+    // Set fixed city text
+    if (ipCityEl) ipCityEl.textContent = 'Amsterdam';
 
-  async function fetchJsonWithTimeout(url, timeout = 5000) {
-    const controller = new AbortController();
-    const id = setTimeout(() => controller.abort(), timeout);
-    try {
-      const res = await fetch(url, { signal: controller.signal });
-      clearTimeout(id);
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      return await res.json();
-    } catch (err) {
-      clearTimeout(id);
-      throw err;
+    function updateClock() {
+      const d = new Date();
+      if (clockEl) {
+        clockEl.textContent = d.toLocaleTimeString('nl-NL', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+          timeZone: 'Europe/Amsterdam'
+        });
+      }
     }
-  }
 
-  async function getCity() {
-    try {
-      const data = await fetchJsonWithTimeout('https://ipapi.co/json/', 5000);
-      return data && (data.city || data.region) || null;
-    } catch (e) { /* fallback */ }
-    try {
-      const data = await fetchJsonWithTimeout('https://ipwho.is/', 5000);
-      return data && (data.city || data.region) || null;
-    } catch (e) { /* final fallback */ }
-    return null;
-  }
-
-  try {
-    const city = await getCity();
-    if (ipCityEl) ipCityEl.textContent = city || '—';
-  } catch (err) {
-    if (ipCityEl) ipCityEl.textContent = '—';
-  }
-})();
+    updateClock();
+    setInterval(updateClock, 1000);
+  })();
 </script>
+
 
 <script>
 /* init custom desktop cursor (idempotent) */
