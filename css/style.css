@@ -90,13 +90,16 @@ body,
 /* Align subtitle to start after year in portfolio items */
 .frame-3 .text-wrapper-5 {
   margin-left: 0;
-  text-indent: 45px;
 }
 /* Add gap between portfolio item title and subtitle */
 .frame-3 > div {
   gap: 4px;
 }
 
+.project-type {
+  font-family: SrabenGrotesk;
+  font-size: 12px;
+}
 
 
 
@@ -281,26 +284,22 @@ html, body {
 .d-landing .text-wrapper-4 {
   position: relative;
   width: fit-content;
-  margin-top: -1.00px;
   font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #000000;
-  font-size: 16px;
+  font-size: 14px;
   letter-spacing: 0;
-  line-height: 1.5;
   white-space: normal;
 }
 
 .text-wrapper-5 {
   position: relative;
   width: fit-content;
-  margin-top: -1.00px;
   font-family: "SpaceMono", monospace;
   font-weight: 400;
   color: #0C4C1F;
-  font-size: 12px;
+  font-size: 10px;
   letter-spacing: 0;
-  line-height: 1;
   white-space: nowrap;
 }
 
@@ -487,7 +486,9 @@ html, body {
 .portfolio-section {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  gap: 40px;
 }
 
 .gallery-section {
@@ -860,7 +861,8 @@ body.about-page .contact-nav a {
   }
 
   .gallery-section .grid-row--column {
-    display: contents !important;
+    display: none !important;
+
   }
   .gallery-section .grid-row--column.active-col {
     display: block !important;
