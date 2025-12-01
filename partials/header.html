@@ -5,8 +5,11 @@
 
 <div id="site-info">
   <div id="page-info" aria-hidden="false">
-    <a id="ip-city" class="label" href="https://maps.app.goo.gl/dqEzbPqaAedVGFGy8" target="_blank" rel="noopener noreferrer">—</a>
-    <span id="clock" class="clock">--:--:--</span>
+    <a id="location-clock"
+       href="https://www.google.com/maps/place/Amsterdam"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="label">find me in Amsterdam --:--:--</a>
   </div>
 </div>
 
@@ -83,30 +86,24 @@ if (!window.__contactToggleInitialized) {
 
 
 <script>
-  /* fixed Amsterdam city + Amsterdam timezone clock */
-  (function () {
-    const ipCityEl = document.getElementById('ip-city');
-    const clockEl = document.getElementById('clock');
+(function () {
+  const el = document.getElementById('location-clock');
 
-    // Set fixed city text
-    if (ipCityEl) ipCityEl.textContent = 'Amsterdam';
+  function updateClock() {
+    const d = new Date();
+    const time = d.toLocaleTimeString('nl-NL', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'Europe/Amsterdam'
+    });
+    if (el) el.textContent = `find me in Amsterdam ${time}`;
+  }
 
-    function updateClock() {
-      const d = new Date();
-      if (clockEl) {
-        clockEl.textContent = d.toLocaleTimeString('nl-NL', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false,
-          timeZone: 'Europe/Amsterdam'
-        });
-      }
-    }
-
-    updateClock();
-    setInterval(updateClock, 1000);
-  })();
+  updateClock();
+  setInterval(updateClock, 1000);
+})();
 </script>
 
 
