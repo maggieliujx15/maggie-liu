@@ -29,7 +29,7 @@
 
     <div id="site-header"></div>
 
-    <div class="grid-row">
+    <div class="grid-row" style="width:calc(100% - 24px)">
         <section class="writeup-section grid-col-5of12">
 
             <div class="frame-3">
@@ -82,9 +82,12 @@
 
     <div class="grid-row">
         <section class="writeup-section grid-col-4of12">
-            <h2 class="section-title">Research Methodology</h2>
+            <h2 class="section-title">Research Methodology & Approach</h2>
             <p>
                 Our research combined insights from Toyota's internal teams, industry best practices, and user needs to ensure a balanced solution that considered all perspectives.
+            </p>
+             <p>
+                Our proposed approach to designing the navigation follows a top-down methodology, examining the broader system that requires improvement. This requires the redesign and testing of multiple components, resulting in a refreshed and cohesive navigation system.
             </p>
             
         </section>
@@ -126,6 +129,7 @@
             </section>
         </div>
 
+        <!--
         <div class="grid-row">
             <section class="grid-col-3of12">
                 <div class="project-image">
@@ -137,16 +141,17 @@
                     <img src="media/toyota/img/toyota_p_3.png">
                 </div>
             </section>
-        </div>
+        </div> -->
     </div>
 
     <div class="wrapper">
-        <div class="grid-row">
+        <div class="grid-row" style="width:calc(100% - 24px)">
             <section class="writeup-section grid-col-4of12">
                 <h2 class="section-title">Prioritization & Roadmapping</h2>
                 <p>
-                    In a follow-up session, we focused on prioritizing the insights collected during the workshop by first categorizing similar ideas. Using the RICE framework (Reach, Impact, Confidence, Effort), we objectively determined which initiatives should be tackled first, minimizing emotional or gut-based decision-making.
+                    In a follow-up session, we grouped the insights from the previous session into 6 categories, and used the RICE framework (Reach, Impact, Confidence, Effort) to objectively prioritize them, minimixing gut-based decision-making.
                 </p>
+               
 
                 <div class="list-wrapper">
                     <p>
@@ -155,9 +160,10 @@
                     <ol class="numbered-list">
                         <li>Estimated impact vs. effort across proposed features</li>
                         <li>Aligned on short- and long-term priorities</li>
-                        <li>Layed out the foundation for a clear and actionable roadmap</li>
+                        <li>Laid out the foundation for a clear and actionable roadmap</li>
                     </ol>
                 </div>
+
             </section>
 
             <section class="visuals-section grid-col-8of12">
@@ -169,12 +175,21 @@
     </div>
 
     <div class="wrapper">
-        <div class="grid-row">
-            <section class="writeup-section grid-col-4of12">
+        <div class="grid-row" style="width:calc(100% - 48px)">
+            <section class="writeup-section grid-col-3of12">
                 <h2 class="section-title">Industry Perspective</h2>
-                <p>
-                    We researched over 35 best-in-class sites across industry sectors and pulled the ones most relevant to DXP. Each site was looked at through a lens of five categories identified through earlier sessions that encompass the benchmarking elements.
-                </p>
+                <div class="list-wrapper">
+                    <p>
+                        We researched over 35 best-in-class sites across industry sectors, analyzing them through the lens of the previously identified categories:
+                    </p>
+                    <ul>
+                        <li>Content</li>
+                        <li>Design</li>
+                        <li>Functionality</li>
+                        <li>Ease of Access</li>
+                        <li>Information Architecture</li>
+                    </ul>
+                </div>
 
                 <div class="list-wrapper">
                     <p>
@@ -190,22 +205,55 @@
                         <li>Beauty</li>
                     </ul>
                 </div>
-
-                <div class="list-wrapper">
-                    <p>
-                        Benchmarking categories:
-                    </p>
-                    <ul>
-                        <li>Ease of Access</li>
-                        <li>Discovery</li>
-                        <li>Content</li>
-                        <li>Design</li>
-                        <li>Interaction</li>
-                    </ul>
-                </div>
             </section>
 
-            <section class="visuals-section grid-col-8of12">
+            <section class="writeup-section grid-col-4of12">
+                <h2 class="section-title">Takeaways</h2>
+
+                <div class="list-wrapper">
+                    <p>Content</p>
+                    <ol>
+                        <li>Design for responsiveness by accommodating individual languages and using space to handle long characters and edge cases.</li>
+                        <li>Create content and text guidelines across markets to define key navigation titles, character limits, and standardized rules.</li>
+                    </ol>
+                </div>
+
+                <div class="list-wrapper">
+                    <p>Design</p>
+                    <ol>
+                        <li>Reinforce brand elements and maintain visual hierarchy by integrating colour, lines, icons, and visuals while keeping the experience simple and purposeful.</li>
+                        <li>Optimize component sizes and use dynamic elements to create interest, giving each navigation item space and avoiding overload.</li>
+                    </ol>
+                </div>
+
+                <div class="list-wrapper">
+                    <p>Functionality</p>
+                    <ol>
+                        <li>Keep navigation simple with the 80:20 rule, prioritizing click-based interactions to reduce errors.</li>
+                        <li>A modular system that handles market-specific requirements.</li>
+                    </ol>
+                </div>
+
+                <div class="list-wrapper">
+                    <p>Ease of Access</p>
+                    <ol>
+                        <li>Clear access zones that guide users and visually separate them from the main menu.</li>
+                        <li>An upfront search tool that delivers relevant results and strategic suggestions when users can't find items in the menu.</li>
+                    </ol>
+                </div>
+
+                <div class="list-wrapper">
+                    <p>Information Architecture</p>
+                    <ol>
+                        <li>CA purpose-driven menu with strategic grouping and minimal interactions to guide users.</li>
+                        <li>Highlight key journeys with clear CTAs, previews, and supporting elements to help users reach their goals.</li>
+                        <li>A unified mobile navigation bar that combines multiple functions in a simple, intuitive interface.</li>
+                    </ol>
+                </div>
+
+            </section>
+
+            <section class="visuals-section grid-col-5of12">
                 <div class="project-image">
                     <img src="media/toyota/img/industry_1.png">
                 </div>
@@ -213,53 +261,9 @@
         </div>
     </div>
 
-    <div class="wrapper">
-        <div class="grid-row">
-            <section class="writeup-section grid-col-4of12">
-                <h2 class="section-title">Takeaways</h2>
-                <p>
-                    Our benchmarking led us to several key takeaways.
-                </p>
-            </section>
-        </div>
-
-        <div class="grid-row">
-            <section class="grid-col-6of12">
-                <div class="project-image">
-                    <img src="media/toyota/img/takeaway_1.png">
-                </div>
-            </section>
-            <section class="grid-col-6of12">
-                <div class="project-image">
-                    <img src="media/toyota/img/takeaway_2.png">
-                </div>
-            </section>
-        </div>
-
-        <div class="grid-row">
-            <section class="grid-col-6of12">
-                <div class="project-image">
-                    <img src="media/toyota/img/takeaway_3.png">
-                </div>
-            </section>
-            <section class="grid-col-6of12">
-                <div class="project-image">
-                    <img src="media/toyota/img/takeaway_4.png">
-                </div>
-            </section>
-        </div>
-
-        <div class="grid-row">
-            <section class="grid-col-8of12">
-                <div class="project-image">
-                    <img src="media/toyota/img/takeaway_5.png">
-                </div>
-            </section>
-        </div>
-    </div>
 
     <div class="wrapper">
-        <div class="grid-row">
+        <div class="grid-row" style="width:calc(100% - 24px)">
             <section class="writeup-section grid-col-4of12">
                 <h2 class="section-title">Audience Perspective</h2>
                 <p>
@@ -271,44 +275,12 @@
                 <div class="project-image">
                     <img src="media/toyota/img/audience_1.png">
                 </div>
-            </section>
-        </div>
-
-        <section class="grid-col-6of12">
-            <div class="project-image">
-                <img src="media/toyota/img/audience_2.png">
-            </div>
-        </section>
-        <section class="grid-col-6of12">
-            <div class="project-image">
-                <img src="media/toyota/img/audience_3.png">
-            </div>
-        </section>
-
-        <div class="grid-row">
-            <section class="grid-col-12of12">
                 <div class="project-image">
                     <img src="media/toyota/img/audience_4.png">
                 </div>
             </section>
         </div>
-    </div>
 
-    <div class="wrapper">
-        <div class="grid-row">
-            <section class="writeup-section grid-col-4of12">
-                <h2 class="section-title">Revolution Approach</h2>
-                <p>
-                    Our proposed approach to designing the navigation follows a top-down methodology, examining the broader system that requires improvement. This requires the redesign and testing of multiple components, resulting in a refreshed and cohesive navigation system.
-                </p>
-            </section>
-
-            <section class="visuals-section grid-col-8of12">
-                <div class="project-image">
-                    <img src="media/toyota/img/revolution_1.png">
-                </div>
-            </section>
-        </div>
     </div>
 
     <div class="wrapper">
@@ -316,9 +288,9 @@
             <section class="writeup-section grid-col-4of12">
                 <h2 class="section-title">Testing & Validation</h2>
                 <p>
-                    While exploring multiple design directions, we first conducted unmoderated online A/B tests with targeted participants, providing early feedback on different design options and supporting design rationale.
+                    In the early design stages, we ran unmoderated online A/B tests with targeted participants to gather feedback on multiple directions and inform our design decisions.
                 <p>
-                    We then validated our most significant updates on the lives sites: comparing the existing navigation with the redesigned version, and A/B tests on variations that received mixed results in the unmoderated tests. This allowed us to observe real user behaviour and gather more definite insights before finalizing the changes.
+                    We then validated the most significant updates on the live sites, comparing the existing navigation with the redesigned version and running A/B tests on variations that had mixed results in the earlier tests. This allowed us to observe real user behavior and gather more definitive insights before finalizing the changes.
                 </p>
             </section>
 
@@ -330,14 +302,14 @@
         </div>
 
         <div class="grid-row" style="width:calc(100% - 24px)">
-            <section class="grid-col-8of12">
-                <div class="project-image">
-                    <img src="media/toyota/img/testing_2.png">
-                </div>
-            </section>
             <section class="grid-col-4of12">
                 <div class="project-image">
                     <img src="media/toyota/img/testing_3.png">
+                </div>
+            </section>
+            <section class="grid-col-8of12">
+                <div class="project-image">
+                    <img src="media/toyota/img/testing_2.png">
                 </div>
             </section>
         </div>

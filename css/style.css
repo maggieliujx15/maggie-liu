@@ -1453,6 +1453,12 @@ ol.numbered-list li {
   padding-left: 1rem;
 }
 
+.list-wrapper ol {
+  font-family: srabenGrotesk;
+  list-style: decimal;
+  padding-left: 1rem;
+}
+
 
 @media (max-width: 1023px) {
   .project-page {
