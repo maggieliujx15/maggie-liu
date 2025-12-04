@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168203025-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-168203025-1');
+  </script>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/svg+xml" href="media/index/browser_tab.svg">
+
+  <title>About | Maggie Liu - Product Designer</title>
+	<link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/fonts.css" />
+  <link rel="stylesheet" href="css/grid.css" />
+  
+</head>
+
+<body>
+
+    <main class="about">
+        
+
+        <div id="site-header"></div>
+
+        <div id="hover-preview"></div>
+
+        <div class="right-image-panel grid-col-6of12">
+            <img src="media/about/portrait.png">
+        </div>
+
+        <div class="left-content grid-col-6of12">
+            <div class="about-text">
+                <p>
+                    Hey! I'm Maggie, an <em data-image="media/about/amsterdam.png">Amsterdam</em>-based Product Designer, with some sprinkles of front-end dev on top. I've always had the need to touch and tinker with everything (<em data-image="img1.jpg">museums</em> are dangerous 👀), I love finding the little surprises in an experience, the <em data-image="img1.jpg">tiny details</em> that make me go "oooh, that's fun!". My inspiration comes from everywhere: <em data-image="img1.jpg">busy city streets</em>, <em data-image="media/about/dolomiti_1.png">quiet mountain villages</em>, or even <em data-image="img1.jpg">random conversations</em>. → Talk to me ←
+                </p>
+            </div>
+            
+            <div class="list-wrapper" style="display: flex; flex-direction: column; gap: 8px;">
+                <h2>Experiences</h2>
+                <ul>
+                    <li><a href="https://www.akqa.com/">AKQA</a> - Product Designer 2022-2025</li>
+                    <li><a href="https://trengo.com/">Trengo</a> - Product Designer 2021</li>
+                    <li><a href="https://www.monks.com/">Monks</a> - Freelance UX Designer 2021</li>
+                    <li><a href="https://www.monks.com/">Monks</a> - UX Design Intern 2019</li>
+                </ul>
+            </div>
+
+            <div class="list-wrapper" style="display: flex; flex-direction: column; gap: 8px;">
+                <h2>Clients</h2>
+                <ul>
+                    <li>Adidas / Google / Jacobs Douwe Egberts / Kia / Lexus / Lufthansa / Montblanc / Puma / Somersby / Toyota</li>
+                </ul>
+            </div>
+        </div>
+ 
+            
+  </main>
+
+  <script src="js/load-partials.js" defer></script>
+  
+
+
+  <script>
+    const preview = document.getElementById("hover-preview");
+    const triggers = document.querySelectorAll("em[data-image]");
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener("mouseenter", () => {
+        const imgSrc = trigger.getAttribute("data-image");
+
+        preview.innerHTML = `<img src="${imgSrc}" />`;
+        preview.style.opacity = 1;
+        });
+
+        trigger.addEventListener("mouseleave", () => {
+        preview.style.opacity = 0;
+
+        setTimeout(() => {
+            preview.innerHTML = "";
+        }, 150);
+        });
+    });
+    </script>
+
+
+
+
+</body>
+
+</html>
