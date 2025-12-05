@@ -762,14 +762,18 @@ em[data-image]:hover {
   right: 16px;              /* 16px gap from right */
   display: flex;
   justify-content: flex-end; /* right align image inside panel */
-  align-items: stretch;      /* image fills vertical space */
+  align-items: center;      /* image fills vertical space */
   width: calc(50% - 16px);   /* roughly match grid-col-6of12 width minus right gap */
+  max-width: 100%;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .right-image-panel img {
-  height: 100%;        /* fill available height (top/bottom gaps) */
-  width: auto;         /* preserve aspect ratio */
+  max-width: 100%; 
+  max-height: 100%;
+  height: auto;    
+  width: auto;      
   object-fit: contain;
 }
 
