@@ -43,7 +43,7 @@
         <div class="left-content grid-col-6of12">
             <div class="about-text">
                 <p>
-                    Hey! I'm Maggie, an <em data-image="media/about/amsterdam.png">Amsterdam</em>-based Product Designer, with some sprinkles of front-end dev on top. I've always had the need to touch and tinker with everything (<em data-image="img1.jpg">museums</em> are dangerous 👀), I love finding the little surprises in an experience, the <em data-image="img1.jpg">tiny details</em> that make me go "oooh, that's fun!". My inspiration comes from everywhere: <em data-image="img1.jpg">busy city streets</em>, <em data-image="media/about/dolomiti_1.png">quiet mountain villages</em>, or even <em data-image="img1.jpg">random conversations</em>. → Talk to me ←
+                    Hey! I'm Maggie, an <em data-image="media/about/amsterdam.png">Amsterdam</em>-based Product Designer, with some sprinkles of front-end dev on top. I've always had the need to touch and tinker with everything (<em data-image="img1.jpg">museums</em> are dangerous 👀), I love finding the little surprises in an experience, the <em data-image="img1.jpg">tiny details</em> that make me go "oooh, that's fun!". My inspiration comes from everywhere: <em data-image="media/about/city.png">busy city streets</em>, <em data-image="media/about/mountain.png">quiet mountain villages</em>, or even <em data-image="img1.jpg">random conversations</em>. → Talk to me ←
                 </p>
             </div>
             
@@ -72,26 +72,28 @@
   
 
 
-  <script>
-    const preview = document.getElementById("hover-preview");
-    const triggers = document.querySelectorAll("em[data-image]");
+    <script>
+        const preview = document.getElementById("hover-preview");
+const triggers = document.querySelectorAll("em[data-image]");
 
-    triggers.forEach(trigger => {
-        trigger.addEventListener("mouseenter", () => {
-        const imgSrc = trigger.getAttribute("data-image");
+triggers.forEach(trigger => {
+  trigger.addEventListener("mouseenter", () => {
+    const src = trigger.getAttribute("data-image");
+    const isVideo = src.match(/\.(mp4|webm|mov)$/);
 
-        preview.innerHTML = `<img src="${imgSrc}" />`;
-        preview.style.opacity = 1;
-        });
+    // Insert or replace content on every hover
+    preview.innerHTML = isVideo
+      ? `<video src="${src}" autoplay muted loop playsinline></video>`
+      : `<img src="${src}" />`;
 
-        trigger.addEventListener("mouseleave", () => {
-        preview.style.opacity = 0;
+    preview.style.opacity = 1;
+  });
 
-        setTimeout(() => {
-            preview.innerHTML = "";
-        }, 150);
-        });
-    });
+  trigger.addEventListener("mouseleave", () => {
+    preview.style.opacity = 0;
+    // do NOT clear innerHTML so it doesn't flicker
+  });
+});
     </script>
 
 
