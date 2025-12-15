@@ -571,11 +571,6 @@ body.about-page .contact-nav a {
 
 /* DESKTOP — 1024px and above */
 @media (min-width: 1023px) {
-  .contact-nav,
-  .contact-nav a {
-    mix-blend-mode: difference !important;
-    background: none !important;
-  }
 
   /* remove any forced colors that break blending */
   body.about-page .contact-nav a {
@@ -944,7 +939,7 @@ body.about-page .contact-nav a {
     height: 40px;
     background: #000;
     border: none;
-    z-index: 4000;
+    z-index: 9000;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -966,7 +961,7 @@ body.about-page .contact-nav a {
     display: inline-flex !important;
     position: fixed !important;
     flex-direction: column;
-    background: #000;
+    background: #000 !important;
     color: #fff;
     z-index: 3999;
     transform-origin: left bottom;
@@ -977,9 +972,8 @@ body.about-page .contact-nav a {
     display: flex;
     flex-direction: column;
     gap: 2px; /* gap between the block of link containers and the button area (outer spacing) */
-    background: transparent; /* links themselves will be black blocks */
     align-items: flex-start !important; /* <-- prevents children stretching to full width */
-    background: none !important;
+    mix-blend-mode: normal !important;
     box-shadow: none !important;
     z-index: 9999;
   }
