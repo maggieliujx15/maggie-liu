@@ -516,15 +516,18 @@ html, body {
   left: 16px;
   gap: 12px;
   background: none;
+  z-index: 99999;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 
 body.about-page .contact-nav a {
-  color: #ffffff;
+  /*color: #ffffff;*/
 }
 
 .contact-nav a {
-  color: black;
+  color: white;
 }
   
 .contact-nav img {
@@ -781,7 +784,7 @@ body.about-page .contact-nav a {
 /* ensure main content (header, landing wrapper, about paragraph) sits above carousel */
 .d-landing,
 .d-landing .div,
-#site-header,
+
 .about-paragraph {
   position: relative; /* create stacking context */
   z-index: 1000;
