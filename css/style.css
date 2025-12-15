@@ -621,7 +621,6 @@ body.about-page .contact-nav a {
   position: fixed;
   right: 16px;
   top: 16px;
-  color: #000000;
   padding: 0;
   font-size: 12px;
   font-family: "SpaceMono", monospace;
@@ -632,6 +631,9 @@ body.about-page .contact-nav a {
   pointer-events: auto; /* won't block clicks */
   text-transform: lowercase;
   text-decoration: none;
+  z-index: 99999;
+  color: white;
+  mix-blend-mode: difference;
 }
 
 #page-info .clock {
