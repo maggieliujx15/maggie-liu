@@ -522,18 +522,10 @@ html, body {
 }
 
 
-body.about-page .contact-nav a {
-  /*color: #ffffff;*/
-}
-
 .contact-nav a {
   color: white;
 }
-  
-.contact-nav img {
-  /*filter: invert(1) !important; /* make white source appear black 
-  -webkit-filter: invert(1) !important; */
-}
+
 
 .about-page .contact-nav img {
   filter: invert(0) !important; /* make source default white */
