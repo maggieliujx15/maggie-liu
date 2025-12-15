@@ -1893,6 +1893,10 @@ ol.numbered-list li {
   line-height: 1.4;
 }
 
+html[data-theme="photography"] .project-page {
+  grid-gap: 24px !important;
+}
+
 @media (max-width: 1023px) {
   .project-video .play-icon {
     display: flex;
@@ -1910,8 +1914,9 @@ ol.numbered-list li {
   max-width: 100%;
   height: auto !important;
   }
+
+  html[data-theme="photography"] .project-page {
+    grid-gap: 8px !important;
+  }
 }
 
-html[data-theme="photography"] .project-page {
-  grid-gap: 0px !important;
-}
