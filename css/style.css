@@ -1176,7 +1176,7 @@ html, body {
   overflow-y: auto !important;
   -ms-overflow-style: none; /* IE 10+ */
   scrollbar-width: none;    /* Firefox */
-  grid-gap: 56px;
+  grid-gap: 80px;
 }
 
 /* push content below header/logo and keep writeup + visuals aligned at the same top */
@@ -1186,6 +1186,7 @@ html, body {
   flex-wrap: nowrap !important;
   align-items: flex-start !important;   /* align tops */
   box-sizing: border-box !important;
+  
 }
 
 /* remove any per-column top offsets so both columns start at same baseline */
@@ -1327,6 +1328,23 @@ html, body {
   font-family: 'SrabenGrotesk';
   font-size: 14px;
   color: #555555;
+}
+
+.image-captions {
+  font-family: 'SrabenGrotesk';
+  font-size: 12px;
+  color: #555555;
+  text-align: center;
+  line-height: normal;
+}
+
+.image-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
 }
 
 .writeup-section h2 {
