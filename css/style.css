@@ -905,89 +905,7 @@ html, body {
     overflow-x: hidden !important;
   }
 
-  /* Contact nav -> collapsed button on small screens */
-  /* hide original nav (desktop layout) by default on small screens */
-  .contact-nav {
-    display: none !important;
-  }
-
-  /* floating button bottom-left */
-  #contact-toggle {
-    position: fixed;
-    left: 16px;
-    bottom: 16px;
-    width: 40px;
-    height: 40px;
-    background: #000;
-    border: none;
-    z-index: 9000;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    cursor: pointer;
-  }
   
-  #contact-toggle img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    opacity: 1;
-    will-change: opacity, transform;
-  }
-
-  /* popup nav when opened */
-  .contact-nav.contact-open {
-    display: inline-flex !important;
-    position: fixed !important;
-    flex-direction: column;
-    background: #000 !important;
-    color: #fff;
-    z-index: 3999;
-    transform-origin: left bottom;
-    transition: transform .22s ease, opacity .22s ease;
-    opacity: 1;
-    left: 16px;
-    bottom: calc(16px + 40px + 8px); /* 8px gap between button and popup */
-    display: flex;
-    flex-direction: column;
-    gap: 2px; /* gap between the block of link containers and the button area (outer spacing) */
-    align-items: flex-start !important; /* <-- prevents children stretching to full width */
-    mix-blend-mode: normal !important;
-    box-shadow: none !important;
-    z-index: 9999;
-  }
-
-  /* hidden state for animation (initial) */
-  .contact-nav.contact-closed {
-    display: none !important;
-    opacity: 0;
-    transform: translateY(6px) scale(.98);
-    pointer-events: none;
-  }
-
-  /* ensure popup wrapper doesn't add extra spacing below the last link */
-  .contact-nav.contact-open > a:last-child {
-    margin-bottom: 0;
-  }
-
-  .contact-nav img {
-    filter: invert(0) !important; /* make white source appear black */
-    -webkit-filter: invert(0) !important;
-  }
-
-  .about-page .contact-nav img {
-  filter: invert(1) !important; /* make white source appear black */
-  -webkit-filter: invert(1) !important;
-}
-
-  .bug-report {
-    position: static !important;
-    right: auto !important;
-    bottom: auto !important;
-    display: block !important;
-  }
 
   .gallery-section {
     position: fixed !important;
@@ -1022,22 +940,7 @@ html, body {
     pointer-events: auto !important;
   }
 
-  /* mobile: make opened contact items appear as dark blocks */
-  .contact-nav.contact-open a {
-    display: block !important;
-    width: auto !important;
-    padding: 12px !important;
-    box-sizing: border-box !important;
-    background: rgba(0,0,0,0.9) !important; /* black background */
-    color: #fff !important;                  /* white text */
-    text-decoration: none !important;
-    pointer-events: auto !important;
-  }
-
-  /* small spacing between items */
-  .contact-nav.contact-open a + a {
-    margin-top: 2px !important;
-  }
+  
 
   .about-paragraph {
     top: calc(16px + 32px + 16px) !important; /* 40px below logo */
@@ -1116,6 +1019,95 @@ html, body {
 
 
 }
+
+/* contact-nav collapse */
+@media (max-width: 1023px), (max-height: 600px) {
+  /* Contact nav -> collapsed button on small screens */
+  /* hide original nav (desktop layout) by default on small screens */
+  .contact-nav {
+    display: none !important;
+  }
+
+  /* floating button bottom-left */
+  #contact-toggle {
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    background: #000;
+    border: none;
+    z-index: 9000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  #contact-toggle img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 1;
+    will-change: opacity, transform;
+  }
+
+  /* popup nav when opened */
+  .contact-nav.contact-open {
+    display: inline-flex !important;
+    position: fixed !important;
+    flex-direction: column;
+    background: #000 !important;
+    color: #fff;
+    z-index: 3999;
+    transform-origin: left bottom;
+    transition: transform .22s ease, opacity .22s ease;
+    opacity: 1;
+    left: 16px;
+    bottom: calc(16px + 40px + 8px); /* 8px gap between button and popup */
+    display: flex;
+    flex-direction: column;
+    gap: 2px; /* gap between the block of link containers and the button area (outer spacing) */
+    align-items: flex-start !important; /* <-- prevents children stretching to full width */
+    mix-blend-mode: normal !important;
+    box-shadow: none !important;
+    z-index: 9999;
+  }
+
+  /* hidden state for animation (initial) */
+  .contact-nav.contact-closed {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(6px) scale(.98);
+    pointer-events: none;
+  }
+
+  /* ensure popup wrapper doesn't add extra spacing below the last link */
+  .contact-nav.contact-open > a:last-child {
+    margin-bottom: 0;
+  }
+
+  .contact-nav img {
+    filter: invert(0) !important; /* make white source appear black */
+    -webkit-filter: invert(0) !important;
+  }
+
+  .about-page .contact-nav img {
+    filter: invert(1) !important; /* make white source appear black */
+    -webkit-filter: invert(1) !important;
+  }
+
+  .bug-report {
+    position: static !important;
+    right: auto !important;
+    bottom: auto !important;
+    display: block !important;
+  }
+}
+
+
 
 /* Desktop-only fullscreen background carousel */
 @media (min-width: 1024px) {
