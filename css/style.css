@@ -1353,6 +1353,8 @@ html, body {
   color: #555555;
   text-align: center;
   line-height: normal;
+  width: 100%;
+  max-width: 500px;
 }
 
 .image-wrapper {
