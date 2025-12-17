@@ -527,6 +527,26 @@ html, body {
 }
 
 
+.project-link {
+  font-family: srabenGrotesk;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  width: fit-content;
+}
+
+.project-link span {
+  white-space: nowrap;
+}
+
+.project-link img {
+  filter: invert(1) !important;
+  -webkit-filter: invert(1) !important;
+}
+
+
 .about-page .contact-nav img {
   filter: invert(0) !important; /* make source default white */
   -webkit-filter: invert(0) !important;
@@ -1162,10 +1182,7 @@ html, body {
   }
 }
 
-.writeup-section a {
-  text-decoration: underline; /* Add underline to the link */
-  color: inherit; /* Inherit the text color from the parent element */
-}
+
 
 /* Prevent the page container from centering vertically and place the writeup 48px below the header */
 .project-page {
