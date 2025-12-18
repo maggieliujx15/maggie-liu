@@ -1072,21 +1072,24 @@ html, body {
     display: inline-flex !important;
     position: fixed !important;
     flex-direction: column;
-    background: #000 !important;
     color: #fff;
     z-index: 3999;
     transform-origin: left bottom;
     transition: transform .22s ease, opacity .22s ease;
     opacity: 1;
-    left: 16px;
     bottom: calc(16px + 40px + 8px); /* 8px gap between button and popup */
     display: flex;
     flex-direction: column;
-    gap: 2px; /* gap between the block of link containers and the button area (outer spacing) */
+    gap: 4px; /* gap between the block of link containers and the button area (outer spacing) */
     align-items: flex-start !important; /* <-- prevents children stretching to full width */
     mix-blend-mode: normal !important;
     box-shadow: none !important;
     z-index: 9999;
+  }
+
+  .contact-nav.contact-open a {
+    padding: 14px 16px;
+    background: black;
   }
 
   /* hidden state for animation (initial) */
