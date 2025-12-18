@@ -1824,7 +1824,7 @@ ol.numbered-list li {
 .marina-prototype {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* Adjust this value based on the aspect ratio of your content */
+  padding-top: 56.25%;
 }
 
 .marina-iframe {
