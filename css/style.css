@@ -219,7 +219,7 @@ html, body {
   left: 16px;
   font-family: "SpaceMono", monospace;
   font-weight: 400;
-  color: #000000;
+  color: #333333;
   font-size: 16px;
   letter-spacing: 0;
   line-height: 1;
@@ -232,7 +232,7 @@ html, body {
   left: 16px;
   font-family: "SpaceMono", monospace;
   font-weight: 400;
-  color: #000000;
+  color: #333333;
   font-size: 16px;
   letter-spacing: 0;
   line-height: 1;
@@ -245,7 +245,7 @@ html, body {
   left: 16px;
   font-family: "SpaceMono", monospace;
   font-weight: 400;
-  color: #000000;
+  color: #333333;
   font-size: 16px;
   letter-spacing: 0;
   line-height: 1;
@@ -286,10 +286,11 @@ html, body {
   width: fit-content;
   font-family: "SpaceMono", monospace;
   font-weight: 400;
-  color: #000000;
+  color: #333333;
   font-size: 14px;
   letter-spacing: 0;
   white-space: normal;
+  line-height: 1.2;
 }
 
 .text-wrapper-5 {
@@ -601,13 +602,6 @@ html, body {
   position: static;
 }
 
-/* Ensure proper heading hierarchy */
-.text-wrapper-4 {
-  font-size: 16px;
-  font-weight: 400;
-  margin: 0;
-}
-
 /* Improve accessibility for background images */
 [role="img"] {
   background-repeat: no-repeat;
@@ -670,7 +664,6 @@ html, body {
   top: calc(16px + 32px + 40px) !important; /* 40px below logo */
   width: calc(100% * 4 / 12 - 48px);
   max-width: 500px;
-  /*background: #000 !important;*/
   color: #fff !important;
   font-size: 14px !important;
   box-sizing: border-box !important;
