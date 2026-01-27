@@ -68,6 +68,55 @@ body,
   border-radius: 4px;
 }
 
+
+/* initial loading overlay */
+#landing-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 253, 244, 0.75);
+  z-index: 9999;
+  transition: opacity 0.6s ease;
+}
+
+/* Desktop default */
+#landing-overlay img {
+  position: absolute;
+  padding: 16px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Default: desktop image visible */
+.overlay-desktop {
+  display: block;
+}
+
+.overlay-mobile {
+  display: none;
+}
+
+/* Mobile: center horizontally + vertically */
+@media (max-width: 1024px) {
+  .overlay-desktop {
+    display: none;
+  }
+
+  .overlay-mobile {
+    display: block;
+  }
+}
+
+
+
+
+
+
+
+
 .about-carousel .caption {
   position: absolute;
   bottom: 70px; /* sits just above the controls */
@@ -176,7 +225,7 @@ html, body {
   left: 16px;
   width: 40px;
   height: 32px;
-  z-index: 10000;
+  z-index: 8000;
   background-image: url(./img/vector-36.svg);
   background-size: 100% 100%;
 
@@ -517,7 +566,7 @@ html, body {
   left: 16px;
   gap: 12px;
   background: none;
-  z-index: 99999;
+  z-index: 8000;
   color: white;
   mix-blend-mode: difference;
 }
@@ -637,7 +686,7 @@ html, body {
   pointer-events: auto; /* won't block clicks */
   text-transform: lowercase;
   text-decoration: none;
-  z-index: 99999;
+  z-index: 8000;
   color: white;
   mix-blend-mode: difference;
 }

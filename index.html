@@ -26,6 +26,12 @@
 </head>
 
 <body>
+
+  <div id="landing-overlay">
+    <img src="media/index/loading.png">
+    <img src="media/index/loading_d.png" class="overlay-desktop">
+    <img src="media/index/loading_m.png" class="overlay-mobile">
+  </div>
   
   <div id="site-header"></div>
 
@@ -190,6 +196,19 @@
   </main>
 
   
+
+<script>
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      const overlay = document.getElementById("landing-overlay");
+      overlay.style.opacity = "0";
+      overlay.style.pointerEvents = "none";
+    }, 1500);
+  });
+</script>
+
+
+
     
 <script>
   const allPortfolioItems = document.querySelectorAll('.frame-3[data-index]');
